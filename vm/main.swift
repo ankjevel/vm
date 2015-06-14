@@ -22,12 +22,11 @@ var generate: [String: AnyObject] {
 func msBuild([String: String] = [String: String]()) {
   var items = generate["feedback"] as! Feedback
   for vm in generate["list"] as! [VMConfig] {
-    if vm.os != "" && vm.os.contains("windows") {
+    if vm.running && vm.os.contains("windows") {
       var item = FeedbackItem(
         title: "Run MSBuild for \(vm.name)",
         id: vm.path,
-        argument: "start \(vm.path)",
-        type: vm.os
+        argument: "start \(vm.path)"
       )
       items.addItem(item)
     }

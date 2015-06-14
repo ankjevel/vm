@@ -17,9 +17,9 @@ class FeedbackItem {
       argument: String,
       type: String
   
-  init(title: String, id: String? = nil, argument: String? = nil, type: String = "default") {
+  init(title: String, id: String? = nil, argument: String? = nil, type: String? = "default") {
     self.title = title
-    self.type = type
+    self.type = type!
     
     if id == nil {
       self.id = "\(NSDate().timeIntervalSince1970 * 1000)\(title)"
