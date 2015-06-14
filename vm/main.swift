@@ -26,12 +26,12 @@ func msBuild([String: String] = [String: String]()) {
       var item = FeedbackItem(
         title: "Run MSBuild for \(vm.name)",
         id: vm.path,
-        argument: "start \(vm.path)"
+        argument: "start \"\(vm.path)\""
       )
       items.addItem(item)
     }
   }
-  println(items)
+  println(items.items[0])
 }
 
 //let res = shell("echo", "hello", "world")

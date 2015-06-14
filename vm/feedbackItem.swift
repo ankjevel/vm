@@ -9,13 +9,20 @@
 import Foundation
 
 public
-class FeedbackItem {
+class FeedbackItem: Printable {
   
   public
   var title: String,
       id: String,
       argument: String,
       type: String
+  
+  public
+  var description: String {
+    get {
+      return "{\"title\": \"\(title)\", \"id\": \"\(id)\", \"argument\": \"\(argument)\", \"type\": \"\(type)\"}";
+    }
+  }
   
   init(title: String, id: String? = nil, argument: String? = nil, type: String? = "default") {
     self.title = title

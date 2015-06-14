@@ -9,7 +9,7 @@
 import Foundation
 
 public
-class VMConfig {
+class VMConfig: Printable {
 
   public
   var path = "",
@@ -22,6 +22,13 @@ class VMConfig {
   var running: Bool {
     get {
       return self.status != "Stopped"
+    }
+  }
+  
+  public
+  var description: String {
+    get {
+      return "{\"path\": \"\(path)\", \"name\": \"\(name)\", \"status\": \"\(status)\", \"ipAddress\": \"\(ipAddress)\", \"os\": \"\(os)\", \"running\": \"\(running)\"}";
     }
   }
   
