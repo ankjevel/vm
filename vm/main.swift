@@ -8,5 +8,11 @@
 
 import Foundation
 
-println("Hello, World!")
+let vm = VMWare()
+
+println(vm.list)
+
+let res = shell("echo", "hello", "world")
+println("\(res)")
+
 
