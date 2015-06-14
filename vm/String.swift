@@ -13,6 +13,10 @@ extension String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
   }
   
+  var stripNL: String {
+    return self.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
+  }
+  
   func contains(value: String) -> Bool {
     return self.lowercaseString.rangeOfString(value) != nil
   }
