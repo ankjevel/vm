@@ -9,7 +9,7 @@
 import Foundation
 import AppKit
 
-@objc public
+public
 class VMWare {
   
   private
@@ -37,7 +37,7 @@ class VMWare {
   func updateStatus(inout inventory: [VMConfig]) {
     var results = split(shell(VMRUN_PATH, "list")) {$0 == "\n"}
     for line in results {
-      line.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+      line.strip
       if line.hasPrefix("Total running VMs") == false {
         inventory
           .filter({
@@ -85,60 +85,38 @@ class VMWare {
     }
     
     
-    var vmList: [VMConfig] = []
+    var vmList = [String: VMConfig]()
     
     var lines = split(inventory!) {$0 == "\n"}
     for line in lines {
-      println("line: \(line)")
       var parts = split(line) {$0 == "="}
       if parts.count == 2 {
-        var lhs: String = parts[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        var rhs: String = parts[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        var lhs: String = parts[0].strip
+        var rhs: String = parts[1].strip
         var tokens = split(lhs) {$0 == "."}
         if tokens.count == 2 && count(tokens[0]) > 0 {
-          
+          var id = tokens[0].strip
+          var param = tokens[1].strip
+          var vm: VMConfig
+          if vmList[id] != nil {
+            vm = vmList[id]!
+          } else {
+            vm = VMConfig()
+            vmList[id] = vm
+          }
+          if param == "config" {
+            vm.path = removeQuotations(rhs).strip
+          } else if param == "DisplayName" {
+            vm.name = removeQuotations(rhs).strip
+          }
         }
       }
     }
     
-    
-    var vm = VMConfig()
-    vm.path = "hello"
-    return [vm]
+    return vmList.values.array.filter({
+      $0.path != "" && count($0.path) > 0
+    })
   }
-  
-  //  def inventory_list
-  //    inventory_path = File.expand_path(USER_INVENTORY_PATH)
-  //    unless File.exists?(inventory_path)
-  //      inventory_path = File.expand_path(SHARED_INVENTORY_PATH)
-  //    end
-  //    inventory = File.open(inventory_path)
-  //
-  //    vmlist = {}
-  //    inventory.each_line do |line|
-  //      parts = line.split("=")
-  //      if parts.length == 2f
-  //        lhs = parts[0].strip
-  //        rhs = parts[1].strip
-  //        tokens = lhs.split(".")
-  //        if tokens.length == 2 && tokens[0].length > 0
-  //          id = tokens[0].strip
-  //          param = tokens[1].strip
-  //          vm = vmlist[id]
-  //          if vm.nil?
-  //            vm = VMConfig.new
-  //            vmlist[id] = vm
-  //          end
-  //          if param == "config"
-  //            vm.path = remove_quotations(rhs).strip
-  //          elsif param == "DisplayName"
-  //            vm.name = remove_quotations(rhs).strip
-  //          end
-  //        end
-  //      end
-  //    end
-  //    vmlist.values.find_all {|item| item.path && item.path.length > 0}
-  //  end
   
   private
   func runtimeConfig(path: String, value: String) -> String? {
@@ -147,8 +125,8 @@ class VMWare {
       for line in lines {
         var parts = split(line) {$0 == "="}
         if parts.count == 2 {
-          var lhs = parts[0].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-          var rhs = parts[1].stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+          var lhs = parts[0].strip
+          var rhs = parts[1].strip
           if lhs == value {
             return removeQuotations(rhs)
           }
@@ -172,8 +150,7 @@ class VMWare {
   
   private
   func ipAddress(vmPath: String) -> String {
-    return shell(VMRUN_PATH, "readVariable \(vmPath) guestVar ip")
-      .stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    return shell(VMRUN_PATH, "readVariable \(vmPath) guestVar ip").strip
   }
   
   init() {

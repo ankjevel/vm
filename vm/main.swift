@@ -10,9 +10,12 @@ import Foundation
 
 let vm = VMWare()
 
-println(vm.list)
+func msBuild([String: String] = [String: String]()) -> [VMConfig] {
+  return vm.list.filter({ $0.os.contains("windows") })
+}
 
-let res = shell("echo", "hello", "world")
-println("\(res)")
+//let res = shell("echo", "hello", "world")
+//println("\(res)")
 
-
+let build = msBuild()
+println(build)

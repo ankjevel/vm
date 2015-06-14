@@ -8,7 +8,7 @@
 
 import Foundation
 
-@objc public
+public
 class VMConfig {
 
   public
@@ -17,7 +17,6 @@ class VMConfig {
       status = "Stopped",
       ipAddress = "",
       os = ""
-  
   
   public
   var running: Bool {
