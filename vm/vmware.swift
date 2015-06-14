@@ -8,15 +8,16 @@
 
 import Foundation
 import AppKit
+import Darwin
 
 public
 class VMWare {
   
   private
   let VMWARE_INSTALL_PATH = "/Applications/VMware Fusion.app",
-      USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath,
-      SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory",
-      VMRUN_PATH: String
+  USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath,
+  SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory",
+  VMRUN_PATH: String
   
   public
   func run(cmd: AnyObject...) -> String {
@@ -83,7 +84,6 @@ class VMWare {
     if inventory == nil {
       return []
     }
-    
     
     var vmList = [String: VMConfig]()
     
@@ -156,6 +156,15 @@ class VMWare {
   }
   
   init() {
-    VMRUN_PATH = "\(VMWARE_INSTALL_PATH)/Contents/Library/vmrun"
+    var path = "\(VMWARE_INSTALL_PATH)/Contents/Library/vmrun"
+    if NSFileManager().fileExistsAtPath(VMWARE_INSTALL_PATH) == false {
+      println("missing: \(VMWARE_INSTALL_PATH), exiting")
+      exit(0)
+    } else if NSFileManager().fileExistsAtPath(path) == false {
+      println("missing: \(path), exiting")
+      exit(0)
+    }
+    
+    VMRUN_PATH = path
   }
 }
