@@ -10,11 +10,25 @@ import Foundation
 
 let vmware = VMWare()
 
-func input(message: String? = "") -> String {
-  println("\(message!):")
+func getUserInput(_ message: String? = "", strip: Bool? = true, stripNewLine: Bool? = true) -> String {
+  
+  if message != "" {
+    println("\(message!):")
+  }
+  
   var keyboard = NSFileHandle.fileHandleWithStandardInput()
   var inputData = keyboard.availableData
-  return NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
+  var inputString = NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
+  
+  if strip == true {
+    inputString = inputString.strip
+  }
+  
+  if stripNewLine == true {
+    inputString = inputString.stripNL
+  }
+  
+  return inputString
 }
 
 var generate: [String: AnyObject] {
@@ -26,7 +40,7 @@ var generate: [String: AnyObject] {
   }
 }
 
-func msBuild([String: String] = [String: String]()) {
+func msBuild(_ options: [String: String] = [String: String]()) {
   var fb = generate["feedback"] as! Feedback
   for vm in generate["list"] as! [VMConfig] {
 //    if vm.running && vm.os.contains("windows") {
@@ -42,9 +56,9 @@ func msBuild([String: String] = [String: String]()) {
 //  if fb.items.count > 1 {
   
 //  } else {
-    var pre = input().strip.stripNL
+    var pre = getUserInput("pre")
     println("pre: \"\(pre)\"")
-    var put = input().strip.stripNL
+    var put = getUserInput("post")
     println("put: \"\(put)\"")
 //  }
 }
