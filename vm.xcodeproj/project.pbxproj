@@ -13,6 +13,8 @@
 		D6595DC31B2CD37D00A82B81 /* vmconfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC21B2CD37D00A82B81 /* vmconfig.swift */; };
 		D6595DC51B2DB08B00A82B81 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC41B2DB08B00A82B81 /* String.swift */; };
 		D6595DC71B2DB2AD00A82B81 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC61B2DB2AD00A82B81 /* README.md */; };
+		D6595DC91B2DB45600A82B81 /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC81B2DB45600A82B81 /* feedback.swift */; };
+		D6595DCB1B2DB4C300A82B81 /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -35,6 +37,8 @@
 		D6595DC21B2CD37D00A82B81 /* vmconfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vmconfig.swift; sourceTree = "<group>"; };
 		D6595DC41B2DB08B00A82B81 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D6595DC61B2DB2AD00A82B81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D6595DC81B2DB45600A82B81 /* feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedback.swift; sourceTree = "<group>"; };
+		D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedbackItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,8 @@
 				D6595DC01B2CD1C400A82B81 /* vmware.swift */,
 				D6595DC21B2CD37D00A82B81 /* vmconfig.swift */,
 				D6595DC41B2DB08B00A82B81 /* String.swift */,
+				D6595DC81B2DB45600A82B81 /* feedback.swift */,
+				D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */,
 			);
 			path = vm;
 			sourceTree = "<group>";
@@ -134,11 +140,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				D6595DC71B2DB2AD00A82B81 /* README.md in Sources */,
+				D6595DCB1B2DB4C300A82B81 /* feedbackItem.swift in Sources */,
 				D6595DBF1B2CD1AA00A82B81 /* shell.swift in Sources */,
 				D6595DC11B2CD1C400A82B81 /* vmware.swift in Sources */,
 				D6595DC51B2DB08B00A82B81 /* String.swift in Sources */,
 				D6595DC31B2CD37D00A82B81 /* vmconfig.swift in Sources */,
 				D6595DB81B2CD17800A82B81 /* main.swift in Sources */,
+				D6595DC91B2DB45600A82B81 /* feedback.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,6 +264,7 @@
 				D6595DBD1B2CD17800A82B81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -8,14 +8,34 @@
 
 import Foundation
 
-let vm = VMWare()
+let vmware = VMWare()
 
-func msBuild([String: String] = [String: String]()) -> [VMConfig] {
-  return vm.list.filter({ $0.os.contains("windows") })
+var generate: [String: AnyObject] {
+  get {
+    return [
+      "feedback": Feedback(),
+      "list": vmware.list
+    ]
+  }
+}
+
+func msBuild([String: String] = [String: String]()) {
+  var items = generate["feedback"] as! Feedback
+  for vm in generate["list"] as! [VMConfig] {
+    if vm.os != "" && vm.os.contains("windows") {
+      var item = FeedbackItem(
+        title: "Run MSBuild for \(vm.name)",
+        id: vm.path,
+        argument: "start \(vm.path)",
+        type: vm.os
+      )
+      items.addItem(item)
+    }
+  }
+  println(items)
 }
 
 //let res = shell("echo", "hello", "world")
 //println("\(res)")
 
-let build = msBuild()
-println(build)
+msBuild()

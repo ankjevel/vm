@@ -120,7 +120,9 @@ class VMWare {
   
   private
   func runtimeConfig(path: String, value: String) -> String? {
-    if let file = NSBundle.mainBundle().pathForResource(path, ofType: "vmx"), data = String(contentsOfFile: file, encoding: NSUTF8StringEncoding, error: nil) {
+    let fileManager = NSFileManager()
+    
+    if fileManager.fileExistsAtPath(path), let data = NSString(data: fileManager.contentsAtPath(path)!, encoding: NSUTF8StringEncoding) as? String {
       var lines = split(data) {$0 == "\n"}
       for line in lines {
         var parts = split(line) {$0 == "="}

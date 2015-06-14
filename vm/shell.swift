@@ -9,12 +9,15 @@
 import Foundation
 
 public
-func shell(args: AnyObject...) -> String {
+func shell(cmd: AnyObject, args: AnyObject...) -> String {
   let task = NSTask()
   let pipe = NSPipe()
   
+  var arguments = [cmd]
+  arguments += args
+  
   task.launchPath = "/usr/bin/env"
-  task.arguments = args
+  task.arguments = arguments
   task.standardOutput = pipe
   task.launch()
   task.waitUntilExit()
