@@ -12,6 +12,7 @@
 		D6595DC11B2CD1C400A82B81 /* vmware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC01B2CD1C400A82B81 /* vmware.swift */; };
 		D6595DC31B2CD37D00A82B81 /* vmconfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC21B2CD37D00A82B81 /* vmconfig.swift */; };
 		D6595DC51B2DB08B00A82B81 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC41B2DB08B00A82B81 /* String.swift */; };
+		D6595DC71B2DB2AD00A82B81 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC61B2DB2AD00A82B81 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -33,6 +34,7 @@
 		D6595DC01B2CD1C400A82B81 /* vmware.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vmware.swift; sourceTree = "<group>"; };
 		D6595DC21B2CD37D00A82B81 /* vmconfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vmconfig.swift; sourceTree = "<group>"; };
 		D6595DC41B2DB08B00A82B81 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
+		D6595DC61B2DB2AD00A82B81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +51,7 @@
 		D6595DAB1B2CD17800A82B81 = {
 			isa = PBXGroup;
 			children = (
+				D6595DC61B2DB2AD00A82B81 /* README.md */,
 				D6595DB61B2CD17800A82B81 /* vm */,
 				D6595DB51B2CD17800A82B81 /* Products */,
 			);
@@ -130,6 +133,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D6595DC71B2DB2AD00A82B81 /* README.md in Sources */,
 				D6595DBF1B2CD1AA00A82B81 /* shell.swift in Sources */,
 				D6595DC11B2CD1C400A82B81 /* vmware.swift in Sources */,
 				D6595DC51B2DB08B00A82B81 /* String.swift in Sources */,
