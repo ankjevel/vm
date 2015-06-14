@@ -13,7 +13,7 @@ extension String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
   }
   
-  var stripNL: String {
+  var stripNewLine: String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
   }
   

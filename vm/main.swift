@@ -13,7 +13,7 @@ let vmware = VMWare()
 func getUserInput(_ message: String? = "", strip: Bool? = true, stripNewLine: Bool? = true) -> String {
   
   if message != "" {
-    println("\(message!):")
+    println("\(message!)")
   }
   
   var keyboard = NSFileHandle.fileHandleWithStandardInput()
@@ -25,7 +25,7 @@ func getUserInput(_ message: String? = "", strip: Bool? = true, stripNewLine: Bo
   }
   
   if stripNewLine == true {
-    inputString = inputString.stripNL
+    inputString = inputString.stripNewLine
   }
   
   return inputString
@@ -43,8 +43,8 @@ var generate: [String: AnyObject] {
 func msBuild(_ options: [String: String] = [String: String]()) {
   var fb = generate["feedback"] as! Feedback
   for vm in generate["list"] as! [VMConfig] {
-//    if vm.running && vm.os.contains("windows") {
-    if vm.os.contains("windows") {
+    if vm.running && vm.os.contains("windows") {
+//    if vm.os.contains("windows") {
       var item = FeedbackItem(
         title: vm.name,
         id: vm.path,
@@ -54,16 +54,20 @@ func msBuild(_ options: [String: String] = [String: String]()) {
     }
   }
 //  if fb.items.count > 1 {
-  
-//  } else {
-    var pre = getUserInput("pre")
-    println("pre: \"\(pre)\"")
-    var put = getUserInput("post")
-    println("put: \"\(put)\"")
+  var index = -1
+  let range = fb.items.startIndex ... fb.items.endIndex - 1
+  var message = "select image:\n"
+  for item in enumerate(fb.items) {
+    message += "\n(\(item.index)) \(item.element.title)"
+  }
+  do {
+    var input = getUserInput(message)
+    if input != "", let unwrapped = input.toInt() {
+      index = unwrapped
+    }
+  } while (range ~= index) == false
+  println("selected: \(fb.items[index])")
 //  }
 }
-
-//let res = shell("echo", "hello", "world")
-//println("\(res)")
 
 msBuild()
