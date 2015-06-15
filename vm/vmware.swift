@@ -15,16 +15,31 @@ class VMWare {
   
   private
   let VMWARE_INSTALL_PATH = "/Applications/VMware Fusion.app",
-  USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath,
-  SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory",
-  VMRUN_PATH: String
+      USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath,
+      SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory",
+      VMRUN_PATH: String
   
-  public
+  init() {
+    var path = "\(VMWARE_INSTALL_PATH)/Contents/Library/vmrun"
+    if NSFileManager().fileExistsAtPath(VMWARE_INSTALL_PATH) == false {
+      println("missing: \(VMWARE_INSTALL_PATH), exiting")
+      exit(0)
+    } else if NSFileManager().fileExistsAtPath(path) == false {
+      println("missing: \(path), exiting")
+      exit(0)
+    }
+    
+    VMRUN_PATH = path
+  }
+}
+
+// MARK: Public
+public extension VMWare {
+
   func run(cmd: AnyObject...) -> String {
     return shell(VMRUN_PATH, cmd)
   }
   
-  public
   var list: [VMConfig] {
     get {
       var inventory = inventoryList()
@@ -33,8 +48,11 @@ class VMWare {
       return inventory
     }
   }
-  
-  private
+}
+
+// MARK: Private
+private extension VMWare {
+
   func updateStatus(inout inventory: [VMConfig]) {
     var results = split(shell(VMRUN_PATH, "list")) {$0 == "\n"}
     for line in results {
@@ -51,7 +69,6 @@ class VMWare {
     }
   }
   
-  private
   func addInfo(inout inventory: [VMConfig]) {
     inventory.map({ vmconfig -> VMConfig in
       if vmconfig.running {
@@ -64,7 +81,6 @@ class VMWare {
     })
   }
   
-  private
   func inventoryList() -> [VMConfig] {
     var inventory: String? = nil
     let inventoryPath: String
@@ -118,7 +134,6 @@ class VMWare {
     })
   }
   
-  private
   func runtimeConfig(path: String, value: String) -> String? {
     let fileManager = NSFileManager()
     
@@ -138,7 +153,6 @@ class VMWare {
     return nil
   }
   
-  private
   func removeQuotations(string: String) -> String {
     var modifiedString = string
     if string.hasPrefix("\"") {
@@ -150,21 +164,7 @@ class VMWare {
     return modifiedString
   }
   
-  private
   func ipAddress(vmPath: String) -> String {
     return shell(VMRUN_PATH, "readVariable \(vmPath) guestVar ip").strip
-  }
-  
-  init() {
-    var path = "\(VMWARE_INSTALL_PATH)/Contents/Library/vmrun"
-    if NSFileManager().fileExistsAtPath(VMWARE_INSTALL_PATH) == false {
-      println("missing: \(VMWARE_INSTALL_PATH), exiting")
-      exit(0)
-    } else if NSFileManager().fileExistsAtPath(path) == false {
-      println("missing: \(path), exiting")
-      exit(0)
-    }
-    
-    VMRUN_PATH = path
   }
 }

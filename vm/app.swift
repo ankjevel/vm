@@ -10,40 +10,15 @@ import Foundation
 
 public
 class App {
-  
+
   private
   let vmware = VMWare()
-  
-  private
-  func getUserInput(_ message: String? = "", strip: Bool? = true, stripNewLine: Bool? = true) -> String {
-    
-    if message != "" {
-      println("\(message!)")
-    }
-    
-    var keyboard = NSFileHandle.fileHandleWithStandardInput()
-    var inputData = keyboard.availableData
-    var inputString = NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
-    
-    if strip == true {
-      inputString = inputString.strip
-    }
-    
-    if stripNewLine == true {
-      inputString = inputString.stripNewLine
-    }
-    
-    return inputString
-  }
-  
-  private
-  var generate: (Feedback, [VMConfig]) {
-    get {
-      return (Feedback(), vmware.list)
-    }
-  }
-  
-  public
+
+}
+
+// MARK: Public
+public extension App {
+
   func msBuild(_ options: [String: String] = [String: String]()) {
     var fb = generate.0
     for vm in generate.1 {
@@ -77,4 +52,36 @@ class App {
     println("selected: \(fb.items[index])")
     //  }
   }
+}
+
+// MARK: Private
+private extension App {
+  
+  func getUserInput(_ message: String? = "", strip: Bool? = true, stripNewLine: Bool? = true) -> String {
+    
+    if message != "" {
+      println("\(message!)")
+    }
+    
+    var keyboard = NSFileHandle.fileHandleWithStandardInput()
+    var inputData = keyboard.availableData
+    var inputString = NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
+    
+    if strip == true {
+      inputString = inputString.strip
+    }
+    
+    if stripNewLine == true {
+      inputString = inputString.stripNewLine
+    }
+    
+    return inputString
+  }
+  
+  var generate: (Feedback, [VMConfig]) {
+    get {
+      return (Feedback(), vmware.list)
+    }
+  }
+
 }

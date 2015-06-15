@@ -10,27 +10,27 @@ import Foundation
 
 public
 class VMConfig: Printable {
-
-  public
   var path = "",
       name = "",
       status = "Stopped",
       ipAddress = "",
       os = ""
   
-  public
+  init() {}
+}
+
+// MARK: Public
+public extension VMConfig {
+
   var running: Bool {
     get {
       return self.status != "Stopped"
     }
   }
   
-  public
   var description: String {
     get {
       return "{\"path\": \"\(path)\", \"name\": \"\(name)\", \"status\": \"\(status)\", \"ipAddress\": \"\(ipAddress)\", \"os\": \"\(os)\", \"running\": \"\(running)\"}";
     }
   }
-  
-  init() {}
 }
