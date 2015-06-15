@@ -10,6 +10,7 @@ import Foundation
 
 public
 class Feedback {
+  
   public
   var items: [FeedbackItem] = []
   

@@ -9,6 +9,7 @@
 import Foundation
 
 extension String {
+  
   var strip: String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
   }
@@ -18,6 +19,6 @@ extension String {
   }
   
   func contains(value: String) -> Bool {
-    return self.lowercaseString.rangeOfString(value) != nil
+    return self.lowercaseString.rangeOfString(value.lowercaseString) != nil
   }
 }

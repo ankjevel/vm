@@ -10,6 +10,7 @@ import Foundation
 
 public
 func shell(cmd: AnyObject, args: AnyObject...) -> String {
+  
   let task = NSTask()
   let pipe = NSPipe()
   
