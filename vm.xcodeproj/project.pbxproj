@@ -16,8 +16,8 @@
 		D6255A961B2F6388004AC403 /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC81B2DB45600A82B81 /* feedback.swift */; };
 		D6255A971B2F6388004AC403 /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */; };
 		D6255A991B2F697A004AC403 /* app.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A981B2F697A004AC403 /* app.swift */; };
-		D6255A9D1B2F6A62004AC403 /* appTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A9C1B2F6A62004AC403 /* appTests.swift */; };
 		D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A981B2F697A004AC403 /* app.swift */; };
+		D6255AA21B2F8C9C004AC403 /* getUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA11B2F8C9C004AC403 /* getUserInput.swift */; };
 		D6595DB81B2CD17800A82B81 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DB71B2CD17800A82B81 /* main.swift */; };
 		D6595DBF1B2CD1AA00A82B81 /* shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DBE1B2CD1AA00A82B81 /* shell.swift */; };
 		D6595DC11B2CD1C400A82B81 /* vmware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC01B2CD1C400A82B81 /* vmware.swift */; };
@@ -43,7 +43,7 @@
 		D6255A861B2EE77F004AC403 /* vmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6255A8F1B2EE815004AC403 /* StringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
 		D6255A981B2F697A004AC403 /* app.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = app.swift; sourceTree = "<group>"; };
-		D6255A9C1B2F6A62004AC403 /* appTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = appTests.swift; sourceTree = "<group>"; };
+		D6255AA11B2F8C9C004AC403 /* getUserInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getUserInput.swift; sourceTree = "<group>"; };
 		D6595DB41B2CD17800A82B81 /* vm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vm; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6595DB71B2CD17800A82B81 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D6595DBE1B2CD1AA00A82B81 /* shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shell.swift; sourceTree = "<group>"; };
@@ -76,10 +76,37 @@
 		D6255A871B2EE77F004AC403 /* vmTests */ = {
 			isa = PBXGroup;
 			children = (
-				D6255A9C1B2F6A62004AC403 /* appTests.swift */,
 				D6255A8F1B2EE815004AC403 /* StringsTests.swift */,
 			);
 			path = vmTests;
+			sourceTree = "<group>";
+		};
+		D6255AA01B2F8C64004AC403 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				D6595DBE1B2CD1AA00A82B81 /* shell.swift */,
+				D6255AA11B2F8C9C004AC403 /* getUserInput.swift */,
+				D6595DC41B2DB08B00A82B81 /* String.swift */,
+			);
+			name = utils;
+			sourceTree = "<group>";
+		};
+		D6255AA31B2F8CD7004AC403 /* vmware */ = {
+			isa = PBXGroup;
+			children = (
+				D6595DC01B2CD1C400A82B81 /* vmware.swift */,
+				D6595DC21B2CD37D00A82B81 /* vmconfig.swift */,
+			);
+			name = vmware;
+			sourceTree = "<group>";
+		};
+		D6255AA41B2F8CE3004AC403 /* feedback */ = {
+			isa = PBXGroup;
+			children = (
+				D6595DC81B2DB45600A82B81 /* feedback.swift */,
+				D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */,
+			);
+			name = feedback;
 			sourceTree = "<group>";
 		};
 		D6595DAB1B2CD17800A82B81 = {
@@ -105,13 +132,10 @@
 			isa = PBXGroup;
 			children = (
 				D6595DB71B2CD17800A82B81 /* main.swift */,
-				D6595DBE1B2CD1AA00A82B81 /* shell.swift */,
-				D6595DC01B2CD1C400A82B81 /* vmware.swift */,
-				D6595DC21B2CD37D00A82B81 /* vmconfig.swift */,
-				D6595DC41B2DB08B00A82B81 /* String.swift */,
-				D6595DC81B2DB45600A82B81 /* feedback.swift */,
-				D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */,
 				D6255A981B2F697A004AC403 /* app.swift */,
+				D6255AA31B2F8CD7004AC403 /* vmware */,
+				D6255AA41B2F8CE3004AC403 /* feedback */,
+				D6255AA01B2F8C64004AC403 /* utils */,
 			);
 			path = vm;
 			sourceTree = "<group>";
@@ -208,7 +232,6 @@
 				D6255A941B2F6388004AC403 /* vmconfig.swift in Sources */,
 				D6255A951B2F6388004AC403 /* String.swift in Sources */,
 				D6255A961B2F6388004AC403 /* feedback.swift in Sources */,
-				D6255A9D1B2F6A62004AC403 /* appTests.swift in Sources */,
 				D6255A971B2F6388004AC403 /* feedbackItem.swift in Sources */,
 				D6255A911B2F635D004AC403 /* main.swift in Sources */,
 				D6255A921B2F635D004AC403 /* shell.swift in Sources */,
@@ -227,6 +250,7 @@
 				D6595DC51B2DB08B00A82B81 /* String.swift in Sources */,
 				D6595DC31B2CD37D00A82B81 /* vmconfig.swift in Sources */,
 				D6595DB81B2CD17800A82B81 /* main.swift in Sources */,
+				D6255AA21B2F8C9C004AC403 /* getUserInput.swift in Sources */,
 				D6595DC91B2DB45600A82B81 /* feedback.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

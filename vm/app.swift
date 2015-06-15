@@ -61,25 +61,4 @@ private extension App {
       return (Feedback(), vmware.list)
     }
   }
-  
-  func getUserInput(_ message: String? = "", strip: Bool? = true, stripNewLine: Bool? = true) -> String {
-    
-    if message != "" {
-      println("\(message!)")
-    }
-    
-    var keyboard = NSFileHandle.fileHandleWithStandardInput()
-    var inputData = keyboard.availableData
-    var inputString = NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
-    
-    if strip == true {
-      inputString = inputString.strip
-    }
-    
-    if stripNewLine == true {
-      inputString = inputString.stripNewLine
-    }
-    
-    return inputString
-  }
 }
