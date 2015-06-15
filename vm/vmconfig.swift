@@ -6,17 +6,13 @@
 //  Copyright (c) 2015 dennisp.se. All rights reserved.
 //
 
-import Foundation
-
-public
-class VMConfig: Printable {
-  var path = "",
-      name = "",
-      status = "Stopped",
-      ipAddress = "",
-      os = ""
+public class VMConfig: Printable {
   
-  init() {}
+  public var path = ""
+  public var name = ""
+  public var status = "Stopped"
+  public var ipAddress = ""
+  public var os = ""
 }
 
 // MARK: Public

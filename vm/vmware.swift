@@ -12,14 +12,10 @@ import Darwin
 
 public class VMWare {
   
-  private
-  let VMWARE_INSTALL_PATH = "/Applications/VMware Fusion.app"
-  private
-  let USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath
-  private
-  let SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory"
-  private
-  let VMRUN_PATH: String
+  private let VMWARE_INSTALL_PATH = "/Applications/VMware Fusion.app"
+  private let USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath
+  private let SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory"
+  private let VMRUN_PATH: String
   
   init() {
     var path = "\(VMWARE_INSTALL_PATH)/Contents/Library/vmrun"
@@ -38,10 +34,6 @@ public class VMWare {
 // MARK: Public
 public extension VMWare {
 
-  func run(cmd: AnyObject...) -> String {
-    return shell(VMRUN_PATH, cmd)
-  }
-  
   var list: [VMConfig] {
     get {
       var inventory = inventoryList()
@@ -49,6 +41,10 @@ public extension VMWare {
       addInfo(&inventory)
       return inventory
     }
+  }
+
+  func run(cmd: AnyObject...) -> String {
+    return shell(VMRUN_PATH, cmd)
   }
 }
 

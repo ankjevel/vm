@@ -11,13 +11,12 @@ import Foundation
 public class App {
 
   private let vmware = VMWare()
-
 }
 
 // MARK: Public
 public extension App {
 
-  func msBuild(_ options: [String: String] = [String: String]()) {
+  func msBuild(_ options: [String: String] = [String: String]()) -> Feedback {
     var fb = generate.0
     for vm in generate.1 {
       if vm.running && vm.os.contains("windows") {
@@ -49,11 +48,19 @@ public extension App {
     } while (range ~= index) == false
     println("selected: \(fb.items[index])")
     //  }
+    
+    return fb
   }
 }
 
 // MARK: Private
 private extension App {
+  
+  var generate: (Feedback, [VMConfig]) {
+    get {
+      return (Feedback(), vmware.list)
+    }
+  }
   
   func getUserInput(_ message: String? = "", strip: Bool? = true, stripNewLine: Bool? = true) -> String {
     
@@ -75,11 +82,4 @@ private extension App {
     
     return inputString
   }
-  
-  var generate: (Feedback, [VMConfig]) {
-    get {
-      return (Feedback(), vmware.list)
-    }
-  }
-
 }

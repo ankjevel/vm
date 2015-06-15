@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 dennisp.se. All rights reserved.
 //
 
-import Foundation
-
 public class Feedback {
   
   public var items: [FeedbackItem] = []

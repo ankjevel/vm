@@ -8,8 +8,7 @@
 
 import Foundation
 
-public
-class FeedbackItem: Printable {
+public class FeedbackItem: Printable {
   
   public var title: String
   public var id: String

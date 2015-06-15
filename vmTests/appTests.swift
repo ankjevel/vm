@@ -9,23 +9,10 @@
 import Cocoa
 import XCTest
 
-class mockApp: App {
-
-  override var generate: (Feedback, [VMConfig]) {
-    get {
-      return (Feedback(), [])
-    }
-  }
-}
-
 class appTests: XCTestCase {
-  
-  var app = mockApp()
   
   override func setUp() {
     super.setUp()
-    app = mockApp()
-    
     // Put setup code here. This method is called before the invocation of each test method in the class.
   }
   
@@ -35,7 +22,6 @@ class appTests: XCTestCase {
   }
   
   func testMsBuild() {
-    XCTAssertTrue(true, "should be true")
   }
 
 }
