@@ -41,7 +41,6 @@
 
 /* Begin PBXFileReference section */
 		D6255A861B2EE77F004AC403 /* vmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6255A891B2EE77F004AC403 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D6255A8F1B2EE815004AC403 /* StringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
 		D6255A981B2F697A004AC403 /* app.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = app.swift; sourceTree = "<group>"; };
 		D6255A9C1B2F6A62004AC403 /* appTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = appTests.swift; sourceTree = "<group>"; };
@@ -79,17 +78,8 @@
 			children = (
 				D6255A9C1B2F6A62004AC403 /* appTests.swift */,
 				D6255A8F1B2EE815004AC403 /* StringsTests.swift */,
-				D6255A881B2EE77F004AC403 /* Supporting Files */,
 			);
 			path = vmTests;
-			sourceTree = "<group>";
-		};
-		D6255A881B2EE77F004AC403 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				D6255A891B2EE77F004AC403 /* Info.plist */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		D6595DAB1B2CD17800A82B81 = {
