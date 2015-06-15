@@ -8,11 +8,9 @@
 
 import Foundation
 
-public
-class App {
+public class App {
 
-  private
-  let vmware = VMWare()
+  private let vmware = VMWare()
 
 }
 

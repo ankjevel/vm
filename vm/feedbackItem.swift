@@ -11,11 +11,10 @@ import Foundation
 public
 class FeedbackItem: Printable {
   
-  public
-  var title: String,
-      id: String,
-      argument: String,
-      type: String
+  public var title: String
+  public var id: String
+  public var argument: String
+  public var type: String
   
   init(title: String, id: String? = nil, argument: String? = nil, type: String? = "default") {
     self.title = title

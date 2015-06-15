@@ -10,14 +10,16 @@ import Foundation
 import AppKit
 import Darwin
 
-public
-class VMWare {
+public class VMWare {
   
   private
-  let VMWARE_INSTALL_PATH = "/Applications/VMware Fusion.app",
-      USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath,
-      SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory",
-      VMRUN_PATH: String
+  let VMWARE_INSTALL_PATH = "/Applications/VMware Fusion.app"
+  private
+  let USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath
+  private
+  let SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory"
+  private
+  let VMRUN_PATH: String
   
   init() {
     var path = "\(VMWARE_INSTALL_PATH)/Contents/Library/vmrun"

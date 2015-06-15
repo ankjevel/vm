@@ -8,17 +8,18 @@
 
 import Foundation
 
-public
-class Feedback {
+public class Feedback {
   
-  public
-  var items: [FeedbackItem] = []
+  public var items: [FeedbackItem] = []
   
-  public
+  init() {}
+}
+
+// MARK: Public
+public extension Feedback {
+  
   func addItem(item: FeedbackItem) -> FeedbackItem {
     items.append(item)
     return item
   }
-  
-  init() {}
 }
