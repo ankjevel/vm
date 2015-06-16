@@ -119,9 +119,9 @@ private extension VMWare {
             vmList[id] = vm
           }
           if param == "config" {
-            vm.path = removeQuotations(rhs).strip
+            vm.path = rhs.removeQuotations.strip
           } else if param == "DisplayName" {
-            vm.name = removeQuotations(rhs).strip
+            vm.name = rhs.removeQuotations.strip
           }
         }
       }
@@ -143,23 +143,12 @@ private extension VMWare {
           var lhs = parts[0].strip
           var rhs = parts[1].strip
           if lhs == value {
-            return removeQuotations(rhs)
+            return rhs.removeQuotations
           }
         }
       }
     }
     return nil
-  }
-  
-  func removeQuotations(string: String) -> String {
-    var modifiedString = string
-    if string.hasPrefix("\"") {
-      modifiedString = dropFirst(string)
-    }
-    if string.hasSuffix("\"") {
-      modifiedString = dropLast(modifiedString)
-    }
-    return modifiedString
   }
   
   func ipAddress(vmPath: String) -> String {

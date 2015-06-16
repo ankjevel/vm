@@ -18,6 +18,17 @@ extension String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
   }
   
+  var removeQuotations: String {
+    var modifiedString = self
+    if self.hasPrefix("\"") {
+      modifiedString = dropFirst(self)
+    }
+    if self.hasSuffix("\"") {
+      modifiedString = dropLast(modifiedString)
+    }
+    return modifiedString
+  }
+  
   func contains(value: String) -> Bool {
     return self.lowercaseString.rangeOfString(value.lowercaseString) != nil
   }
