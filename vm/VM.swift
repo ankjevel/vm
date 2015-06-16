@@ -18,3 +18,4 @@ class VM: NSManagedObject {
     @NSManaged var username: String
 
 }
+ 

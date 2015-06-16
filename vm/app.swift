@@ -85,6 +85,8 @@ public extension App {
     }
     
     //  if fb.items.count > 1 {
+    
+    // MARK: Select image
     var index = -1
     let range = fb.items.startIndex ... fb.items.endIndex - 1
     var message = "select image:\n"
@@ -99,13 +101,30 @@ public extension App {
       }
     } while (range ~= index) == false
     
-    fb.items[index].options = options
+    var selected = fb.items[index]
+    selected.options = options
     
-    let managedObjectContext = self.managedObjectContext
+    // MARK: Select user
+    do {
+      var input = getUserInput("select user:\n")
+      if input != "" {
+        selected.options.user = input
+      }
+    } while selected.options.user == ""
     
-    println(managedObjectContext!)
+    // MARK: Select solution
+    do {
+      var input = getUserInput("select solution:\n")
+      if input != "" {
+        selected.options.solution = input
+      }
+    } while selected.options.solution == ""
+
+//    let managedObjectContext = self.managedObjectContext
+//    
+//    println(managedObjectContext!.exposedBindings)
     
-    println("selected: \(fb.items[index])")
+    println("selected: \(selected)")
     //  }
     
     return fb

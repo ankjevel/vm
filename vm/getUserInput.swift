@@ -8,22 +8,30 @@
 
 import Foundation
 
-public func getUserInput(_ message: String = "", strip: Bool = true, stripNewLine: Bool = true) -> String {
+public func getUserInput(_ message: String = "", noEcho: Bool = false, strip: Bool = true, stripNewLine: Bool = true, stripQuotes: Bool = true) -> String {
   
-  if message != "" {
+  var inputString: String
+  
+  if noEcho {
+    
+    var p = getpass("\(message)\n")
+    inputString = String.fromCString(UnsafePointer<CChar>(p))!
+  } else {
+    
     println("\(message)")
+    inputString = NSString(data: NSFileHandle.fileHandleWithStandardInput().availableData, encoding: NSUTF8StringEncoding) as! String
   }
   
-  var keyboard = NSFileHandle.fileHandleWithStandardInput()
-  var inputData = keyboard.availableData
-  var inputString = NSString(data: inputData, encoding:NSUTF8StringEncoding) as! String
-  
-  if strip == true {
+  if strip {
     inputString = inputString.strip
   }
   
-  if stripNewLine == true {
+  if stripNewLine {
     inputString = inputString.stripNewLine
+  }
+  
+  if stripQuotes {
+      inputString = inputString.removeQuotations
   }
   
   return inputString
