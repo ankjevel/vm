@@ -66,10 +66,10 @@ public class App {
 // MARK: Public
 public extension App {
 
-  func msBuild(_ options: Options = Options()) -> Feedback {
+  func msBuild(_ options: Options = Options()) -> FeedbackItem {
     var fb = generate.0
     for vm in generate.1 {
-      // if vm.os.contains("windows") {
+//      if vm.os.contains("windows") {
       if vm.running && vm.os.contains("windows") {
         var item = FeedbackItem(
           title: vm.name,
@@ -85,13 +85,27 @@ public extension App {
     }
     
     //  if fb.items.count > 1 {
+    var selected = getImage(fb, options: options)
+    setSolution(&selected)
+    setTask(&selected)
+    setTaskProperty(&selected)
+    setUser(&selected)
+    setPassword(&selected)
     
-    // MARK: Select image
+    println("selected: \(selected)")
+
+    return selected
+  }
+}
+
+// MARK: Private
+private extension App {
+  
+  func getImage(fb: Feedback, options: Options) -> FeedbackItem {
     var index = -1
     let range = fb.items.startIndex ... fb.items.endIndex - 1
-    var message = "select image:\n"
-    for item in enumerate(fb.items) {
-      message += "\n(\(item.index)) \(item.element.title)"
+    var message = "select image (index):"; for item in enumerate(fb.items) {
+      message  += "\n[\(item.index)] \(item.element.title)"
     }
     
     do {
@@ -104,35 +118,53 @@ public extension App {
     var selected = fb.items[index]
     selected.options = options
     
-    // MARK: Select user
-    do {
-      var input = getUserInput("select user:\n")
+    return selected
+  }
+  
+  func setUser(inout selected: FeedbackItem) {
+    while selected.options.user == "" {
+      var input = getUserInput("select user:")
       if input != "" {
         selected.options.user = input
       }
-    } while selected.options.user == ""
-    
-    // MARK: Select solution
-    do {
-      var input = getUserInput("select solution:\n")
-      if input != "" {
+    }
+  }
+  
+  func setSolution(inout selected: FeedbackItem) {
+    while selected.options.solution == "" && selected.options.solution.lowercaseString.hasSuffix(".sln") == false {
+      var input = getUserInput("select solution:")
+      if input != "" && input.lowercaseString.hasSuffix(".sln"){
         selected.options.solution = input
       }
-    } while selected.options.solution == ""
-
-//    let managedObjectContext = self.managedObjectContext
-//    
-//    println(managedObjectContext!.exposedBindings)
-    
-    println("selected: \(selected)")
-    //  }
-    
-    return fb
+    }
   }
-}
-
-// MARK: Private
-private extension App {
+  
+  func setTask(inout selected: FeedbackItem) {
+    while selected.options.task == "" && selected.options.task.hasPrefix("/t:") == false {
+      var input = getUserInput("select task:")
+      if input != "" && input.lowercaseString.hasPrefix("/t:") {
+        selected.options.task = input
+      }
+    }
+  }
+  
+  func setTaskProperty(inout selected: FeedbackItem) {
+    while selected.options.property == "" && selected.options.property.hasPrefix("/property:") == false {
+      var input = getUserInput("select task property:")
+      if input != "" && input.lowercaseString.hasPrefix("/property:") {
+        selected.options.property = input
+      }
+    }
+  }
+  
+  func setPassword(inout selected: FeedbackItem) {
+    while selected.options.password == "" {
+      var input = getUserInput("password for \(selected.options.user):", noEcho: true)
+      if input != "" {
+        selected.options.password = input
+      }
+    }
+  }
   
   var generate: (Feedback, [VMConfig]) {
     get {

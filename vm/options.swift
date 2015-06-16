@@ -30,11 +30,11 @@ public extension Options {
     if value == nil || value == "" {return}
 
     switch key.lowercaseString {
-    case "task": self.task = value!
-    case "property": self.property = value!
-    case "solution": self.solution = value!
-    case "user": self.user = value!
-    case "password": self.password = value!
+    case "task", "t": self.task = value!
+    case "property", "o": self.property = value!
+    case "solution", "s": self.solution = value!
+    case "user", "u": self.user = value!
+    case "password", "p": self.password = value!
     default: ""
     }
   }

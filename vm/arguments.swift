@@ -17,7 +17,7 @@ public func arguments() -> Options {
   if argArray.count > 0 {
     for argument in enumerate(argArray) {
       if argument.element.hasPrefix("-"), var value = argArray[argument.index + 1] as String? {
-        var key = argument.element.stringByReplacingOccurrencesOfString("-", withString: "")
+        var key = argument.element.stripDashes
         options.update(key, value: value)
       }
     }

@@ -18,6 +18,10 @@ extension String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
   }
   
+  var stripDashes: String {
+    return self.stringByReplacingOccurrencesOfString("-", withString: "")
+  }
+  
   var removeQuotations: String {
     var modifiedString = self
     if self.hasPrefix("\"") {

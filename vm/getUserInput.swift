@@ -14,8 +14,7 @@ public func getUserInput(_ message: String = "", noEcho: Bool = false, strip: Bo
   
   if noEcho {
     
-    var p = getpass("\(message)\n")
-    inputString = String.fromCString(UnsafePointer<CChar>(p))!
+    inputString = String.fromCString(UnsafePointer<CChar>(getpass("\(message)\n")))!
   } else {
     
     println("\(message)")

@@ -1,7 +1,8 @@
-//
+ //
 //  halt.swift
 //  vm
 //
+//  Hammerzeit
 //  Created by Dennis Pettersson on 2015-06-16.
 //  Copyright (c) 2015 dennisp.se. All rights reserved.
 //
@@ -26,7 +27,7 @@ public func halt(dict: [String: AnyObject]) {
 
 public func halt(error: NSError) {
   
-  NSLog("Unresolved error \(error), \(error.userInfo)")
+  NSLog("Unresolved error \(error), \(error.userInfo!)")
   
   abort()
 }
