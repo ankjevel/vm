@@ -8,10 +8,10 @@
 
 import Foundation
 
-public func getUserInput(_ message: String? = "", strip: Bool? = true, stripNewLine: Bool? = true) -> String {
+public func getUserInput(_ message: String = "", strip: Bool = true, stripNewLine: Bool = true) -> String {
   
   if message != "" {
-    println("\(message!)")
+    println("\(message)")
   }
   
   var keyboard = NSFileHandle.fileHandleWithStandardInput()

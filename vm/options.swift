@@ -1,5 +1,5 @@
 //
-//  option.swift
+//  options.swift
 //  vm
 //
 //  Created by Dennis Pettersson on 2015-06-16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Option: Printable {
+public class Options: Printable {
   
   public var task = "/t:build"
   public var property = "/property:Configuration=Debug"
@@ -18,7 +18,7 @@ public class Option: Printable {
 }
 
 // MARK: Public
-public extension Option {
+public extension Options {
   
   var description: String {
     get {
@@ -27,9 +27,9 @@ public extension Option {
   }
   
   func update(key: String, value: String? = nil) {
-    if value == nil {return}
+    if value == nil || value == "" {return}
 
-    switch key {
+    switch key.lowercaseString {
     case "task": self.task = value!
     case "property": self.property = value!
     case "solution": self.solution = value!

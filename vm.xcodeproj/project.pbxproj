@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		D60963D91B2FFC0000060B09 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D60963D81B2FFC0000060B09 /* Info.plist */; };
+		D60963DB1B2FFC7600060B09 /* arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963DA1B2FFC7600060B09 /* arguments.swift */; };
+		D60963DC1B2FFC7600060B09 /* arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963DA1B2FFC7600060B09 /* arguments.swift */; };
 		D6255A901B2EE815004AC403 /* StringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A8F1B2EE815004AC403 /* StringsTests.swift */; };
 		D6255A911B2F635D004AC403 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DB71B2CD17800A82B81 /* main.swift */; };
 		D6255A921B2F635D004AC403 /* shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DBE1B2CD1AA00A82B81 /* shell.swift */; };
@@ -19,8 +21,8 @@
 		D6255A991B2F697A004AC403 /* app.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A981B2F697A004AC403 /* app.swift */; };
 		D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A981B2F697A004AC403 /* app.swift */; };
 		D6255AA21B2F8C9C004AC403 /* getUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA11B2F8C9C004AC403 /* getUserInput.swift */; };
-		D6255AA71B2FF3C7004AC403 /* option.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA61B2FF3C7004AC403 /* option.swift */; };
-		D6255AA81B2FF3C7004AC403 /* option.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA61B2FF3C7004AC403 /* option.swift */; };
+		D6255AA71B2FF3C7004AC403 /* options.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA61B2FF3C7004AC403 /* options.swift */; };
+		D6255AA81B2FF3C7004AC403 /* options.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA61B2FF3C7004AC403 /* options.swift */; };
 		D6595DB81B2CD17800A82B81 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DB71B2CD17800A82B81 /* main.swift */; };
 		D6595DBF1B2CD1AA00A82B81 /* shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DBE1B2CD1AA00A82B81 /* shell.swift */; };
 		D6595DC11B2CD1C400A82B81 /* vmware.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC01B2CD1C400A82B81 /* vmware.swift */; };
@@ -44,11 +46,12 @@
 
 /* Begin PBXFileReference section */
 		D60963D81B2FFC0000060B09 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D60963DA1B2FFC7600060B09 /* arguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = arguments.swift; sourceTree = "<group>"; };
 		D6255A861B2EE77F004AC403 /* vmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6255A8F1B2EE815004AC403 /* StringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
 		D6255A981B2F697A004AC403 /* app.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = app.swift; sourceTree = "<group>"; };
 		D6255AA11B2F8C9C004AC403 /* getUserInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getUserInput.swift; sourceTree = "<group>"; };
-		D6255AA61B2FF3C7004AC403 /* option.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = option.swift; sourceTree = "<group>"; };
+		D6255AA61B2FF3C7004AC403 /* options.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = options.swift; sourceTree = "<group>"; };
 		D6595DB41B2CD17800A82B81 /* vm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vm; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6595DB71B2CD17800A82B81 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D6595DBE1B2CD1AA00A82B81 /* shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shell.swift; sourceTree = "<group>"; };
@@ -93,6 +96,7 @@
 				D6595DBE1B2CD1AA00A82B81 /* shell.swift */,
 				D6255AA11B2F8C9C004AC403 /* getUserInput.swift */,
 				D6595DC41B2DB08B00A82B81 /* String.swift */,
+				D60963DA1B2FFC7600060B09 /* arguments.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -118,7 +122,7 @@
 		D6255AA51B2FF3AF004AC403 /* msbuild */ = {
 			isa = PBXGroup;
 			children = (
-				D6255AA61B2FF3C7004AC403 /* option.swift */,
+				D6255AA61B2FF3C7004AC403 /* options.swift */,
 			);
 			name = msbuild;
 			sourceTree = "<group>";
@@ -245,12 +249,13 @@
 			files = (
 				D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */,
 				D6255A931B2F6388004AC403 /* vmware.swift in Sources */,
+				D60963DC1B2FFC7600060B09 /* arguments.swift in Sources */,
 				D6255A941B2F6388004AC403 /* vmconfig.swift in Sources */,
 				D6255A951B2F6388004AC403 /* String.swift in Sources */,
 				D6255A961B2F6388004AC403 /* feedback.swift in Sources */,
 				D6255A971B2F6388004AC403 /* feedbackItem.swift in Sources */,
 				D6255A911B2F635D004AC403 /* main.swift in Sources */,
-				D6255AA81B2FF3C7004AC403 /* option.swift in Sources */,
+				D6255AA81B2FF3C7004AC403 /* options.swift in Sources */,
 				D6255A921B2F635D004AC403 /* shell.swift in Sources */,
 				D6255A901B2EE815004AC403 /* StringsTests.swift in Sources */,
 			);
@@ -262,12 +267,13 @@
 			files = (
 				D6595DCB1B2DB4C300A82B81 /* feedbackItem.swift in Sources */,
 				D6595DBF1B2CD1AA00A82B81 /* shell.swift in Sources */,
+				D60963DB1B2FFC7600060B09 /* arguments.swift in Sources */,
 				D6595DC11B2CD1C400A82B81 /* vmware.swift in Sources */,
 				D6255A991B2F697A004AC403 /* app.swift in Sources */,
 				D6595DC51B2DB08B00A82B81 /* String.swift in Sources */,
 				D6595DC31B2CD37D00A82B81 /* vmconfig.swift in Sources */,
 				D6595DB81B2CD17800A82B81 /* main.swift in Sources */,
-				D6255AA71B2FF3C7004AC403 /* option.swift in Sources */,
+				D6255AA71B2FF3C7004AC403 /* options.swift in Sources */,
 				D6255AA21B2F8C9C004AC403 /* getUserInput.swift in Sources */,
 				D6595DC91B2DB45600A82B81 /* feedback.swift in Sources */,
 			);

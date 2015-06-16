@@ -15,20 +15,20 @@ public class FeedbackItem: Printable {
   public var argument: String
   public var type: String
   
-  init(title: String, id: String? = nil, argument: String? = nil, type: String? = "default") {
+  init(title: String, id: String = "", argument: String = "", type: String = "default") {
     self.title = title
-    self.type = type!
+    self.type = type
     
-    if id == nil {
+    if id == "" {
       self.id = "\(NSDate().timeIntervalSince1970 * 1000)\(title)"
     } else {
-      self.id = id!
+      self.id = id
     }
     
-    if argument == nil {
+    if argument == "" {
       self.argument = title
     } else {
-      self.argument = argument!
+      self.argument = argument
     }
   }
 }

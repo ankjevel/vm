@@ -17,7 +17,7 @@ public class App {
 // MARK: Public
 public extension App {
 
-  func msBuild(_ options: [String: String] = [String: String]()) -> Feedback {
+  func msBuild(_ options: Options = Options()) -> Feedback {
     var fb = generate.0
     for vm in generate.1 {
       if vm.running && vm.os.contains("windows") {
