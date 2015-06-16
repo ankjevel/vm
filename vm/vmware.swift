@@ -8,7 +8,6 @@
 
 import Foundation
 import AppKit
-import Darwin
 
 public class VMWare {
   
@@ -19,12 +18,11 @@ public class VMWare {
   
   init() {
     var path = "\(VMWARE_INSTALL_PATH)/Contents/Library/vmrun"
+    
     if NSFileManager().fileExistsAtPath(VMWARE_INSTALL_PATH) == false {
-      println("missing: \(VMWARE_INSTALL_PATH), exiting")
-      exit(0)
+      halt("Missing: \(VMWARE_INSTALL_PATH), exiting")
     } else if NSFileManager().fileExistsAtPath(path) == false {
-      println("missing: \(path), exiting")
-      exit(0)
+      halt("Missing: \(path), exiting")
     }
     
     VMRUN_PATH = path

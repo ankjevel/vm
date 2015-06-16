@@ -14,6 +14,7 @@ public class FeedbackItem: Printable {
   public var id: String
   public var argument: String
   public var type: String
+  public var options = Options()
   
   init(title: String, id: String = "", argument: String = "", type: String = "default") {
     self.title = title
@@ -38,7 +39,7 @@ public extension FeedbackItem {
   
   var description: String {
     get {
-      return "{\"title\": \"\(title)\", \"id\": \"\(id)\", \"argument\": \"\(argument)\", \"type\": \"\(type)\"}";
+      return "{\"title\": \"\(title)\", \"id\": \"\(id)\", \"argument\": \"\(argument)\", \"type\": \"\(type)\", \"options\": \"\(options)\"}";
     }
   }
 }
