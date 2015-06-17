@@ -73,8 +73,7 @@ public extension App {
       if vm.running && vm.os.contains("windows") {
         var item = FeedbackItem(
           title: vm.name,
-          id: vm.path,
-          argument: "start \"\(vm.path)\""
+          id: vm.path
         )
         fb.addItem(item)
       }

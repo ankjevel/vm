@@ -10,15 +10,12 @@ import Foundation
 
 public class FeedbackItem: Printable {
   
-  public var title: String
-  public var id: String
-  public var argument: String
-  public var type: String
+  public let title: String
+  public let id: String
   public var options = Options()
   
-  init(title: String, id: String = "", argument: String = "", type: String = "default") {
+  init(title: String, id: String = "") {
     self.title = title
-    self.type = type
     
     if id == "" {
       self.id = "\(NSDate().timeIntervalSince1970 * 1000)\(title)"
@@ -26,11 +23,6 @@ public class FeedbackItem: Printable {
       self.id = id
     }
     
-    if argument == "" {
-      self.argument = title
-    } else {
-      self.argument = argument
-    }
   }
 }
 
@@ -39,7 +31,7 @@ public extension FeedbackItem {
   
   var description: String {
     get {
-      return "{\"title\": \"\(title)\", \"id\": \"\(id)\", \"argument\": \"\(argument)\", \"type\": \"\(type)\", \"options\": \"\(options)\"}";
+      return "{\"title\": \"\(title)\", \"id\": \"\(id)\", \"options\": \"\(options)\"}";
     }
   }
 }

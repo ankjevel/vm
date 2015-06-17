@@ -8,9 +8,16 @@
 
 import Darwin
 
+public let WIDTH: Int
+if let cols = shell("tput",  "cols").stripWhiteSpaceAndNewLine.toInt() {
+  WIDTH = cols
+} else {
+  WIDTH = 80
+}
+
 let app = App()
 
-ifShouldShowHelp()
+checkIfUserShouldBePromptedHelp()
 
 app.msBuild(arguments())
 

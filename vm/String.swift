@@ -18,6 +18,10 @@ extension String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
   }
   
+  var stripWhiteSpaceAndNewLine: String {
+    return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+  }
+  
   var stripDashes: String {
     return self.stringByReplacingOccurrencesOfString("-", withString: "")
   }
