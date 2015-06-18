@@ -33,32 +33,3 @@ public func shell(cmd: AnyObject, args: AnyObject...) -> String {
     return ""
   }
 }
-
-
-public func repeat(value: String, repeateCount: Int) -> String {
-  return "".join(Array(count: repeateCount, repeatedValue: value))
-}
-
-public func center(str: String) -> String {
-  let odd = (WIDTH - count(str)) % 2 == 1
-  let padding = (WIDTH - count(str)) / 2
-  
-  func print(_ last: Bool = false) -> String {
-    return repeat(" ", last && odd ? padding + 1 : padding)
-  }
-  
-  return print() + str + print(true)
-}
-
-public func header(str: String) -> [String] {
-  let r = ASCIIColor.reset.rawValue
-  let bbgb = r + ASCIIColor.white.rawValue + ASCIIColor.Background.blue.rawValue
-  
-  return [
-    "",
-    "\(bbgb)" + repeat(" ", WIDTH) + "\(r)",
-    "\(bbgb)" + center("\(str)") + "\(r)",
-    "\(bbgb)" + repeat(" ", WIDTH) + "\(r)",
-    ""
-  ]
-}

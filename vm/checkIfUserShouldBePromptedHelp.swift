@@ -14,7 +14,10 @@ public func checkIfUserShouldBePromptedHelp() {
   let bw = ASCIIColor.Bold.white.rawValue
   let bbgb = r + ASCIIColor.white.rawValue + ASCIIColor.Background.blue.rawValue
 
-  let helpMessage: [String] = header("Available options") + [
+  let helpMessage: [String] = [
+    ""
+    ] + header("Available options") + [
+    "",
     "Argument        Description",
     "                Default value",
     "",
@@ -33,6 +36,7 @@ public func checkIfUserShouldBePromptedHelp() {
     "\(bw)-h\(r) --help       prints this guide",
     ""
   ]
+
   var argArray = [String](Process.arguments)
   for arg in argArray {
     let argument = arg.strip.stripDashes.lowercaseString

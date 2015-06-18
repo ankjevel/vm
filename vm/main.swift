@@ -6,8 +6,6 @@
 //  Copyright (c) 2015 dennisp.se. All rights reserved.
 //
 
-import Darwin
-
 public let WIDTH: Int
 if let cols = shell("tput",  "cols").stripWhiteSpaceAndNewLine.toInt() {
   WIDTH = cols

@@ -12,6 +12,7 @@ import CoreData
 public class App {
 
   private let vmware = VMWare()
+  private let build = MSBuild()
   
   // MARK: - Core Data stack
   lazy var applicationDocumentsDirectory: NSURL = {
@@ -66,7 +67,7 @@ public class App {
 // MARK: Public
 public extension App {
 
-  func msBuild(_ options: Options = Options()) -> FeedbackItem {
+  func msBuild(_ options: Options = Options()) {
     var fb = generate.0
     for vm in generate.1 {
 //      if vm.os.contains("windows") {
@@ -90,10 +91,8 @@ public extension App {
     setTaskProperty(&selected)
     setUser(&selected)
     setPassword(&selected)
-    
-    println("selected: \(selected)")
 
-    return selected
+    build.run(selected)
   }
 }
 
@@ -130,9 +129,11 @@ private extension App {
   }
   
   func setSolution(inout selected: FeedbackItem) {
+    let documents = "~/Documents/".stringByExpandingTildeInPath
+    let message = "path to solution file (.sln (relative to \(documents))):"
     while selected.options.solution == "" && selected.options.solution.lowercaseString.hasSuffix(".sln") == false {
-      var input = getUserInput("select solution:")
-      if input != "" && input.lowercaseString.hasSuffix(".sln"){
+      var input = getUserInput(message)
+      if input != "" && input.lowercaseString.hasSuffix(".sln") {
         selected.options.solution = input
       }
     }
@@ -140,7 +141,7 @@ private extension App {
   
   func setTask(inout selected: FeedbackItem) {
     while selected.options.task == "" && selected.options.task.hasPrefix("/t:") == false {
-      var input = getUserInput("select task:")
+      var input = getUserInput("select msbuild task:")
       if input != "" && input.lowercaseString.hasPrefix("/t:") {
         selected.options.task = input
       }
@@ -149,7 +150,7 @@ private extension App {
   
   func setTaskProperty(inout selected: FeedbackItem) {
     while selected.options.property == "" && selected.options.property.hasPrefix("/property:") == false {
-      var input = getUserInput("select task property:")
+      var input = getUserInput("select msbuild task propert(y|ies):")
       if input != "" && input.lowercaseString.hasPrefix("/property:") {
         selected.options.property = input
       }
