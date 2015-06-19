@@ -14,7 +14,7 @@ public func repeat(value: String, repeateCount: Int) -> String {
 
 public func center(str: String) -> String {
   let odd = (WIDTH - count(str)) % 2 == 1
-  let padding = (WIDTH - count(str)) / 2
+  let padding = Int(floor(Double(((WIDTH - count(str)) / 2))))
   
   func print(_ last: Bool = false) -> String {
     return repeat(" ", last && odd ? padding + 1 : padding)

@@ -52,16 +52,7 @@ public class App {
     managedObjectContext.persistentStoreCoordinator = coordinator
     return managedObjectContext
   }()
-  
-  // MARK: - Core Data Saving support
-  func saveContext () {
-    if let moc = self.managedObjectContext {
-      var error: NSError? = nil
-      if moc.hasChanges && !moc.save(&error) {
-        halt(error!)
-      }
-    }
-  }
+
 }
 
 // MARK: Public
@@ -86,11 +77,22 @@ public extension App {
     
     //  if fb.items.count > 1 {
     var selected = getImage(fb, options: options)
+    let entity: [Setting] = getEntities().filter({$0.id == selected.id})
+    var loaded: Bool = false
+    
+    if entity.count > 0 {
+      promptLoad(entity[0], selected: &selected, loaded: &loaded)
+    }
+
+    setUser(&selected)
+    setPassword(&selected)
     setSolution(&selected)
     setTask(&selected)
     setTaskProperty(&selected)
-    setUser(&selected)
-    setPassword(&selected)
+    
+    if loaded == false {
+      saveEntity(selected)
+    }
 
     build.run(selected)
   }
@@ -98,6 +100,20 @@ public extension App {
 
 // MARK: Private
 private extension App {
+  
+  func promptLoad(setting: Setting, inout selected: FeedbackItem, inout loaded: Bool) {
+    println("setting: \(setting), selected: \(selected)")
+    loaded = true
+  }
+  
+  func saveContext() {
+    if let moc = self.managedObjectContext {
+      var error: NSError? = nil
+      if moc.hasChanges && !moc.save(&error) {
+        halt(error!)
+      }
+    }
+  }
   
   func getImage(fb: Feedback, options: Options) -> FeedbackItem {
     var index = -1
@@ -129,11 +145,13 @@ private extension App {
   }
   
   func setSolution(inout selected: FeedbackItem) {
-    let documents = "~/Documents/".stringByExpandingTildeInPath
-    let message = "path to solution file (.sln (relative to \(documents))):"
+    let message = "path to solution file (file\(ASCIIColor.Bold.white.rawValue).sln\(ASCIIColor.reset.rawValue)):"
     while selected.options.solution == "" && selected.options.solution.lowercaseString.hasSuffix(".sln") == false {
       var input = getUserInput(message)
       if input != "" && input.lowercaseString.hasSuffix(".sln") {
+        if input.hasPrefix("~") {
+          input = input.stringByExpandingTildeInPath
+        }
         selected.options.solution = input
       }
     }
@@ -169,6 +187,36 @@ private extension App {
   var generate: (Feedback, [VMConfig]) {
     get {
       return (Feedback(), vmware.list)
+    }
+  }
+  
+  // MARK: - Core Data
+  func getEntities() -> [Setting] {
+    
+    let fetchRequest = NSFetchRequest(entityName: "Setting")
+    let results: [Setting]
+    
+    if let context = managedObjectContext,
+       let fetchedResults = context.executeFetchRequest(fetchRequest, error: nil) {
+        results = fetchedResults as! [Setting]
+    } else {
+      results = []
+    }
+    
+    return results
+  }
+  
+  func saveEntity(fb: FeedbackItem) {
+    
+    if let context = managedObjectContext,
+       let entity = NSEntityDescription.entityForName("Setting", inManagedObjectContext: context),
+       let setting = NSManagedObject(entity: entity as NSEntityDescription, insertIntoManagedObjectContext: context) as? Setting {
+        setting.setValue(fb.id, forKey: "id")
+        setting.setValue(fb.options.property, forKey: "property")
+        setting.setValue(fb.options.solution, forKey: "solution")
+        setting.setValue(fb.options.task, forKey: "task")
+        setting.setValue(fb.options.user, forKey: "user")
+        saveContext()
     }
   }
 }

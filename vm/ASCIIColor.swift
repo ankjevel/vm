@@ -9,7 +9,6 @@
 enum ASCIIColor: String {
   
   case reset  = "\u{001B}[0m"
-  
   // Regular Colors
   case black  = "\u{001B}[0;30m"
   case red    = "\u{001B}[0;31m"
@@ -19,7 +18,7 @@ enum ASCIIColor: String {
   case purple = "\u{001B}[0;35m"
   case cyan   = "\u{001B}[0;36m"
   case white  = "\u{001B}[0;37m"
-
+  
   enum Bold: String {
     case black  = "\u{001B}[1;30m"
     case red    = "\u{001B}[1;31m"

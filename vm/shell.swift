@@ -23,7 +23,6 @@ public func shell(cmd: AnyObject, args: AnyObject...) -> String {
   task.launch()
   task.waitUntilExit()
   
-  
   let handle = pipe.fileHandleForReading
   let data = handle.readDataToEndOfFile()
 
