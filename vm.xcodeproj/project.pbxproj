@@ -42,6 +42,8 @@
 		D6595DC51B2DB08B00A82B81 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC41B2DB08B00A82B81 /* String.swift */; };
 		D6595DC91B2DB45600A82B81 /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC81B2DB45600A82B81 /* feedback.swift */; };
 		D6595DCB1B2DB4C300A82B81 /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */; };
+		D67380501B358F7100244591 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673804F1B358F7100244591 /* CoreData.swift */; };
+		D67380511B358F7100244591 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673804F1B358F7100244591 /* CoreData.swift */; };
 		D6DE6D1B1B336DCC007B1568 /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */; };
 		D6DE6D1C1B336DCC007B1568 /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */; };
 /* End PBXBuildFile section */
@@ -84,6 +86,7 @@
 		D6595DC61B2DB2AD00A82B81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		D6595DC81B2DB45600A82B81 /* feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedback.swift; sourceTree = "<group>"; };
 		D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedbackItem.swift; sourceTree = "<group>"; };
+		D673804F1B358F7100244591 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shellUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,6 +120,7 @@
 		D6255AA01B2F8C64004AC403 /* utils */ = {
 			isa = PBXGroup;
 			children = (
+				D673804F1B358F7100244591 /* CoreData.swift */,
 				D6255AA11B2F8C9C004AC403 /* getUserInput.swift */,
 				D6595DC41B2DB08B00A82B81 /* String.swift */,
 				D60963DA1B2FFC7600060B09 /* arguments.swift */,
@@ -178,9 +182,9 @@
 		D6595DB61B2CD17800A82B81 /* vm */ = {
 			isa = PBXGroup;
 			children = (
-				D646776F1B34C05400B73DEC /* Setting.swift */,
 				D6595DB71B2CD17800A82B81 /* main.swift */,
 				D6255A981B2F697A004AC403 /* app.swift */,
+				D646776F1B34C05400B73DEC /* Setting.swift */,
 				D6255AA51B2FF3AF004AC403 /* msbuild */,
 				D6255AA31B2F8CD7004AC403 /* vmware */,
 				D6255AA41B2F8CE3004AC403 /* feedback */,
@@ -286,6 +290,7 @@
 				D60963DC1B2FFC7600060B09 /* arguments.swift in Sources */,
 				D6255A941B2F6388004AC403 /* vmconfig.swift in Sources */,
 				D6255A951B2F6388004AC403 /* String.swift in Sources */,
+				D67380511B358F7100244591 /* CoreData.swift in Sources */,
 				D64677711B34C05400B73DEC /* Setting.swift in Sources */,
 				D6255A961B2F6388004AC403 /* feedback.swift in Sources */,
 				D60963FE1B32057800060B09 /* ASCIIColor.swift in Sources */,
@@ -311,6 +316,7 @@
 				D60963DB1B2FFC7600060B09 /* arguments.swift in Sources */,
 				D6595DC11B2CD1C400A82B81 /* vmware.swift in Sources */,
 				D6255A991B2F697A004AC403 /* app.swift in Sources */,
+				D67380501B358F7100244591 /* CoreData.swift in Sources */,
 				D64677701B34C05400B73DEC /* Setting.swift in Sources */,
 				D6595DC51B2DB08B00A82B81 /* String.swift in Sources */,
 				D60963FD1B32057800060B09 /* ASCIIColor.swift in Sources */,

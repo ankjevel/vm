@@ -16,9 +16,16 @@ public func arguments() -> Options {
   
   if argArray.count > 0 {
     for argument in enumerate(argArray) {
-      if argument.element.hasPrefix("-"), var value = argArray[argument.index + 1] as String? {
+      if argument.element.hasPrefix("-") {
+        let indexInRange = argArray.count - 1 >= argument.index + 1
         var key = argument.element.stripDashes
-        options.update(key, value: value)
+        if indexInRange, let value = argArray[argument.index + 1] as String? {
+          if value.hasPrefix("=") == false {
+            options.update(key, value: value)
+          }
+        } else {
+          options.update(key, value: "true")
+        }
       }
     }
   }

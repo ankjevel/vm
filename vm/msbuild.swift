@@ -9,31 +9,22 @@
 import Foundation
 
 public struct MSBuild {
+  private let vmware: VMWare
   
-  private let OS_DOCUMENTS = "~/Documents/".stringByExpandingTildeInPath
-  private let VM_DOCUMENTS = "\\\\vmware-host\\Shared Folders\\Documents\\"
-  private let VM_FILE_BUILD = "build.bat"
-  private let VM_FILE_LOG = "out.log"
+  init (inout vmware: VMWare) {
+    self.vmware = vmware
+  }
 }
 
 // MARK: Public
 public extension MSBuild {
   
   func run(selected: FeedbackItem) {
-    println(selected)
-    touchLogFile()
+    println(vmware.run("vprobeListGlobals", "\"\(selected.id)\""))
   }
 }
 
 // MARK: Private
 private extension MSBuild {
 
-  func touchLogFile() {
-    println("\(OS_DOCUMENTS)/\(VM_FILE_LOG)")
-    if NSFileManager().fileExistsAtPath("\(OS_DOCUMENTS)/\(VM_FILE_LOG)") == false {
-      println("no")
-    } else {
-      println("yes")
-    }
-  }
 }

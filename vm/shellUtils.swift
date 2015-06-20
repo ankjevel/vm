@@ -24,8 +24,8 @@ public func center(str: String) -> String {
 }
 
 public func header(str: String) -> [String] {
-  let r = ASCIIColor.reset.rawValue
-  let bbgb = r + ASCIIColor.white.rawValue + ASCIIColor.Background.blue.rawValue
+  let r = ASCIIColor.reset
+  let bbgb = r + ASCIIColor.Normal.white.rawValue + ASCIIColor.Background.blue.rawValue
   
   return [
     "\(bbgb)" + repeat(" ", WIDTH) + "\(r)",

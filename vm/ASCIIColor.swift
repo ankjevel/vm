@@ -6,18 +6,20 @@
 //  Copyright (c) 2015 dennisp.se. All rights reserved.
 //
 
-enum ASCIIColor: String {
+public struct ASCIIColor {
   
-  case reset  = "\u{001B}[0m"
-  // Regular Colors
-  case black  = "\u{001B}[0;30m"
-  case red    = "\u{001B}[0;31m"
-  case green  = "\u{001B}[0;32m"
-  case yellow = "\u{001B}[0;33m"
-  case blue   = "\u{001B}[0;34m"
-  case purple = "\u{001B}[0;35m"
-  case cyan   = "\u{001B}[0;36m"
-  case white  = "\u{001B}[0;37m"
+  static let reset = "\u{001B}[0m"
+  
+  enum Normal: String {
+    case black  = "\u{001B}[0;30m"
+    case red    = "\u{001B}[0;31m"
+    case green  = "\u{001B}[0;32m"
+    case yellow = "\u{001B}[0;33m"
+    case blue   = "\u{001B}[0;34m"
+    case purple = "\u{001B}[0;35m"
+    case cyan   = "\u{001B}[0;36m"
+    case white  = "\u{001B}[0;37m"
+  }
   
   enum Bold: String {
     case black  = "\u{001B}[1;30m"

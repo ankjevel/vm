@@ -10,9 +10,9 @@ import Darwin
 import Foundation
 
 public func checkIfUserShouldBePromptedHelp() {
-  let r = ASCIIColor.reset.rawValue
+  let r = ASCIIColor.reset
   let bw = ASCIIColor.Bold.white.rawValue
-  let bbgb = r + ASCIIColor.white.rawValue + ASCIIColor.Background.blue.rawValue
+  let bbgb = r + ASCIIColor.Normal.white.rawValue + ASCIIColor.Background.blue.rawValue
 
   let helpMessage: [String] = [
     ""

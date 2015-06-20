@@ -37,7 +37,11 @@ extension String {
     return modifiedString
   }
   
-  func contains(value: String) -> Bool {
-    return self.lowercaseString.rangeOfString(value.lowercaseString) != nil
+  func contains(value: String, caseInsensitive: Bool = true) -> Bool {
+    if caseInsensitive {
+      return self.lowercaseString.rangeOfString(value.lowercaseString) != nil
+    } else {
+      return self.rangeOfString(value) != nil
+    }
   }
 }

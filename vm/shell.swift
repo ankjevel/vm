@@ -8,7 +8,7 @@
 
 import Foundation
 
-public func shell(cmd: AnyObject, args: AnyObject...) -> String {
+public func shell(cmd: String, args: String...) -> String {
   let task = NSTask()
   let pipe = NSPipe()
   let errorPipe = NSPipe()
