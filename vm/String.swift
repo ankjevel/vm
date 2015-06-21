@@ -37,6 +37,20 @@ extension String {
     return modifiedString
   }
   
+  var bool: Bool {
+    if let unwrapped = NSString(string: self).boolValue as Bool?  {
+      return unwrapped
+    } else if let int = self.toInt(), let unwrapped = Bool(int) as Bool? {
+      return unwrapped
+    } else if self.lowercaseString == "y" ||
+      self.lowercaseString == "yes" ||
+      self == "1" {
+      return true
+    } else {
+      return false
+    }
+  }
+  
   func contains(value: String, caseInsensitive: Bool = true) -> Bool {
     if caseInsensitive {
       return self.lowercaseString.rangeOfString(value.lowercaseString) != nil

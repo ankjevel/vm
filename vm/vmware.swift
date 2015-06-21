@@ -42,7 +42,7 @@ public extension VMWare {
   }
 
   
-  func run(cmd: String...) -> String {
+  func run(cmd: String) -> String {
     return shell(VMRUN_PATH, cmd)
   }
   

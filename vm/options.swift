@@ -64,15 +64,7 @@ public extension Options {
     case "solution", "s": self.solution = value!
     case "user", "u": self.user = value!
     case "password", "p": self.password = value!
-    case "y": if let unwrapped = NSString(string: value!).boolValue as Bool?  {
-      println("stringToBool: \(unwrapped)")
-      self.forceYes = unwrapped
-    } else if let int = value!.toInt(), let unwrapped = Bool(int) as Bool? {
-      println("IntToBool: \(unwrapped)")
-      self.forceYes = unwrapped
-    } else {
-      println("none: \(value)")
-    }
+    case "y": self.forceYes = value!.bool
     default: ""
     }
   }

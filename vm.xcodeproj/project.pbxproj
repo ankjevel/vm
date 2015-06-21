@@ -44,6 +44,9 @@
 		D6595DCB1B2DB4C300A82B81 /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */; };
 		D67380501B358F7100244591 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673804F1B358F7100244591 /* CoreData.swift */; };
 		D67380511B358F7100244591 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673804F1B358F7100244591 /* CoreData.swift */; };
+		D67380561B36215000244591 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67380551B36215000244591 /* Keychain.swift */; };
+		D67380571B36215000244591 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67380551B36215000244591 /* Keychain.swift */; };
+		D67380581B3630F700244591 /* msbuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60964001B32318800060B09 /* msbuild.swift */; };
 		D6DE6D1B1B336DCC007B1568 /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */; };
 		D6DE6D1C1B336DCC007B1568 /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */; };
 /* End PBXBuildFile section */
@@ -87,6 +90,7 @@
 		D6595DC81B2DB45600A82B81 /* feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedback.swift; sourceTree = "<group>"; };
 		D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedbackItem.swift; sourceTree = "<group>"; };
 		D673804F1B358F7100244591 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
+		D67380551B36215000244591 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shellUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -129,6 +133,7 @@
 				D60963FC1B32057800060B09 /* ASCIIColor.swift */,
 				D6595DBE1B2CD1AA00A82B81 /* shell.swift */,
 				D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */,
+				D67380551B36215000244591 /* Keychain.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -282,6 +287,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D67380581B3630F700244591 /* msbuild.swift in Sources */,
 				D60963FF1B322D3D00060B09 /* getUserInput.swift in Sources */,
 				D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */,
 				D6255A931B2F6388004AC403 /* vmware.swift in Sources */,
@@ -291,6 +297,7 @@
 				D6255A941B2F6388004AC403 /* vmconfig.swift in Sources */,
 				D6255A951B2F6388004AC403 /* String.swift in Sources */,
 				D67380511B358F7100244591 /* CoreData.swift in Sources */,
+				D67380571B36215000244591 /* Keychain.swift in Sources */,
 				D64677711B34C05400B73DEC /* Setting.swift in Sources */,
 				D6255A961B2F6388004AC403 /* feedback.swift in Sources */,
 				D60963FE1B32057800060B09 /* ASCIIColor.swift in Sources */,
@@ -317,6 +324,7 @@
 				D6595DC11B2CD1C400A82B81 /* vmware.swift in Sources */,
 				D6255A991B2F697A004AC403 /* app.swift in Sources */,
 				D67380501B358F7100244591 /* CoreData.swift in Sources */,
+				D67380561B36215000244591 /* Keychain.swift in Sources */,
 				D64677701B34C05400B73DEC /* Setting.swift in Sources */,
 				D6595DC51B2DB08B00A82B81 /* String.swift in Sources */,
 				D60963FD1B32057800060B09 /* ASCIIColor.swift in Sources */,

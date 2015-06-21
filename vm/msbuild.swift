@@ -20,7 +20,7 @@ public struct MSBuild {
 public extension MSBuild {
   
   func run(selected: FeedbackItem) {
-    println(vmware.run("vprobeListGlobals", "\"\(selected.id)\""))
+    println(vmware.run("vprobeListGlobals \"\(selected.id)\""))
   }
 }
 
