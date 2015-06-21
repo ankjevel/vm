@@ -42,12 +42,12 @@ public extension VMWare {
   }
 
   
-  func run(cmd: String) -> String {
-    return shell(VMRUN_PATH, cmd)
+  func run(args: [String]) -> String {
+    return shell(VMRUN_PATH, args)
   }
   
-  func runAndPassError(cmd: String) -> (String, String) {
-    return shell(VMRUN_PATH, true, cmd)
+  func runAndPassError(args: [String]) -> (String, String) {
+    return shell(VMRUN_PATH, true, args)
   }
 }
 
@@ -55,7 +55,7 @@ public extension VMWare {
 private extension VMWare {
 
   func updateStatus(inout inventory: [VMConfig]) {
-    var results = split(shell(VMRUN_PATH, "list")) {$0 == "\n"}
+    var results = split(shell(VMRUN_PATH, ["list"])) {$0 == "\n"}
     for line in results {
       line.strip
       if line.hasPrefix("Total running VMs") == false {
@@ -155,6 +155,6 @@ private extension VMWare {
   }
   
   func ipAddress(vmPath: String) -> String {
-    return shell(VMRUN_PATH, "readVariable \(vmPath) guestVar ip").strip
+    return shell(VMRUN_PATH, ["readVariable \(vmPath) guestVar ip"]).strip
   }
 }

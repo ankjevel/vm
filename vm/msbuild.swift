@@ -20,9 +20,10 @@ public struct MSBuild {
 public extension MSBuild {
   
   func run(selected: FeedbackItem) {
-    let cred = "-gu \"\(selected.options.user)\" -gp \"\(selected.options.password)\""
-    
-    println(vmware.runAndPassError("fileExistsInGuest \"\(selected.id)\" \"\(selected.options.solution.removeQuotations)\""))
+    println(vmware.runAndPassError([
+      "-gu \"\(selected.options.user)\"",
+      "-gp \"\(selected.options.password)\"",
+      "fileExistsInGuest \"\(selected.id)\" \"\(selected.options.solution.removeQuotations)\""]))
     //
 //    println(vmware.run("\(cred) fileExistsInGuest \"\(selected.id)\" \"\(selected.options.solution.removeQuotations)\""))
 //    println(vmware.run("fileExistsInGuest \(selected.options.solution.removeQuotations)"))

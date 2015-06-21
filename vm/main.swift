@@ -7,7 +7,7 @@
 //
 
 public let WIDTH: Int
-if let cols = shell("tput",  "cols").stripWhiteSpaceAndNewLine.toInt() {
+if let cols = shell("/usr/bin/tput", ["cols"]).stripWhiteSpaceAndNewLine.toInt() {
   WIDTH = cols
 } else {
   WIDTH = 80

@@ -8,12 +8,14 @@
 
 import Foundation
 
-internal func createTask(arguments: [String]) -> (String, String) {
+internal func createTask(cmd: String, arguments: [String]) -> (String, String) {
   let task = NSTask()
   let pipe = NSPipe()
   let errorPipe = NSPipe()
   
-  task.launchPath = "/usr/bin/env"
+  println((cmd, arguments))
+  
+  task.launchPath = cmd
   task.arguments = arguments
   task.standardOutput = pipe
   task.standardError = errorPipe
@@ -43,20 +45,14 @@ internal func createTask(arguments: [String]) -> (String, String) {
   }
 }
 
-public func shell(cmd: String, args: String...) -> String {
-  var arguments = [cmd]
-  arguments += args
-  
-  var (response, _) = createTask(arguments)
+public func shell(cmd: String, args: [String]) -> String {
+  var (response, _) = createTask(cmd, args)
   
   return response
 }
 
-public func shell(cmd: String, printError: Bool, args: String...) -> (String, String) {
-  var arguments = [cmd]
-  arguments += args
-  
-  var (response, errorResponse) = createTask(arguments)
+public func shell(cmd: String, printError: Bool, args: [String]) -> (String, String) {
+  var (response, errorResponse) = createTask(cmd, args)
   println("response: \(response)\nerrorResponse: \(errorResponse)")
   return (response, errorResponse)
 }
