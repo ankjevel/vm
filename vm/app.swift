@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreData
 
 public class App: CoreData {
 
@@ -17,6 +18,8 @@ public class App: CoreData {
   override init() {
     self.build = MSBuild(vmware: &self.vmware)
     super.init()
+    
+    checkIfClearCoreData()
   }
 }
 
@@ -179,6 +182,40 @@ private extension App {
   
   func savePassword(options: Options) {
     keychain.save(options.user, data: options.password)
+  }
+  
+  func checkIfClearCoreData() {
+    var clear = false
+    let argArray = [String](Process.arguments)
+    for arg in argArray {
+      let argument = arg.strip.stripDashes.lowercaseString
+      if argument == "c" || argument == "clear" {
+        clear = true
+      }
+    }
+    
+    if clear {
+      var userInput: Bool? = nil
+      
+      while userInput == nil {
+        var input = getUserInput("do you really want to clear Core Data?")
+        if input != "" {
+          userInput = input.bool
+        }
+      }
+      
+      var entities = getEntities()
+      
+      if let context = managedObjectContext {
+        for entity: NSManagedObject in entities {
+          context.deleteObject(entity)
+        }
+      }
+      
+      entities.removeAll(keepCapacity: false)
+      
+      saveContext(false)
+    }
   }
   
   var generate: (Feedback, [VMConfig]) {
