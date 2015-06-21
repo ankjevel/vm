@@ -20,8 +20,8 @@ public struct MSBuild {
 public extension MSBuild {
   
   func run(selected: FeedbackItem) {
-//    println(vmware.run("fileExistsInGuest -gu \(selected.options.user) -gp \(selected.options.password) \(selected.options.solution)"))
-    println(vmware.run("fileExistsInGuest \"\(selected.options.solution)\""))
+    println(vmware.run("fileExistsInGuest -gu \(selected.options.user) -gp \(selected.options.password) \(selected.id) \(selected.options.solution.removeQuotations)"))
+//    println(vmware.run("fileExistsInGuest \(selected.options.solution.removeQuotations)"))
   }
 }
 

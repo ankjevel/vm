@@ -26,6 +26,12 @@ extension String {
     return self.stringByReplacingOccurrencesOfString("-", withString: "")
   }
   
+  var windowsEcapes: String {
+    return self
+        .stringByReplacingOccurrencesOfString("\\\\", withString: "\\")
+//        .stringByReplacingOccurrencesOfString(" ", withString: "^ ")
+  }
+  
   var removeQuotations: String {
     var modifiedString = self
     if self.hasPrefix("\"") {

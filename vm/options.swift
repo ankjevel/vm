@@ -17,7 +17,7 @@ public class Options: Printable {
     get { return _task }
     set (value) {
       if value == "" || value.hasPrefix("/property:") {
-        _task = value.stripNewLine
+        _task = value
       }
     }
   }
@@ -25,7 +25,7 @@ public class Options: Printable {
     get { return _property }
     set (value) {
       if value == "" || value.hasPrefix("/t:") {
-        _property = value.stripNewLine
+        _property = value
       }
     }
   }
@@ -33,7 +33,7 @@ public class Options: Printable {
     get { return _solution }
     set (value) {
       if value.hasSuffix(".sln") {
-        _solution = value.stripNewLine
+        _solution = value
       }
     }
   }

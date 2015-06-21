@@ -33,6 +33,10 @@ public func checkIfUserShouldBePromptedHelp() {
     "",
     "\(bw)-p\(r) --password   password for guest user",
     "",
+    "\(bw)-y\(r)              answers \"YES\", when prompted",
+    "",
+    "\(bw)-c\(r) --clear      clears core-data storage",
+    "",
     "\(bw)-h\(r) --help       prints this guide",
     ""
   ]

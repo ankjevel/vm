@@ -176,6 +176,7 @@ private extension App {
     }
     savePassword(selected.options)
   }
+  
   func savePassword(options: Options) {
     keychain.save(options.user, data: options.password)
   }

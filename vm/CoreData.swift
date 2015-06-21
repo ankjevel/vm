@@ -62,7 +62,6 @@ public class CoreData {
     } else {
       results = []
     }
-    println(results.count)
     return results
   }
   
@@ -79,9 +78,47 @@ public class CoreData {
         saveContext(update)
     }
   }
+  
+  init() {
+    checkIfClearCoreData()
+  }
 }
 
 private extension CoreData {
+  func checkIfClearCoreData() {
+    var clear = false
+    let argArray = [String](Process.arguments)
+    for arg in argArray {
+      let argument = arg.strip.stripDashes.lowercaseString
+      if argument == "c" || argument == "clear" {
+        clear = true
+      }
+    }
+    
+    if clear {
+      var userInput: Bool? = nil
+      
+      while userInput == nil {
+        var input = getUserInput("do you really want to clear Core Data?")
+        if input != "" {
+          userInput = input.bool
+        }
+      }
+      
+      var entities = getEntities()
+      
+      if let context = managedObjectContext {
+        for entity: NSManagedObject in entities {
+          context.deleteObject(entity)
+        }
+      }
+      
+      entities.removeAll(keepCapacity: false)
+      
+      saveContext(false)
+    }
+  }
+  
   func saveContext(update: Bool) {
     if let moc = self.managedObjectContext {
       var error: NSError? = nil
