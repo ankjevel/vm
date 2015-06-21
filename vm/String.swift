@@ -43,6 +43,10 @@ extension String {
     return modifiedString
   }
   
+  func instancesOf(value: String) -> Int {
+    return self.componentsSeparatedByString(value).count
+  }
+  
   var bool: Bool {
     if let unwrapped = NSString(string: self).boolValue as Bool?  {
       return unwrapped

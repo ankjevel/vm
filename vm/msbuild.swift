@@ -23,7 +23,7 @@ public extension MSBuild {
     println(vmware.runAndPassError([
       "-gu \"\(selected.options.user)\"",
       "-gp \"\(selected.options.password)\"",
-      "fileExistsInGuest \"\(selected.id)\" \"\(selected.options.solution.removeQuotations)\""]))
+      "fileExistsInGuest \(selected.id) \"\(selected.options.solution.removeQuotations)\""]))
     //
 //    println(vmware.run("\(cred) fileExistsInGuest \"\(selected.id)\" \"\(selected.options.solution.removeQuotations)\""))
 //    println(vmware.run("fileExistsInGuest \(selected.options.solution.removeQuotations)"))

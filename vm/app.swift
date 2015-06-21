@@ -58,6 +58,7 @@ public extension App {
     })
     var loaded: Bool = false
     let entityExists = entity.count > 0
+    
     if entityExists, let last = entity.last {
       promptLoad(last, selected: &selected, loaded: &loaded)
     }
@@ -108,9 +109,15 @@ private extension App {
       if let unwrapped = user {
         setUserAndPassword(unwrapped, selected: &selected)
       }
-      selected.options.solution = setting.solution!
-      selected.options.task = setting.task!
-      selected.options.property = setting.property!
+      if selected.options.solutionSet == false {
+        selected.options.solution = setting.solution!
+      }
+      if selected.options.taskSet == false {
+        selected.options.task = setting.task!
+      }
+      if selected.options.propertySet == false {
+        selected.options.property = setting.property!
+      }
       loaded = true
     }
   }
