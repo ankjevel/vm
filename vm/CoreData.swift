@@ -62,11 +62,11 @@ public class CoreData {
     } else {
       results = []
     }
-    
+    println(results.count)
     return results
   }
   
-  func saveEntity(fb: FeedbackItem) {
+  func saveEntity(fb: FeedbackItem, update: Bool) {
     
     if let context = managedObjectContext,
       let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context),
@@ -76,17 +76,23 @@ public class CoreData {
         setting.setValue(fb.options.solution, forKey: "solution")
         setting.setValue(fb.options.task, forKey: "task")
         setting.setValue(fb.options.user, forKey: "user")
-        saveContext()
+        saveContext(update)
     }
   }
 }
 
 private extension CoreData {
-  func saveContext() {
+  func saveContext(update: Bool) {
     if let moc = self.managedObjectContext {
       var error: NSError? = nil
-      if moc.hasChanges && !moc.save(&error) {
-        halt(error!)
+      if moc.hasChanges {
+        if update == false {
+          if !moc.save(&error) {
+            halt(error!)
+          } else {
+            moc.updatedObjects
+          }
+        }
       }
     }
   }

@@ -53,9 +53,9 @@ public extension App {
       $0.id == selected.id
     })
     var loaded: Bool = false
-    
-    if entity.count > 0 {
-      promptLoad(entity[0], selected: &selected, loaded: &loaded)
+    let entityExists = entity.count > 0
+    if entityExists {
+      promptLoad(entity.last!, selected: &selected, loaded: &loaded)
     }
 
     setUser(&selected, loaded: &loaded)
@@ -65,7 +65,7 @@ public extension App {
     setTaskProperty(&selected, loaded: &loaded)
     
     if loaded == false {
-      saveEntity(selected)
+      saveEntity(selected, update: entityExists)
     }
 
     build.run(selected)
