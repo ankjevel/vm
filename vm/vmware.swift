@@ -46,6 +46,9 @@ public extension VMWare {
     return shell(VMRUN_PATH, cmd)
   }
   
+  func runAndPassError(cmd: String) -> (String, String) {
+    return shell(VMRUN_PATH, true, cmd)
+  }
 }
 
 // MARK: Private

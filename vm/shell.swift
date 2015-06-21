@@ -8,27 +8,55 @@
 
 import Foundation
 
-public func shell(cmd: String, args: String...) -> String {
+internal func createTask(arguments: [String]) -> (String, String) {
   let task = NSTask()
   let pipe = NSPipe()
   let errorPipe = NSPipe()
   
-  var arguments = [cmd]
-  arguments += args
-  
   task.launchPath = "/usr/bin/env"
   task.arguments = arguments
   task.standardOutput = pipe
-  task.standardError = errorPipe // Just ignore errors
+  task.standardError = errorPipe
   task.launch()
   task.waitUntilExit()
   
-  let handle = pipe.fileHandleForReading
-  let data = handle.readDataToEndOfFile()
-
-  if let dataAsString = NSString(data: data, encoding: NSUTF8StringEncoding) {
-    return dataAsString as String
+  var dataAsString = NSString(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as? String
+  var errorAsString = NSString(data: errorPipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as? String
+  
+  if
+    var data = dataAsString as String?,
+    var error = errorAsString as String? {
+  
+      let hasError = data.hasPrefix("Error:")
+      return (
+        hasError ? "" : data,
+        hasError ? data.stringByReplacingOccurrencesOfString("Error: ", withString: "") : error
+      )
+  } else if
+    var data = dataAsString as String? {
+    return (data, "")
+  } else if
+    var error = errorAsString as String? {
+    return ("", error)
   } else {
-    return ""
+    return ("", "")
   }
+}
+
+public func shell(cmd: String, args: String...) -> String {
+  var arguments = [cmd]
+  arguments += args
+  
+  var (response, _) = createTask(arguments)
+  
+  return response
+}
+
+public func shell(cmd: String, printError: Bool, args: String...) -> (String, String) {
+  var arguments = [cmd]
+  arguments += args
+  
+  var (response, errorResponse) = createTask(arguments)
+  println("response: \(response)\nerrorResponse: \(errorResponse)")
+  return (response, errorResponse)
 }

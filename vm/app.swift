@@ -27,8 +27,9 @@ public class App: CoreData {
 public extension App {
 
   func msBuild(_ options: Options = Options()) {
-    var fb = generate.0
-    for vm in generate.1 {
+    var gen = generate
+    var fb = gen.0
+    for vm in gen.1 {
 //      if vm.os.contains("windows") {
       if vm.running && vm.os.contains("windows") {
         var item = FeedbackItem(
@@ -57,8 +58,8 @@ public extension App {
     })
     var loaded: Bool = false
     let entityExists = entity.count > 0
-    if entityExists {
-      promptLoad(entity.last!, selected: &selected, loaded: &loaded)
+    if entityExists, let last = entity.last {
+      promptLoad(last, selected: &selected, loaded: &loaded)
     }
 
     setUser(&selected, loaded: &loaded)
