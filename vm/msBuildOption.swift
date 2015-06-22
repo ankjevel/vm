@@ -22,6 +22,8 @@ public struct MSBuildOption {
       if _validate(value: newValue) {
         _value = newValue
         set = true
+      } else {
+        println(println("\(ASCIIColor.Bold.red.rawValue)invalid value for \(_identifier): \(newValue)\(ASCIIColor.reset)"))
       }
       
     }
