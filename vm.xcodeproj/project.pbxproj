@@ -7,51 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D60963DB1B2FFC7600060B09 /* arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963DA1B2FFC7600060B09 /* arguments.swift */; };
-		D60963DC1B2FFC7600060B09 /* arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963DA1B2FFC7600060B09 /* arguments.swift */; };
-		D60963E21B30040900060B09 /* halt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963E11B30040900060B09 /* halt.swift */; };
-		D60963E31B30040900060B09 /* halt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963E11B30040900060B09 /* halt.swift */; };
 		D60963EC1B30080600060B09 /* VMS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D60963EA1B30080600060B09 /* VMS.xcdatamodeld */; };
 		D60963ED1B30080600060B09 /* VMS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D60963EA1B30080600060B09 /* VMS.xcdatamodeld */; };
-		D60963FA1B30E18500060B09 /* checkIfUserShouldBePromptedHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963F91B30E18500060B09 /* checkIfUserShouldBePromptedHelp.swift */; };
-		D60963FB1B30E18500060B09 /* checkIfUserShouldBePromptedHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963F91B30E18500060B09 /* checkIfUserShouldBePromptedHelp.swift */; };
-		D60963FD1B32057800060B09 /* ASCIIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963FC1B32057800060B09 /* ASCIIColor.swift */; };
-		D60963FE1B32057800060B09 /* ASCIIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963FC1B32057800060B09 /* ASCIIColor.swift */; };
-		D60963FF1B322D3D00060B09 /* getUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA11B2F8C9C004AC403 /* getUserInput.swift */; };
-		D60964011B32318800060B09 /* msBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60964001B32318800060B09 /* msBuild.swift */; };
 		D6255A901B2EE815004AC403 /* StringsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A8F1B2EE815004AC403 /* StringsTests.swift */; };
 		D6255A911B2F635D004AC403 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DB71B2CD17800A82B81 /* main.swift */; };
-		D6255A921B2F635D004AC403 /* shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DBE1B2CD1AA00A82B81 /* shell.swift */; };
-		D6255A931B2F6388004AC403 /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC01B2CD1C400A82B81 /* vmWare.swift */; };
-		D6255A941B2F6388004AC403 /* vmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC21B2CD37D00A82B81 /* vmConfig.swift */; };
-		D6255A951B2F6388004AC403 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC41B2DB08B00A82B81 /* String.swift */; };
-		D6255A961B2F6388004AC403 /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC81B2DB45600A82B81 /* feedback.swift */; };
-		D6255A971B2F6388004AC403 /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */; };
 		D6255A991B2F697A004AC403 /* app.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A981B2F697A004AC403 /* app.swift */; };
 		D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A981B2F697A004AC403 /* app.swift */; };
-		D6255AA21B2F8C9C004AC403 /* getUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA11B2F8C9C004AC403 /* getUserInput.swift */; };
-		D6255AA71B2FF3C7004AC403 /* msBuildOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA61B2FF3C7004AC403 /* msBuildOptions.swift */; };
-		D6255AA81B2FF3C7004AC403 /* msBuildOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255AA61B2FF3C7004AC403 /* msBuildOptions.swift */; };
-		D64677701B34C05400B73DEC /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D646776F1B34C05400B73DEC /* Setting.swift */; };
-		D64677711B34C05400B73DEC /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D646776F1B34C05400B73DEC /* Setting.swift */; };
-		D64BF3381B388EC700931D2F /* eachProcessArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3371B388EC700931D2F /* eachProcessArgument.swift */; };
-		D64BF33C1B389B6700931D2F /* eachProcessArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3371B388EC700931D2F /* eachProcessArgument.swift */; };
-		D64BF33D1B389B6C00931D2F /* msBuildOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673805C1B38309C00244591 /* msBuildOption.swift */; };
+		D64BF3401B38BFDF00931D2F /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33E1B38BFDF00931D2F /* feedback.swift */; };
+		D64BF3411B38BFDF00931D2F /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33E1B38BFDF00931D2F /* feedback.swift */; };
+		D64BF3421B38BFDF00931D2F /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */; };
+		D64BF3431B38BFDF00931D2F /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */; };
+		D64BF3471B38C00600931D2F /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3441B38C00600931D2F /* CoreData.swift */; };
+		D64BF3481B38C00600931D2F /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3441B38C00600931D2F /* CoreData.swift */; };
+		D64BF3491B38C00600931D2F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3451B38C00600931D2F /* Keychain.swift */; };
+		D64BF34A1B38C00600931D2F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3451B38C00600931D2F /* Keychain.swift */; };
+		D64BF34B1B38C00600931D2F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3461B38C00600931D2F /* String.swift */; };
+		D64BF34C1B38C00600931D2F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3461B38C00600931D2F /* String.swift */; };
+		D64BF3551B38C02000931D2F /* arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34D1B38C02000931D2F /* arguments.swift */; };
+		D64BF3561B38C02000931D2F /* arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34D1B38C02000931D2F /* arguments.swift */; };
+		D64BF3571B38C02000931D2F /* ASCIIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34E1B38C02000931D2F /* ASCIIColor.swift */; };
+		D64BF3581B38C02000931D2F /* ASCIIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34E1B38C02000931D2F /* ASCIIColor.swift */; };
+		D64BF3591B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34F1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift */; };
+		D64BF35A1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34F1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift */; };
+		D64BF35B1B38C02000931D2F /* eachProcessArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3501B38C02000931D2F /* eachProcessArgument.swift */; };
+		D64BF35C1B38C02000931D2F /* eachProcessArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3501B38C02000931D2F /* eachProcessArgument.swift */; };
+		D64BF35D1B38C02000931D2F /* getUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3511B38C02000931D2F /* getUserInput.swift */; };
+		D64BF35E1B38C02000931D2F /* getUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3511B38C02000931D2F /* getUserInput.swift */; };
+		D64BF35F1B38C02000931D2F /* halt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3521B38C02000931D2F /* halt.swift */; };
+		D64BF3601B38C02000931D2F /* halt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3521B38C02000931D2F /* halt.swift */; };
+		D64BF3611B38C02000931D2F /* shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3531B38C02000931D2F /* shell.swift */; };
+		D64BF3621B38C02000931D2F /* shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3531B38C02000931D2F /* shell.swift */; };
+		D64BF3631B38C02000931D2F /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3541B38C02000931D2F /* shellUtils.swift */; };
+		D64BF3641B38C02000931D2F /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3541B38C02000931D2F /* shellUtils.swift */; };
+		D64BF3661B38C03200931D2F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3651B38C03200931D2F /* Setting.swift */; };
+		D64BF3671B38C03200931D2F /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3651B38C03200931D2F /* Setting.swift */; };
+		D64BF36B1B38C04600931D2F /* msBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3681B38C04600931D2F /* msBuild.swift */; };
+		D64BF36C1B38C04600931D2F /* msBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3681B38C04600931D2F /* msBuild.swift */; };
+		D64BF36D1B38C04600931D2F /* msBuildOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3691B38C04600931D2F /* msBuildOption.swift */; };
+		D64BF36E1B38C04600931D2F /* msBuildOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3691B38C04600931D2F /* msBuildOption.swift */; };
+		D64BF36F1B38C04600931D2F /* msBuildOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF36A1B38C04600931D2F /* msBuildOptions.swift */; };
+		D64BF3701B38C04600931D2F /* msBuildOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF36A1B38C04600931D2F /* msBuildOptions.swift */; };
+		D64BF3731B38C05100931D2F /* vmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3711B38C05100931D2F /* vmConfig.swift */; };
+		D64BF3741B38C05100931D2F /* vmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3711B38C05100931D2F /* vmConfig.swift */; };
+		D64BF3751B38C05100931D2F /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3721B38C05100931D2F /* vmWare.swift */; };
+		D64BF3761B38C05100931D2F /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3721B38C05100931D2F /* vmWare.swift */; };
 		D6595DB81B2CD17800A82B81 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DB71B2CD17800A82B81 /* main.swift */; };
-		D6595DBF1B2CD1AA00A82B81 /* shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DBE1B2CD1AA00A82B81 /* shell.swift */; };
-		D6595DC11B2CD1C400A82B81 /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC01B2CD1C400A82B81 /* vmWare.swift */; };
-		D6595DC31B2CD37D00A82B81 /* vmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC21B2CD37D00A82B81 /* vmConfig.swift */; };
-		D6595DC51B2DB08B00A82B81 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC41B2DB08B00A82B81 /* String.swift */; };
-		D6595DC91B2DB45600A82B81 /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC81B2DB45600A82B81 /* feedback.swift */; };
-		D6595DCB1B2DB4C300A82B81 /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */; };
-		D67380501B358F7100244591 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673804F1B358F7100244591 /* CoreData.swift */; };
-		D67380511B358F7100244591 /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673804F1B358F7100244591 /* CoreData.swift */; };
-		D67380561B36215000244591 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67380551B36215000244591 /* Keychain.swift */; };
-		D67380571B36215000244591 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67380551B36215000244591 /* Keychain.swift */; };
-		D67380581B3630F700244591 /* msBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60964001B32318800060B09 /* msBuild.swift */; };
-		D673805D1B38309C00244591 /* msBuildOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673805C1B38309C00244591 /* msBuildOption.swift */; };
-		D6DE6D1B1B336DCC007B1568 /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */; };
-		D6DE6D1C1B336DCC007B1568 /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -67,35 +67,35 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D60963DA1B2FFC7600060B09 /* arguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = arguments.swift; sourceTree = "<group>"; };
-		D60963E11B30040900060B09 /* halt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = halt.swift; sourceTree = "<group>"; };
 		D60963EB1B30080600060B09 /* VMS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VMS.xcdatamodel; sourceTree = "<group>"; };
 		D60963EE1B30081C00060B09 /* VMS 0.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VMS 0.1.xcdatamodel"; sourceTree = "<group>"; };
-		D60963F91B30E18500060B09 /* checkIfUserShouldBePromptedHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = checkIfUserShouldBePromptedHelp.swift; sourceTree = "<group>"; };
-		D60963FC1B32057800060B09 /* ASCIIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASCIIColor.swift; sourceTree = "<group>"; };
-		D60964001B32318800060B09 /* msBuild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = msBuild.swift; sourceTree = "<group>"; };
 		D6255A861B2EE77F004AC403 /* vmTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = vmTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6255A8F1B2EE815004AC403 /* StringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
 		D6255A981B2F697A004AC403 /* app.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = app.swift; sourceTree = "<group>"; };
-		D6255AA11B2F8C9C004AC403 /* getUserInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = getUserInput.swift; sourceTree = "<group>"; };
-		D6255AA61B2FF3C7004AC403 /* msBuildOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = msBuildOptions.swift; sourceTree = "<group>"; };
 		D646776C1B34BEB000B73DEC /* VMS 0.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VMS 0.2.xcdatamodel"; sourceTree = "<group>"; };
-		D646776F1B34C05400B73DEC /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Setting.swift; sourceTree = "<group>"; };
 		D64677721B34C86000B73DEC /* VMS 0.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VMS 0.3.xcdatamodel"; sourceTree = "<group>"; };
-		D64BF3371B388EC700931D2F /* eachProcessArgument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = eachProcessArgument.swift; sourceTree = "<group>"; };
+		D64BF33E1B38BFDF00931D2F /* feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = feedback.swift; path = feedback/feedback.swift; sourceTree = "<group>"; };
+		D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = feedbackItem.swift; path = feedback/feedbackItem.swift; sourceTree = "<group>"; };
+		D64BF3441B38C00600931D2F /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreData.swift; path = utils/CoreData.swift; sourceTree = "<group>"; };
+		D64BF3451B38C00600931D2F /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = utils/Keychain.swift; sourceTree = "<group>"; };
+		D64BF3461B38C00600931D2F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = utils/String.swift; sourceTree = "<group>"; };
+		D64BF34D1B38C02000931D2F /* arguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = arguments.swift; path = utils/shell/arguments.swift; sourceTree = "<group>"; };
+		D64BF34E1B38C02000931D2F /* ASCIIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCIIColor.swift; path = utils/shell/ASCIIColor.swift; sourceTree = "<group>"; };
+		D64BF34F1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = checkIfUserShouldBePromptedHelp.swift; path = utils/shell/checkIfUserShouldBePromptedHelp.swift; sourceTree = "<group>"; };
+		D64BF3501B38C02000931D2F /* eachProcessArgument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = eachProcessArgument.swift; path = utils/shell/eachProcessArgument.swift; sourceTree = "<group>"; };
+		D64BF3511B38C02000931D2F /* getUserInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = getUserInput.swift; path = utils/shell/getUserInput.swift; sourceTree = "<group>"; };
+		D64BF3521B38C02000931D2F /* halt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = halt.swift; path = utils/shell/halt.swift; sourceTree = "<group>"; };
+		D64BF3531B38C02000931D2F /* shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = shell.swift; path = utils/shell/shell.swift; sourceTree = "<group>"; };
+		D64BF3541B38C02000931D2F /* shellUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = shellUtils.swift; path = utils/shell/shellUtils.swift; sourceTree = "<group>"; };
+		D64BF3651B38C03200931D2F /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setting.swift; path = Models/Setting.swift; sourceTree = "<group>"; };
+		D64BF3681B38C04600931D2F /* msBuild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = msBuild.swift; path = msBuild/msBuild.swift; sourceTree = "<group>"; };
+		D64BF3691B38C04600931D2F /* msBuildOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = msBuildOption.swift; path = msBuild/msBuildOption.swift; sourceTree = "<group>"; };
+		D64BF36A1B38C04600931D2F /* msBuildOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = msBuildOptions.swift; path = msBuild/msBuildOptions.swift; sourceTree = "<group>"; };
+		D64BF3711B38C05100931D2F /* vmConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vmConfig.swift; path = vmWare/vmConfig.swift; sourceTree = "<group>"; };
+		D64BF3721B38C05100931D2F /* vmWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vmWare.swift; path = vmWare/vmWare.swift; sourceTree = "<group>"; };
 		D6595DB41B2CD17800A82B81 /* vm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vm; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6595DB71B2CD17800A82B81 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		D6595DBE1B2CD1AA00A82B81 /* shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shell.swift; sourceTree = "<group>"; };
-		D6595DC01B2CD1C400A82B81 /* vmWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vmWare.swift; sourceTree = "<group>"; };
-		D6595DC21B2CD37D00A82B81 /* vmConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vmConfig.swift; sourceTree = "<group>"; };
-		D6595DC41B2DB08B00A82B81 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		D6595DC61B2DB2AD00A82B81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		D6595DC81B2DB45600A82B81 /* feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedback.swift; sourceTree = "<group>"; };
-		D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedbackItem.swift; sourceTree = "<group>"; };
-		D673804F1B358F7100244591 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
-		D67380551B36215000244591 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		D673805C1B38309C00244591 /* msBuildOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = msBuildOption.swift; sourceTree = "<group>"; };
-		D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shellUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,9 +127,9 @@
 		D6255AA01B2F8C64004AC403 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				D673804F1B358F7100244591 /* CoreData.swift */,
-				D6595DC41B2DB08B00A82B81 /* String.swift */,
-				D67380551B36215000244591 /* Keychain.swift */,
+				D64BF3441B38C00600931D2F /* CoreData.swift */,
+				D64BF3451B38C00600931D2F /* Keychain.swift */,
+				D64BF3461B38C00600931D2F /* String.swift */,
 				D64BF33A1B3891B800931D2F /* shell */,
 			);
 			name = utils;
@@ -138,8 +138,8 @@
 		D6255AA31B2F8CD7004AC403 /* vmWare */ = {
 			isa = PBXGroup;
 			children = (
-				D6595DC01B2CD1C400A82B81 /* vmWare.swift */,
-				D6595DC21B2CD37D00A82B81 /* vmConfig.swift */,
+				D64BF3711B38C05100931D2F /* vmConfig.swift */,
+				D64BF3721B38C05100931D2F /* vmWare.swift */,
 			);
 			name = vmWare;
 			sourceTree = "<group>";
@@ -147,8 +147,8 @@
 		D6255AA41B2F8CE3004AC403 /* feedback */ = {
 			isa = PBXGroup;
 			children = (
-				D6595DC81B2DB45600A82B81 /* feedback.swift */,
-				D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */,
+				D64BF33E1B38BFDF00931D2F /* feedback.swift */,
+				D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */,
 			);
 			name = feedback;
 			sourceTree = "<group>";
@@ -156,9 +156,9 @@
 		D6255AA51B2FF3AF004AC403 /* msBuild */ = {
 			isa = PBXGroup;
 			children = (
-				D60964001B32318800060B09 /* msBuild.swift */,
-				D673805C1B38309C00244591 /* msBuildOption.swift */,
-				D6255AA61B2FF3C7004AC403 /* msBuildOptions.swift */,
+				D64BF3681B38C04600931D2F /* msBuild.swift */,
+				D64BF3691B38C04600931D2F /* msBuildOption.swift */,
+				D64BF36A1B38C04600931D2F /* msBuildOptions.swift */,
 			);
 			name = msBuild;
 			sourceTree = "<group>";
@@ -166,7 +166,7 @@
 		D64BF3391B38917300931D2F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D646776F1B34C05400B73DEC /* Setting.swift */,
+				D64BF3651B38C03200931D2F /* Setting.swift */,
 				D60963EA1B30080600060B09 /* VMS.xcdatamodeld */,
 			);
 			name = Models;
@@ -175,14 +175,14 @@
 		D64BF33A1B3891B800931D2F /* shell */ = {
 			isa = PBXGroup;
 			children = (
-				D60963FC1B32057800060B09 /* ASCIIColor.swift */,
-				D6255AA11B2F8C9C004AC403 /* getUserInput.swift */,
-				D60963DA1B2FFC7600060B09 /* arguments.swift */,
-				D60963E11B30040900060B09 /* halt.swift */,
-				D60963F91B30E18500060B09 /* checkIfUserShouldBePromptedHelp.swift */,
-				D6595DBE1B2CD1AA00A82B81 /* shell.swift */,
-				D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */,
-				D64BF3371B388EC700931D2F /* eachProcessArgument.swift */,
+				D64BF34D1B38C02000931D2F /* arguments.swift */,
+				D64BF34E1B38C02000931D2F /* ASCIIColor.swift */,
+				D64BF34F1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift */,
+				D64BF3501B38C02000931D2F /* eachProcessArgument.swift */,
+				D64BF3511B38C02000931D2F /* getUserInput.swift */,
+				D64BF3521B38C02000931D2F /* halt.swift */,
+				D64BF3531B38C02000931D2F /* shell.swift */,
+				D64BF3541B38C02000931D2F /* shellUtils.swift */,
 			);
 			name = shell;
 			sourceTree = "<group>";
@@ -307,28 +307,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D64BF33D1B389B6C00931D2F /* msBuildOption.swift in Sources */,
-				D64BF33C1B389B6700931D2F /* eachProcessArgument.swift in Sources */,
-				D67380581B3630F700244591 /* msBuild.swift in Sources */,
-				D60963FF1B322D3D00060B09 /* getUserInput.swift in Sources */,
+				D64BF3561B38C02000931D2F /* arguments.swift in Sources */,
+				D64BF3641B38C02000931D2F /* shellUtils.swift in Sources */,
+				D64BF3481B38C00600931D2F /* CoreData.swift in Sources */,
+				D64BF35A1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift in Sources */,
+				D64BF36C1B38C04600931D2F /* msBuild.swift in Sources */,
+				D64BF3671B38C03200931D2F /* Setting.swift in Sources */,
+				D64BF3431B38BFDF00931D2F /* feedbackItem.swift in Sources */,
+				D64BF3761B38C05100931D2F /* vmWare.swift in Sources */,
+				D64BF36E1B38C04600931D2F /* msBuildOption.swift in Sources */,
+				D64BF3581B38C02000931D2F /* ASCIIColor.swift in Sources */,
+				D64BF35C1B38C02000931D2F /* eachProcessArgument.swift in Sources */,
+				D64BF3741B38C05100931D2F /* vmConfig.swift in Sources */,
+				D64BF35E1B38C02000931D2F /* getUserInput.swift in Sources */,
 				D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */,
-				D6255A931B2F6388004AC403 /* vmWare.swift in Sources */,
-				D60963FB1B30E18500060B09 /* checkIfUserShouldBePromptedHelp.swift in Sources */,
-				D60963E31B30040900060B09 /* halt.swift in Sources */,
-				D60963DC1B2FFC7600060B09 /* arguments.swift in Sources */,
-				D6255A941B2F6388004AC403 /* vmConfig.swift in Sources */,
-				D6255A951B2F6388004AC403 /* String.swift in Sources */,
-				D67380511B358F7100244591 /* CoreData.swift in Sources */,
-				D67380571B36215000244591 /* Keychain.swift in Sources */,
-				D64677711B34C05400B73DEC /* Setting.swift in Sources */,
-				D6255A961B2F6388004AC403 /* feedback.swift in Sources */,
-				D60963FE1B32057800060B09 /* ASCIIColor.swift in Sources */,
-				D6255A971B2F6388004AC403 /* feedbackItem.swift in Sources */,
+				D64BF3601B38C02000931D2F /* halt.swift in Sources */,
+				D64BF34C1B38C00600931D2F /* String.swift in Sources */,
 				D60963ED1B30080600060B09 /* VMS.xcdatamodeld in Sources */,
 				D6255A911B2F635D004AC403 /* main.swift in Sources */,
-				D6255AA81B2FF3C7004AC403 /* msBuildOptions.swift in Sources */,
-				D6DE6D1C1B336DCC007B1568 /* shellUtils.swift in Sources */,
-				D6255A921B2F635D004AC403 /* shell.swift in Sources */,
+				D64BF34A1B38C00600931D2F /* Keychain.swift in Sources */,
+				D64BF3701B38C04600931D2F /* msBuildOptions.swift in Sources */,
+				D64BF3621B38C02000931D2F /* shell.swift in Sources */,
+				D64BF3411B38BFDF00931D2F /* feedback.swift in Sources */,
 				D6255A901B2EE815004AC403 /* StringsTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,28 +337,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D6595DCB1B2DB4C300A82B81 /* feedbackItem.swift in Sources */,
-				D60964011B32318800060B09 /* msBuild.swift in Sources */,
-				D6595DBF1B2CD1AA00A82B81 /* shell.swift in Sources */,
-				D60963FA1B30E18500060B09 /* checkIfUserShouldBePromptedHelp.swift in Sources */,
-				D60963E21B30040900060B09 /* halt.swift in Sources */,
-				D60963DB1B2FFC7600060B09 /* arguments.swift in Sources */,
-				D6595DC11B2CD1C400A82B81 /* vmWare.swift in Sources */,
-				D673805D1B38309C00244591 /* msBuildOption.swift in Sources */,
+				D64BF3491B38C00600931D2F /* Keychain.swift in Sources */,
+				D64BF3751B38C05100931D2F /* vmWare.swift in Sources */,
+				D64BF35F1B38C02000931D2F /* halt.swift in Sources */,
+				D64BF3571B38C02000931D2F /* ASCIIColor.swift in Sources */,
+				D64BF3551B38C02000931D2F /* arguments.swift in Sources */,
+				D64BF3661B38C03200931D2F /* Setting.swift in Sources */,
 				D6255A991B2F697A004AC403 /* app.swift in Sources */,
-				D67380501B358F7100244591 /* CoreData.swift in Sources */,
-				D67380561B36215000244591 /* Keychain.swift in Sources */,
-				D64677701B34C05400B73DEC /* Setting.swift in Sources */,
-				D6595DC51B2DB08B00A82B81 /* String.swift in Sources */,
-				D60963FD1B32057800060B09 /* ASCIIColor.swift in Sources */,
-				D6595DC31B2CD37D00A82B81 /* vmConfig.swift in Sources */,
+				D64BF3421B38BFDF00931D2F /* feedbackItem.swift in Sources */,
+				D64BF3401B38BFDF00931D2F /* feedback.swift in Sources */,
+				D64BF36B1B38C04600931D2F /* msBuild.swift in Sources */,
+				D64BF35D1B38C02000931D2F /* getUserInput.swift in Sources */,
+				D64BF36D1B38C04600931D2F /* msBuildOption.swift in Sources */,
+				D64BF36F1B38C04600931D2F /* msBuildOptions.swift in Sources */,
+				D64BF3631B38C02000931D2F /* shellUtils.swift in Sources */,
+				D64BF3591B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift in Sources */,
+				D64BF34B1B38C00600931D2F /* String.swift in Sources */,
+				D64BF35B1B38C02000931D2F /* eachProcessArgument.swift in Sources */,
 				D60963EC1B30080600060B09 /* VMS.xcdatamodeld in Sources */,
+				D64BF3731B38C05100931D2F /* vmConfig.swift in Sources */,
 				D6595DB81B2CD17800A82B81 /* main.swift in Sources */,
-				D6255AA71B2FF3C7004AC403 /* msBuildOptions.swift in Sources */,
-				D64BF3381B388EC700931D2F /* eachProcessArgument.swift in Sources */,
-				D6DE6D1B1B336DCC007B1568 /* shellUtils.swift in Sources */,
-				D6255AA21B2F8C9C004AC403 /* getUserInput.swift in Sources */,
-				D6595DC91B2DB45600A82B81 /* feedback.swift in Sources */,
+				D64BF3611B38C02000931D2F /* shell.swift in Sources */,
+				D64BF3471B38C00600931D2F /* CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
