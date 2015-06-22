@@ -16,5 +16,4 @@ class Setting: NSManagedObject {
     @NSManaged var solution: String?
     @NSManaged var task: String?
     @NSManaged var user: String?
-
 }

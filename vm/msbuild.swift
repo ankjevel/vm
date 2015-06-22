@@ -9,6 +9,7 @@
 import Foundation
 
 internal enum Response: String {
+  
   case OK = "OK"
   case FileExists = "File exists"
   case Credentials = "Username/Password incorrect"
@@ -27,6 +28,7 @@ internal enum Response: String {
 }
 
 public struct MSBuild {
+  
   private let vmware: VMWare
   
   init (inout vmware: VMWare) {
@@ -47,6 +49,7 @@ public extension MSBuild {
 
 // MARK: Private
 private extension MSBuild {
+  
   func checkIfSolutionExists(selected: FeedbackItem) -> Response {
     let (response, error) = vmware.runAndPassError([
       "-gu",

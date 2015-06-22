@@ -7,6 +7,7 @@
 //
 
 public let WIDTH: Int
+
 if let cols = shell("/usr/bin/tput", ["cols"]).stripWhiteSpaceAndNewLine.toInt() {
   WIDTH = cols
 } else {
@@ -18,4 +19,3 @@ let app = App()
 checkIfUserShouldBePromptedHelp()
 
 app.msBuild(arguments())
-

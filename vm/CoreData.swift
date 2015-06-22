@@ -52,7 +52,6 @@ public class CoreData {
     }()
   
   func getEntities() -> [Setting] {
-    
     let fetchRequest = NSFetchRequest(entityName: entityName)
     let results: [Setting]
     
@@ -66,7 +65,6 @@ public class CoreData {
   }
   
   func saveEntity(fb: FeedbackItem, update: Bool) {
-    
     if let context = managedObjectContext,
       let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context),
       let setting = NSManagedObject(entity: entity as NSEntityDescription, insertIntoManagedObjectContext: context) as? Setting {

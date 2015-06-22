@@ -79,12 +79,14 @@ public extension App {
 
 // MARK: Private
 private extension App {
+  
   func setUserAndPassword(user: String, inout selected: FeedbackItem) {
     if var password = keychain.load(user) as String? {
       selected.options.password = password
     }
     selected.options.user = user
   }
+  
   func promptLoad(setting: Setting, inout selected: FeedbackItem, inout loaded: Bool) {
     var loadProfile: Bool? = nil
     

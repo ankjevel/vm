@@ -11,7 +11,6 @@ import Foundation
 import Darwin
 
 public func halt(message: String) {
-  
   var dict = [String: AnyObject]()
   dict[NSLocalizedDescriptionKey] = message
   
@@ -19,14 +18,12 @@ public func halt(message: String) {
 }
 
 public func halt(dict: [String: AnyObject]) {
-  
   var error = NSError(domain: "VM", code: 9999, userInfo: dict)
   
   halt(error)
 }
 
 public func halt(error: NSError) {
-  
   NSLog("Unresolved error \(error), \(error.userInfo!)")
   
   abort()

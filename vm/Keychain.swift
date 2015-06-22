@@ -11,7 +11,9 @@ import AppKit
 import Security
 
 public class Keychain {
+  
   private var _identifier = ""
+
   public var identifier: String {
     get {
       return _identifier
@@ -70,7 +72,6 @@ public extension Keychain {
     return status == noErr
   }
   
-  
   func clear() -> Bool {
     let query = [
       kSecClass as String: kSecClassGenericPassword
@@ -80,5 +81,4 @@ public extension Keychain {
     
     return status == noErr
   }
-  
 }
