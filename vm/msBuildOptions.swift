@@ -29,6 +29,10 @@ public class MSBuildOptions: Printable {
   public var task = MSBuildOption("", "task", { (value: String) -> Bool in
     return value == "" || value.hasPrefix("/t:")
   })
+  
+  public var msbuild = MSBuildOption("C:\\Program Files (x86)\\MSBuild\\12.0\\bin\\MSBuild.exe", "msbuild", { (value: String) -> Bool in
+    return value.hasSuffix(".exe")
+  })
 
   public var forceYes: Bool = false
 }
@@ -48,6 +52,7 @@ public extension MSBuildOptions {
         "\"solution\": \"\(solution.value)\", " +
         "\"user\": \"\(user.value)\", " +
         "\"password\": \"\(password.value)\", " +
+        "\"msbuild\": \"\(msbuild.value)\", " +
         "\"forceYes\": \"\(forceYes)\", " +
         "\"set values\": [" +
           "{\"taskSet\": \"\(task.set)\"}, " +
@@ -67,6 +72,7 @@ public extension MSBuildOptions {
     case "solution", "s": self.solution.value = value!
     case "user", "u": self.user.value = value!
     case "password", "p": self.password.value = value!
+    case "msbuild", "m": self.msbuild.value = value!
     case "y": self.forceYes = value!.bool
     default: ""
     }

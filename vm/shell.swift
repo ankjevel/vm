@@ -12,8 +12,10 @@ internal func createTask(cmd: String, arguments: [String]) -> (String, String) {
   let task = NSTask()
   let pipe = NSPipe()
   let errorPipe = NSPipe()
-  
+
+#if Debug
   println((cmd, arguments))
+#endif
   
   task.launchPath = cmd
   task.arguments = arguments
@@ -53,6 +55,10 @@ public func shell(cmd: String, args: [String]) -> String {
 
 public func shell(cmd: String, printError: Bool, args: [String]) -> (String, String) {
   var (response, errorResponse) = createTask(cmd, args)
+
+#if Debug
   println("response: \(response)\nerrorResponse: \(errorResponse)")
+#endif
+
   return (response, errorResponse)
 }

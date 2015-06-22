@@ -22,8 +22,9 @@ internal enum Response: String {
       self = .Credentials
     } else if error == "" {
       self = .OK
+    } else {
+      self = .Unknown
     }
-    self = .Unknown
   }
 }
 
@@ -40,17 +41,15 @@ public struct MSBuild {
 public extension MSBuild {
   
   func run(selected: FeedbackItem) {
-    let status = checkIfSolutionExists(selected)
-    if status != .FileExists {
-      halt(status.rawValue)
-    }
+    checkIfFileExists(selected.options.solution.value.removeQuotations.windowsEcaping, selected)
+    checkIfFileExists(selected.options.msbuild.value.removeQuotations.windowsEcaping, selected)
+    println("now what")
   }
 }
 
 // MARK: Private
 private extension MSBuild {
-  
-  func checkIfSolutionExists(selected: FeedbackItem) -> Response {
+  func checkIfFileExists(file: String, _ selected: FeedbackItem) -> Void {
     let (response, error) = vmware.runAndPassError([
       "-gu",
       "\(selected.options.user.value)",
@@ -58,7 +57,10 @@ private extension MSBuild {
       "\(selected.options.password.value)",
       "fileExistsInGuest",
       "\(selected.id)",
-      "\(selected.options.solution.value.removeQuotations.windowsEcaping)"])
-    return Response(response, error)
+      "\(file)"])
+    let status = Response(response, error)
+    if status != .FileExists {
+      halt(status.rawValue)
+    }
   }
 }

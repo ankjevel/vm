@@ -33,6 +33,8 @@ public func checkIfUserShouldBePromptedHelp() {
     "",
     "\(bw)-p\(r) --password   password for guest user",
     "",
+    "\(bw)-m\(r) --msbuild    msbuild executable file in windows",
+    "                \(bw)C:\\Program Files (x86)\\MSBuild\\12.0\\bin\\MSBuild.exe\(r)",
     "\(bw)-y\(r)              answers \"YES\", when prompted",
     "",
     "\(bw)-c\(r) --clear      clears core-data storage",

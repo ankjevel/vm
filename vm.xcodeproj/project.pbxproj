@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D60963D91B2FFC0000060B09 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D60963D81B2FFC0000060B09 /* Info.plist */; };
 		D60963DB1B2FFC7600060B09 /* arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963DA1B2FFC7600060B09 /* arguments.swift */; };
 		D60963DC1B2FFC7600060B09 /* arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963DA1B2FFC7600060B09 /* arguments.swift */; };
 		D60963E21B30040900060B09 /* halt.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60963E11B30040900060B09 /* halt.swift */; };
@@ -36,6 +35,8 @@
 		D64677701B34C05400B73DEC /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D646776F1B34C05400B73DEC /* Setting.swift */; };
 		D64677711B34C05400B73DEC /* Setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = D646776F1B34C05400B73DEC /* Setting.swift */; };
 		D64BF3381B388EC700931D2F /* eachProcessArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3371B388EC700931D2F /* eachProcessArgument.swift */; };
+		D64BF33C1B389B6700931D2F /* eachProcessArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3371B388EC700931D2F /* eachProcessArgument.swift */; };
+		D64BF33D1B389B6C00931D2F /* msBuildOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673805C1B38309C00244591 /* msBuildOption.swift */; };
 		D6595DB81B2CD17800A82B81 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DB71B2CD17800A82B81 /* main.swift */; };
 		D6595DBF1B2CD1AA00A82B81 /* shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DBE1B2CD1AA00A82B81 /* shell.swift */; };
 		D6595DC11B2CD1C400A82B81 /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DC01B2CD1C400A82B81 /* vmWare.swift */; };
@@ -66,7 +67,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		D60963D81B2FFC0000060B09 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D60963DA1B2FFC7600060B09 /* arguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = arguments.swift; sourceTree = "<group>"; };
 		D60963E11B30040900060B09 /* halt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = halt.swift; sourceTree = "<group>"; };
 		D60963EB1B30080600060B09 /* VMS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VMS.xcdatamodel; sourceTree = "<group>"; };
@@ -119,7 +119,6 @@
 		D6255A871B2EE77F004AC403 /* vmTests */ = {
 			isa = PBXGroup;
 			children = (
-				D60963D81B2FFC0000060B09 /* Info.plist */,
 				D6255A8F1B2EE815004AC403 /* StringsTests.swift */,
 			);
 			path = vmTests;
@@ -158,8 +157,8 @@
 			isa = PBXGroup;
 			children = (
 				D60964001B32318800060B09 /* msBuild.swift */,
-				D6255AA61B2FF3C7004AC403 /* msBuildOptions.swift */,
 				D673805C1B38309C00244591 /* msBuildOption.swift */,
+				D6255AA61B2FF3C7004AC403 /* msBuildOptions.swift */,
 			);
 			name = msBuild;
 			sourceTree = "<group>";
@@ -176,11 +175,11 @@
 		D64BF33A1B3891B800931D2F /* shell */ = {
 			isa = PBXGroup;
 			children = (
+				D60963FC1B32057800060B09 /* ASCIIColor.swift */,
 				D6255AA11B2F8C9C004AC403 /* getUserInput.swift */,
 				D60963DA1B2FFC7600060B09 /* arguments.swift */,
 				D60963E11B30040900060B09 /* halt.swift */,
 				D60963F91B30E18500060B09 /* checkIfUserShouldBePromptedHelp.swift */,
-				D60963FC1B32057800060B09 /* ASCIIColor.swift */,
 				D6595DBE1B2CD1AA00A82B81 /* shell.swift */,
 				D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */,
 				D64BF3371B388EC700931D2F /* eachProcessArgument.swift */,
@@ -298,7 +297,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D60963D91B2FFC0000060B09 /* Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -309,6 +307,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D64BF33D1B389B6C00931D2F /* msBuildOption.swift in Sources */,
+				D64BF33C1B389B6700931D2F /* eachProcessArgument.swift in Sources */,
 				D67380581B3630F700244591 /* msBuild.swift in Sources */,
 				D60963FF1B322D3D00060B09 /* getUserInput.swift in Sources */,
 				D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */,
@@ -373,11 +373,8 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = vmTests/Info.plist;
+				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
+				INFOPLIST_FILE = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -391,7 +388,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = vmTests/Info.plist;
+				INFOPLIST_FILE = "";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -499,7 +496,7 @@
 				D6255A8D1B2EE77F004AC403 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D6595DAF1B2CD17800A82B81 /* Build configuration list for PBXProject "vm" */ = {
 			isa = XCConfigurationList;
@@ -508,7 +505,7 @@
 				D6595DBA1B2CD17800A82B81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		D6595DBB1B2CD17800A82B81 /* Build configuration list for PBXNativeTarget "vm" */ = {
 			isa = XCConfigurationList;
@@ -517,7 +514,7 @@
 				D6595DBD1B2CD17800A82B81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 
