@@ -40,13 +40,11 @@ public func checkIfUserShouldBePromptedHelp() {
     "\(bw)-h\(r) --help       prints this guide",
     ""
   ]
-
-  var argArray = [String](Process.arguments)
-  for arg in argArray {
-    let argument = arg.strip.stripDashes.lowercaseString
+  
+  eachProcessArgument({ argument in
     if argument == "h" || argument == "help" {
       println("\n".join(helpMessage))
       exit(0)
     }
-  }
+  })
 }

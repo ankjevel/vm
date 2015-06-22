@@ -1,5 +1,5 @@
 //
-//  vmware.swift
+//  vmWare.swift
 //  vm
 //
 //  Created by Dennis Pettersson on 2015-06-13.

@@ -1,5 +1,5 @@
 //
-//  options.swift
+//  msBuildOptions.swift
 //  vm
 //
 //  Created by Dennis Pettersson on 2015-06-16.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Options: Printable {
+public class MSBuildOptions: Printable {
 
   public var user = MSBuildOption("", "user", { (value: String) -> Bool in
     return value != ""
@@ -34,10 +34,11 @@ public class Options: Printable {
 }
 
 // MARK: Private
-private extension Options {}
+private extension MSBuildOptions {
+}
 
 // MARK: Public
-public extension Options {
+public extension MSBuildOptions {
   
   var description: String {
     get {

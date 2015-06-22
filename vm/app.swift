@@ -26,7 +26,7 @@ public class App: CoreData {
 // MARK: Public
 public extension App {
 
-  func msBuild(_ options: Options = Options()) {
+  func msBuild(_ options: MSBuildOptions = MSBuildOptions()) {
     var gen = generate
     var fb = gen.0
     for vm in gen.1 {
@@ -126,7 +126,7 @@ private extension App {
     }
   }
   
-  func getImage(fb: Feedback, options: Options) -> FeedbackItem {
+  func getImage(fb: Feedback, options: MSBuildOptions) -> FeedbackItem {
     var index = -1
     let range = fb.items.startIndex ... fb.items.endIndex - 1
     var message = "select image (index):"; for item in enumerate(fb.items) {
@@ -192,19 +192,17 @@ private extension App {
     savePassword(selected.options)
   }
   
-  func savePassword(options: Options) {
+  func savePassword(options: MSBuildOptions) {
     keychain.save(options.user.value, data: options.password.value)
   }
   
   func checkIfClearCoreData() {
     var clear = false
-    let argArray = [String](Process.arguments)
-    for arg in argArray {
-      let argument = arg.strip.stripDashes.lowercaseString
+    eachProcessArgument({ argument in
       if argument == "c" || argument == "clear" {
         clear = true
       }
-    }
+    })
     
     if clear {
       var userInput: Bool? = nil

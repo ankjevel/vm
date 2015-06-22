@@ -8,11 +8,11 @@
 
 import Foundation
 
-public func arguments() -> Options {
+public func arguments() -> MSBuildOptions {
   var argArray = [String](Process.arguments)
   argArray.removeAtIndex(0)
   
-  var options = Options()
+  var options = MSBuildOptions()
   
   if argArray.count > 0 {
     for argument in enumerate(argArray) {

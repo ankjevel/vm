@@ -12,7 +12,7 @@ public class FeedbackItem: Printable {
   
   public let title: String
   public let id: String
-  public var options = Options()
+  public var options = MSBuildOptions()
   
   init(title: String, id: String = "") {
     self.title = title
