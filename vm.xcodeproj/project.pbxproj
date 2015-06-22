@@ -498,7 +498,7 @@
 				D6255A8D1B2EE77F004AC403 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D6595DAF1B2CD17800A82B81 /* Build configuration list for PBXProject "vm" */ = {
 			isa = XCConfigurationList;
@@ -507,7 +507,7 @@
 				D6595DBA1B2CD17800A82B81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 		D6595DBB1B2CD17800A82B81 /* Build configuration list for PBXNativeTarget "vm" */ = {
 			isa = XCConfigurationList;
@@ -516,7 +516,7 @@
 				D6595DBD1B2CD17800A82B81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Debug;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
