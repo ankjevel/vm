@@ -12,7 +12,7 @@ internal enum Response: String {
   
   case OK = "OK"
   case FileExists = "File exists"
-  case FolderExists = "Folder exists"
+  case DirectoryExists = "Directory exists"
   case Credentials = "Username/Password incorrect"
   case Unknown = "Something went wrong"
   
@@ -20,7 +20,7 @@ internal enum Response: String {
     if response.contains("file exists") {
       self = .FileExists
     } else if response.contains("directory exists") {
-      self = .FolderExists
+      self = .DirectoryExists
     } else if response.contains("unknown") || error.contains("unkown") {
       self = .Credentials
     } else if error == "" {
@@ -34,6 +34,7 @@ internal enum Response: String {
 public class MSBuild {
   private var _selected: FeedbackItem?
   private let vmware: VMWare
+  private let fm = NSFileManager()
   
   var selected: FeedbackItem {
     get {
@@ -53,27 +54,26 @@ public class MSBuild {
 public extension MSBuild {
   
   func run() {
-    checkIfFileExists(selected.options.solution.value.removeQuotations.windowsEcaping)
-    checkIfFileExists(selected.options.msbuild.value.removeQuotations.windowsEcaping)
-    
-    vmWareRequest([
-      "directoryExistsInGuest",
-      selected.id,
-      "C:\\temp"
-    ])
+    checkIfExists(selected.options.solution.value.removeQuotations.windowsEcaping, .FileExists)
+    checkIfExists(selected.options.msbuild.value.removeQuotations.windowsEcaping, .FileExists)
+    checkIfExists(Paths.Windows.temp, .DirectoryExists) 
   }
 }
 
 // MARK: Private
 private extension MSBuild {
   
+  struct Paths {
+    struct Windows {
+      static let temp = "C:\\temp"
+    }
+  }
+  
   var auth: [String] {
     get {
       return [
-        "-gu",
-        selected.options.user.value,
-        "-gp",
-        selected.options.password.value
+        "-gu", selected.options.user.value,
+        "-gp", selected.options.password.value
       ]
     }
   }
@@ -88,24 +88,23 @@ private extension MSBuild {
     
     return (status == checkAgainst, status)
   }
-  
-  func createBuildScript() {
-    
-  }
-  
-  func sendBuildScript() {
-    
-  }
 
-  func checkIfFileExists(file: String) -> Void {
+  func checkIfExists(path: String, _ res: Response) -> Void {
+    var type = res == .FileExists ? "file" : "directory"
     let (ok, status) = vmWareRequest([
-      "fileExistsInGuest",
+      "\(type)ExistsInGuest",
       selected.id,
-      file
-    ], .FileExists)
+      path
+    ], res)
     
     if ok == false {
       halt(status.rawValue)
     }
+  }
+  
+  func createBuildScript() {
+  }
+  
+  func sendBuildScript() {
   }
 }
