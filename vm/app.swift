@@ -156,7 +156,7 @@ private extension App {
   
   func setSolution(inout selected: FeedbackItem, inout loaded: Bool) {
 
-    let message = "path to solution file (file\(ASCIIColor.Bold.white.rawValue).sln\(ASCIIColor.reset)):"
+    let message = "path to solution file (file\(ASCIIColor.Bold.white).sln\(ASCIIColor.reset)):"
     while selected.options.solution.set == false {
       var input = getUserInput(message)
       if input.hasPrefix("~") {

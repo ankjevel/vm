@@ -11,8 +11,8 @@ import Foundation
 
 public func checkIfUserShouldBePromptedHelp() {
   let r = ASCIIColor.reset
-  let bw = ASCIIColor.Bold.white.rawValue
-  let bbgb = r + ASCIIColor.Normal.white.rawValue + ASCIIColor.Background.blue.rawValue
+  let bw = ASCIIColor.Bold.white
+  let bbgb = r + ASCIIColor.Normal.white + ASCIIColor.Background.blue
 
   let helpMessage: [String] = [
     ""
