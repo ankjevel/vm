@@ -36,12 +36,13 @@ internal func createTask(cmd: String, arguments: [String]) -> (String, String) {
         hasError ? "" : data,
         hasError ? data.stringByReplacingOccurrencesOfString("Error: ", withString: "") : error
       )
+  
   } else if
     var data = dataAsString as String? {
-    return (data, "")
+      return (data, "")
   } else if
     var error = errorAsString as String? {
-    return ("", error)
+      return ("", error)
   } else {
     return ("", "")
   }

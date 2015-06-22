@@ -209,13 +209,13 @@
 		D6595DB61B2CD17800A82B81 /* vm */ = {
 			isa = PBXGroup;
 			children = (
-				D64BF3391B38917300931D2F /* Models */,
 				D6595DB71B2CD17800A82B81 /* main.swift */,
 				D6255A981B2F697A004AC403 /* app.swift */,
 				D6255AA51B2FF3AF004AC403 /* msBuild */,
 				D6255AA31B2F8CD7004AC403 /* vmWare */,
 				D6255AA41B2F8CE3004AC403 /* feedback */,
 				D6255AA01B2F8C64004AC403 /* utils */,
+				D64BF3391B38917300931D2F /* Models */,
 			);
 			path = vm;
 			sourceTree = "<group>";

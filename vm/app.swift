@@ -72,8 +72,9 @@ public extension App {
     if loaded == false {
       saveEntity(selected, update: entityExists)
     }
-
-    build.run(selected)
+    
+    build.selected = selected
+    build.run()
   }
 }
 
