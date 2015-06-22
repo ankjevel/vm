@@ -47,6 +47,7 @@
 		D67380561B36215000244591 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67380551B36215000244591 /* Keychain.swift */; };
 		D67380571B36215000244591 /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67380551B36215000244591 /* Keychain.swift */; };
 		D67380581B3630F700244591 /* msbuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = D60964001B32318800060B09 /* msbuild.swift */; };
+		D673805D1B38309C00244591 /* msBuildOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D673805C1B38309C00244591 /* msBuildOption.swift */; };
 		D6DE6D1B1B336DCC007B1568 /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */; };
 		D6DE6D1C1B336DCC007B1568 /* shellUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */; };
 /* End PBXBuildFile section */
@@ -91,6 +92,7 @@
 		D6595DCA1B2DB4C300A82B81 /* feedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = feedbackItem.swift; sourceTree = "<group>"; };
 		D673804F1B358F7100244591 /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreData.swift; sourceTree = "<group>"; };
 		D67380551B36215000244591 /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
+		D673805C1B38309C00244591 /* msBuildOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = msBuildOption.swift; sourceTree = "<group>"; };
 		D6DE6D1A1B336DCC007B1568 /* shellUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shellUtils.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,6 +163,7 @@
 			children = (
 				D6255AA61B2FF3C7004AC403 /* options.swift */,
 				D60964001B32318800060B09 /* msbuild.swift */,
+				D673805C1B38309C00244591 /* msBuildOption.swift */,
 			);
 			name = msbuild;
 			sourceTree = "<group>";
@@ -322,6 +325,7 @@
 				D60963E21B30040900060B09 /* halt.swift in Sources */,
 				D60963DB1B2FFC7600060B09 /* arguments.swift in Sources */,
 				D6595DC11B2CD1C400A82B81 /* vmware.swift in Sources */,
+				D673805D1B38309C00244591 /* msBuildOption.swift in Sources */,
 				D6255A991B2F697A004AC403 /* app.swift in Sources */,
 				D67380501B358F7100244591 /* CoreData.swift in Sources */,
 				D67380561B36215000244591 /* Keychain.swift in Sources */,

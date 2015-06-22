@@ -82,9 +82,9 @@ private extension App {
   
   func setUserAndPassword(user: String, inout selected: FeedbackItem) {
     if var password = keychain.load(user) as String? {
-      selected.options.password = password
+      selected.options.password.value = password
     }
-    selected.options.user = user
+    selected.options.user.value = user
   }
   
   func promptLoad(setting: Setting, inout selected: FeedbackItem, inout loaded: Bool) {
@@ -103,22 +103,24 @@ private extension App {
 
     if loadProfile == true {
       var user: String? = nil
-      if setting.user != "" && selected.options.user == "", let unwrapped = setting.user {
-        user = unwrapped
-      } else if selected.options.user != "" {
-        user = selected.options.user
+      
+      if selected.options.user.set {
+        user = selected.options.user.value
+      } else if setting.user != "" {
+        user = setting.user
       }
+      
       if let unwrapped = user {
         setUserAndPassword(unwrapped, selected: &selected)
       }
-      if selected.options.solutionSet == false {
-        selected.options.solution = setting.solution!
+      if selected.options.solution.set == false {
+        selected.options.solution.value = setting.solution!
       }
-      if selected.options.taskSet == false {
-        selected.options.task = setting.task!
+      if selected.options.task.set == false {
+        selected.options.task.value = setting.task!
       }
-      if selected.options.propertySet == false {
-        selected.options.property = setting.property!
+      if selected.options.property.set == false {
+        selected.options.property.value = setting.property!
       }
       loaded = true
     }
@@ -145,9 +147,9 @@ private extension App {
   }
   
   func setUser(inout selected: FeedbackItem, inout loaded: Bool) {
-    while selected.options.user == "" {
+    while selected.options.user.set == false {
       var input = getUserInput("select user:")
-      selected.options.user = input
+      selected.options.user.value = input
       loaded = false
     }
   }
@@ -155,43 +157,43 @@ private extension App {
   func setSolution(inout selected: FeedbackItem, inout loaded: Bool) {
 
     let message = "path to solution file (file\(ASCIIColor.Bold.white.rawValue).sln\(ASCIIColor.reset)):"
-    while selected.options.solution == "" && selected.options.solution.lowercaseString.hasSuffix(".sln") == false {
+    while selected.options.solution.set == false {
       var input = getUserInput(message)
       if input.hasPrefix("~") {
         input = input.stringByExpandingTildeInPath
       }
-      selected.options.solution = input
+      selected.options.solution.value = input
       loaded = false
     }
   }
   
   func setTask(inout selected: FeedbackItem, inout loaded: Bool) {
-    while selected.options.task == "" && selected.options.task.hasPrefix("/t:") == false {
+    while selected.options.task.set == false {
       var input = getUserInput("select msbuild task:")
-      selected.options.task = input
+      selected.options.task.value = input
       loaded = false
     }
   }
   
   func setTaskProperty(inout selected: FeedbackItem, inout loaded: Bool) {
-    while selected.options.property == "" && selected.options.property.hasPrefix("/property:") == false {
+    while selected.options.property.set == false {
       var input = getUserInput("select msbuild task propert(y|ies):")
-      selected.options.property = input
+      selected.options.property.value = input
       loaded = false
     }
   }
   
   func setPassword(inout selected: FeedbackItem, inout loaded: Bool) {
-    while selected.options.password == "" {
+    while selected.options.password.set == false {
       var input = getUserInput("password for \(selected.options.user):", noEcho: true)
-      selected.options.password = input
+      selected.options.password.value = input
       loaded = false
     }
     savePassword(selected.options)
   }
   
   func savePassword(options: Options) {
-    keychain.save(options.user, data: options.password)
+    keychain.save(options.user.value, data: options.password.value)
   }
   
   func checkIfClearCoreData() {

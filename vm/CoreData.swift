@@ -69,10 +69,10 @@ public class CoreData {
       let entity = NSEntityDescription.entityForName(entityName, inManagedObjectContext: context),
       let setting = NSManagedObject(entity: entity as NSEntityDescription, insertIntoManagedObjectContext: context) as? Setting {
         setting.setValue(fb.id, forKey: "id")
-        setting.setValue(fb.options.property, forKey: "property")
-        setting.setValue(fb.options.solution, forKey: "solution")
-        setting.setValue(fb.options.task, forKey: "task")
-        setting.setValue(fb.options.user, forKey: "user")
+        setting.setValue(fb.options.property.value, forKey: "property")
+        setting.setValue(fb.options.solution.value, forKey: "solution")
+        setting.setValue(fb.options.task.value, forKey: "task")
+        setting.setValue(fb.options.user.value, forKey: "user")
         saveContext(update)
     }
   }

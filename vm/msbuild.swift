@@ -53,12 +53,12 @@ private extension MSBuild {
   func checkIfSolutionExists(selected: FeedbackItem) -> Response {
     let (response, error) = vmware.runAndPassError([
       "-gu",
-      "foo",
+      "\(selected.options.user.value)",
       "-gp",
-      "\(selected.options.password)",
+      "\(selected.options.password.value)",
       "fileExistsInGuest",
       "\(selected.id)",
-      "\(selected.options.solution.removeQuotations.windowsEcaping)"])
+      "\(selected.options.solution.value.removeQuotations.windowsEcaping)"])
     return Response(response, error)
   }
 }
