@@ -8,6 +8,24 @@
 
 import Foundation
 
+internal enum Response: String {
+  case OK = "OK"
+  case FileExists = "File exists"
+  case Credentials = "Username/Password incorrect"
+  case Unknown = "Something went wrong"
+  
+  init(_ response: String, _ error: String) {
+    if response.contains("file exists") {
+      self = .FileExists
+    } else if response.contains("unknown") || error.contains("unkown") {
+      self = .Credentials
+    } else if error == "" {
+      self = .OK
+    }
+    self = .Unknown
+  }
+}
+
 public struct MSBuild {
   private let vmware: VMWare
   
@@ -20,17 +38,24 @@ public struct MSBuild {
 public extension MSBuild {
   
   func run(selected: FeedbackItem) {
-    println(vmware.runAndPassError([
-      "-gu \"\(selected.options.user)\"",
-      "-gp \"\(selected.options.password)\"",
-      "fileExistsInGuest \(selected.id) \"\(selected.options.solution.removeQuotations)\""]))
-    //
-//    println(vmware.run("\(cred) fileExistsInGuest \"\(selected.id)\" \"\(selected.options.solution.removeQuotations)\""))
-//    println(vmware.run("fileExistsInGuest \(selected.options.solution.removeQuotations)"))
+    let status = checkIfSolutionExists(selected)
+    if status != .FileExists {
+      halt(status.rawValue)
+    }
   }
 }
 
 // MARK: Private
 private extension MSBuild {
-
+  func checkIfSolutionExists(selected: FeedbackItem) -> Response {
+    let (response, error) = vmware.runAndPassError([
+      "-gu",
+      "foo",
+      "-gp",
+      "\(selected.options.password)",
+      "fileExistsInGuest",
+      "\(selected.id)",
+      "\(selected.options.solution.removeQuotations.windowsEcaping)"])
+    return Response(response, error)
+  }
 }

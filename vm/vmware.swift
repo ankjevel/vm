@@ -40,7 +40,6 @@ public extension VMWare {
       return inventory
     }
   }
-
   
   func run(args: [String]) -> String {
     return shell(VMRUN_PATH, args)
@@ -104,7 +103,7 @@ private extension VMWare {
     
     var vmList = [String: VMConfig]()
     
-    var lines = split(inventory!) {$0 == "\n"}
+    let lines = split(inventory!) {$0 == "\n"}
     for line in lines {
       var parts = split(line) {$0 == "="}
       if parts.count == 2 {
@@ -138,23 +137,30 @@ private extension VMWare {
   func runtimeConfig(path: String, value: String) -> String? {
     let fileManager = NSFileManager()
     
-    if fileManager.fileExistsAtPath(path), let data = NSString(data: fileManager.contentsAtPath(path)!, encoding: NSUTF8StringEncoding) as? String {
-      var lines = split(data) {$0 == "\n"}
-      for line in lines {
-        var parts = split(line) {$0 == "="}
-        if parts.count == 2 {
-          var lhs = parts[0].strip
-          var rhs = parts[1].strip
-          if lhs == value {
-            return rhs.removeQuotations
+    if fileManager.fileExistsAtPath(path),
+      let data = NSString(data: fileManager.contentsAtPath(path)!, encoding: NSUTF8StringEncoding) as? String {
+      
+        var lines = split(data) {$0 == "\n"}
+        for line in lines {
+          var parts = split(line) {$0 == "="}
+          if parts.count == 2 {
+            var lhs = parts[0].strip
+            var rhs = parts[1].strip
+            if lhs == value {
+              return rhs.removeQuotations
+            }
           }
         }
-      }
     }
     return nil
   }
   
   func ipAddress(vmPath: String) -> String {
-    return shell(VMRUN_PATH, ["readVariable \(vmPath) guestVar ip"]).strip
+    return shell(VMRUN_PATH, [
+      "readVariable",
+      vmPath,
+      "guestVar",
+      "ip"
+    ]).strip
   }
 }

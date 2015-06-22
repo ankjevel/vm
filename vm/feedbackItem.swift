@@ -31,7 +31,11 @@ public extension FeedbackItem {
   
   var description: String {
     get {
-      return "{\"title\": \"\(title)\", \"id\": \"\(id)\", \"options\": \"\(options)\"}";
+      return "{" +
+        "\"title\": \"\(title)\", " +
+        "\"id\": \"\(id)\", " +
+        "\"options\": \"\(options)\"" +
+      "}";
     }
   }
 }

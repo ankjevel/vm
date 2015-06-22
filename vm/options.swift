@@ -70,7 +70,19 @@ public extension Options {
   
   var description: String {
     get {
-      return "{\"task\": \"\(task)\", \"property\": \"\(property)\", \"solution\": \"\(solution)\", \"user\": \"\(user)\", \"password\": \"\(password)\", \"forceYes\": \"\(forceYes)\", \"set values\": [{\"taskSet\": \"\(taskSet)\"}, {\"propertySet\": \"\(propertySet)\"}, {\"solutionSet\": \"\(solutionSet)\"}]}";
+      return "{" +
+        "\"task\": \"\(task)\", " +
+        "\"property\": \"\(property)\", " +
+        "\"solution\": \"\(solution)\", " +
+        "\"user\": \"\(user)\", " +
+        "\"password\": \"\(password)\", " +
+        "\"forceYes\": \"\(forceYes)\", " +
+        "\"set values\": [" +
+          "{\"taskSet\": \"\(taskSet)\"}, " +
+          "{\"propertySet\": \"\(propertySet)\"}, " +
+          "{\"solutionSet\": \"\(solutionSet)\"}" +
+        "]" +
+      "}";
     }
   }
   

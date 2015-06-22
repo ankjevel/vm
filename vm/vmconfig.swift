@@ -26,7 +26,14 @@ public extension VMConfig {
   
   var description: String {
     get {
-      return "{\"path\": \"\(path)\", \"name\": \"\(name)\", \"status\": \"\(status)\", \"ipAddress\": \"\(ipAddress)\", \"os\": \"\(os)\", \"running\": \"\(running)\"}";
+      return "{" +
+        "\"path\": \"\(path)\", " +
+        "\"name\": \"\(name)\", " +
+        "\"status\": \"\(status)\", " +
+        "\"ipAddress\": \"\(ipAddress)\", " +
+        "\"os\": \"\(os)\", " +
+        "\"running\": \"\(running)\"" +
+      "}";
     }
   }
 }

@@ -26,10 +26,8 @@ extension String {
     return self.stringByReplacingOccurrencesOfString("-", withString: "")
   }
   
-  var windowsEcapes: String {
-    return self
-        .stringByReplacingOccurrencesOfString("\\\\", withString: "\\")
-//        .stringByReplacingOccurrencesOfString(" ", withString: "^ ")
+  var windowsEcaping: String {
+    return "\\".join(split(self.stringByReplacingOccurrencesOfString("\\\\", withString: "\\"), maxSplit: 1, allowEmptySlices: true){ $0 == "\\" })
   }
   
   var removeQuotations: String {
