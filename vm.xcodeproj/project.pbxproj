@@ -475,6 +475,7 @@
 		D6595DBC1B2CD17800A82B81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_SWIFT_FLAGS = "-D Debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -482,6 +483,7 @@
 		D6595DBD1B2CD17800A82B81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				OTHER_SWIFT_FLAGS = "-D Release";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
