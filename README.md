@@ -1,6 +1,8 @@
 # VM
 VM is a command line tool for VMWare Fusion, where it allows the user to run <br/>`msbuild` from osx. It does so by creating a script inside the virtual windows <br/>image, runs it and reads the output.
 
+This is useful when having a shared folder between your host and guest, so that<br/> you can use your host-environment for code editing.
+
 ## Available command line arguments
 ### MSBuild related
 
