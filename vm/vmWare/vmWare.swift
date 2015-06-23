@@ -39,6 +39,22 @@ public extension VMWare {
     }
   }
   
+  func start(inout selected: FeedbackItem) {
+    println("\(ASCIIColor.Bold.green)Starting \(selected.title)\(ASCIIColor.reset)")
+    let (_, error) = runAndPassError([
+      "start",
+      selected.id,
+      "nogui"
+    ])
+    
+    if error == "" {
+      println("\(ASCIIColor.Bold.green)Started\(ASCIIColor.reset)")
+      selected.running = true
+    } else {
+      println("\(ASCIIColor.Bold.red)Could not start\(ASCIIColor.reset)")
+    }
+  }
+  
   func run(args: [String]) -> String {
     return shell(Paths.VMRUN_PATH, args)
   }

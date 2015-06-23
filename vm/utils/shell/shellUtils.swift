@@ -28,8 +28,8 @@ public func header(str: String) -> [String] {
   let bbgb = r + ASCIIColor.Normal.white + ASCIIColor.Background.blue
   
   return [
-    "\(bbgb)" + repeat(" ", WIDTH) + "\(r)",
-    "\(bbgb)" + center("\(str)") + "\(r)",
+    "\(bbgb)" + repeat(" ", WIDTH) + "\(r)\n" +
+    "\(bbgb)" + center("\(str)") + "\(r)\n" +
     "\(bbgb)" + repeat(" ", WIDTH) + "\(r)"
   ]
 }

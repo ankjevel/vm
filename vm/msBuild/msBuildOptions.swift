@@ -44,19 +44,18 @@ public extension MSBuildOptions {
   
   var description: String {
     get {
-      return "{" +
-        "\"task\": \"\(task.value)\", " +
-        "\"property\": \"\(property.value)\", " +
-        "\"solution\": \"\(solution.value)\", " +
-        "\"user\": \"\(user.value)\", " +
-        "\"password\": \"\(password.value)\", " +
-        "\"msbuild\": \"\(msbuild.value)\", " +
-        "\"set values\": [" +
-          "{\"taskSet\": \"\(task.set)\"}, " +
-          "{\"propertySet\": \"\(property.set)\"}, " +
-          "{\"solutionSet\": \"\(solution.set)\"}" +
-        "]" +
-      "}";
+      var description: [String: AnyObject] = [
+        "task": task.value,
+        "property": property.value,
+        "solution": solution.value,
+        "user": user.value,
+        "password": password.value,
+        "msbuild": msbuild.value,
+        "task set": task.set,
+        "property set": property.set,
+        "solution set": solution.set
+      ]
+      return "\(description)";
     }
   }
   

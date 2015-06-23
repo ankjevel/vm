@@ -12,17 +12,18 @@ public class FeedbackItem: Printable {
   
   public let title: String
   public let id: String
+  public var running: Bool
   public var options = MSBuildOptions()
   
-  init(title: String, id: String = "") {
+  init(title: String, id: String = "", running: Bool) {
     self.title = title
+    self.running = running
     
     if id == "" {
       self.id = "\(NSDate().timeIntervalSince1970 * 1000)\(title)"
     } else {
       self.id = id
     }
-    
   }
 }
 
@@ -31,11 +32,15 @@ public extension FeedbackItem {
   
   var description: String {
     get {
-      return "{" +
-        "\"title\": \"\(title)\", " +
-        "\"id\": \"\(id)\", " +
-        "\"options\": \"\(options)\"" +
-      "}";
+      
+      var description: [String: AnyObject] = [
+        "title": title,
+        "id": id,
+        "running": running,
+        "options": options
+      ]
+    
+      return "\(description)";
     }
   }
 }

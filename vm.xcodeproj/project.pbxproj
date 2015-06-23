@@ -138,8 +138,8 @@
 		D6255AA31B2F8CD7004AC403 /* vmWare */ = {
 			isa = PBXGroup;
 			children = (
-				D64BF3711B38C05100931D2F /* vmConfig.swift */,
 				D64BF3721B38C05100931D2F /* vmWare.swift */,
+				D64BF3711B38C05100931D2F /* vmConfig.swift */,
 			);
 			name = vmWare;
 			sourceTree = "<group>";

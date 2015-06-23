@@ -31,18 +31,26 @@ public extension App {
     var gen = generate
     var fb = gen.0
     for vm in gen.1 {
-//      if vm.os.contains("windows") {
-      if vm.running && vm.os.contains("windows") {
-        var item = FeedbackItem(
+      if vm.os.contains("windows") == false {
+        continue
+      }
+      var ok = false
+      if VM_IMAGE != nil {
+        ok = vm.name.contains(VM_IMAGE!)
+      } else {
+        ok = true
+      }
+      if ok {
+        fb.addItem(FeedbackItem(
           title: vm.name,
-          id: vm.path
-        )
-        fb.addItem(item)
+          id: vm.path,
+          running: vm.running
+        ))
       }
     }
     
     if fb.items.count == 0 {
-      halt("no vms running")
+      halt("no vms available")
     }
     
     //  if fb.items.count > 1 {
@@ -130,28 +138,55 @@ private extension App {
   
   func getImage(fb: Feedback, options: MSBuildOptions) -> FeedbackItem {
     
-    if fb.items.count == 1 {
-      fb.items.first!.options = options
-      return fb.items.first!
-    }
+    var item: FeedbackItem?
     
-    var index = -1
-    let range = fb.items.startIndex ... fb.items.endIndex - 1
-    var message = "select image (index):"; for item in enumerate(fb.items) {
-      message  += "\n[\(item.index)] \(item.element.title)"
-    }
-    
-    do {
-      var input = getUserInput(message)
-      if input != "", let unwrapped = input.toInt() {
-        index = unwrapped
+    if VM_IMAGE != nil {
+      if let element = fb.items.filter({ $0.title.contains(VM_IMAGE!) }).first {
+        item = element
+        item!.options = options
       }
-    } while (range ~= index) == false
+    }
     
-    var selected = fb.items[index]
-    selected.options = options
+    if item == nil {
+      if fb.items.count == 1 {
+        item = fb.items.first!
+        item!.options = options
+      } else {
+        var index = -1
+        let range = fb.items.startIndex ... fb.items.endIndex - 1
+        var message = "select image (index):"; for e in enumerate(fb.items) {
+          var status = e.element.running == true ? "(running)" : "(stopped)"
+          message  += "\n[\(e.index)] \(e.element.title) \(status)"
+          
+          do {
+            var input = getUserInput(message)
+            if input != "", let unwrapped = input.toInt() {
+              index = unwrapped
+            }
+          } while (range ~= index) == false
+          
+          item = fb.items[index]
+          item!.options = options
+        }
+      }
+    }
     
-    return selected
+    if item!.running == false {
+      var userInput: Bool? = ANSWER
+      while userInput == nil {
+        var input = getUserInput("vm is stopped, would you like to start it (yes|no)?")
+        if input != "" { userInput = input.bool }
+      }
+      if userInput == true {
+        vmware.start(&item!)
+      }
+      
+      if item!.running == false {
+        halt("vm is stopped")
+      }
+    }
+    
+    return item!
   }
   
   func setUser(inout selected: FeedbackItem, inout loaded: Bool) {
@@ -199,7 +234,7 @@ private extension App {
     }
     savePassword(selected.options)
   }
-  
+    
   func savePassword(options: MSBuildOptions) {
     keychain.save(options.user.value, data: options.password.value)
   }

@@ -1,30 +1,33 @@
 # VM
 VM is a command line tool for VMWare Fusion, where it allows the user to run <br/>`msbuild` from osx. It does so by creating a script inside the virtual windows <br/>image, runs it and reads the output.
 
-## Available commands
-* -task (-t)
+## Available command line arguments
+* --task (-t)
     - set default msbuild task
     - default: `/t:build`
-* -property (-p)
+* --property (-p)
     - msbuild properties for task
     - default: `/property:Configuration=Debug`
-* -solution (-s)
+* --solution (-s)
     - solution file to build (enter windows path)
     - ex: `C:\Dev\Project\Project.sln`
-* -user (-u)
+* --user (-u)
     - user in guest vm
-* -password (-p)
+* --password (-p)
     - password for user
-* -msbuild (-m)
+* --msbuild (-m)
     - msbuild.exe location
     - default: `C:\Program Files (x86)\MSBuild\12.0\bin\MSBuild.exe`
-* -y
+* --image (-i)
+    - select a specific image
+    - will match if name CONTAINS this string
+* --y
     - always enter `yes` when prompted
-* -n
+* --n
     - always enter `no` when prompted
-* -clear (-c)
+* --clear (-c)
     - clear Core Data saves
-* -m
+* --h
     - prints a help message
 
 
