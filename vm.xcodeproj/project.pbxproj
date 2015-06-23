@@ -25,8 +25,8 @@
 		D64BF3561B38C02000931D2F /* arguments.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34D1B38C02000931D2F /* arguments.swift */; };
 		D64BF3571B38C02000931D2F /* ASCIIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34E1B38C02000931D2F /* ASCIIColor.swift */; };
 		D64BF3581B38C02000931D2F /* ASCIIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34E1B38C02000931D2F /* ASCIIColor.swift */; };
-		D64BF3591B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34F1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift */; };
-		D64BF35A1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34F1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift */; };
+		D64BF3591B38C02000931D2F /* promptHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34F1B38C02000931D2F /* promptHelp.swift */; };
+		D64BF35A1B38C02000931D2F /* promptHelp.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF34F1B38C02000931D2F /* promptHelp.swift */; };
 		D64BF35B1B38C02000931D2F /* eachProcessArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3501B38C02000931D2F /* eachProcessArgument.swift */; };
 		D64BF35C1B38C02000931D2F /* eachProcessArgument.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3501B38C02000931D2F /* eachProcessArgument.swift */; };
 		D64BF35D1B38C02000931D2F /* getUserInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3511B38C02000931D2F /* getUserInput.swift */; };
@@ -77,7 +77,7 @@
 		D64BF3461B38C00600931D2F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = utils/String.swift; sourceTree = "<group>"; };
 		D64BF34D1B38C02000931D2F /* arguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = arguments.swift; path = utils/shell/arguments.swift; sourceTree = "<group>"; };
 		D64BF34E1B38C02000931D2F /* ASCIIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ASCIIColor.swift; path = utils/shell/ASCIIColor.swift; sourceTree = "<group>"; };
-		D64BF34F1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = checkIfUserShouldBePromptedHelp.swift; path = utils/shell/checkIfUserShouldBePromptedHelp.swift; sourceTree = "<group>"; };
+		D64BF34F1B38C02000931D2F /* promptHelp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = promptHelp.swift; path = utils/shell/promptHelp.swift; sourceTree = "<group>"; };
 		D64BF3501B38C02000931D2F /* eachProcessArgument.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = eachProcessArgument.swift; path = utils/shell/eachProcessArgument.swift; sourceTree = "<group>"; };
 		D64BF3511B38C02000931D2F /* getUserInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = getUserInput.swift; path = utils/shell/getUserInput.swift; sourceTree = "<group>"; };
 		D64BF3521B38C02000931D2F /* halt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = halt.swift; path = utils/shell/halt.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 			children = (
 				D64BF34D1B38C02000931D2F /* arguments.swift */,
 				D64BF34E1B38C02000931D2F /* ASCIIColor.swift */,
-				D64BF34F1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift */,
+				D64BF34F1B38C02000931D2F /* promptHelp.swift */,
 				D64BF3501B38C02000931D2F /* eachProcessArgument.swift */,
 				D64BF3511B38C02000931D2F /* getUserInput.swift */,
 				D64BF3521B38C02000931D2F /* halt.swift */,
@@ -310,7 +310,7 @@
 				D64BF3561B38C02000931D2F /* arguments.swift in Sources */,
 				D64BF3641B38C02000931D2F /* shellUtils.swift in Sources */,
 				D64BF3481B38C00600931D2F /* CoreData.swift in Sources */,
-				D64BF35A1B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift in Sources */,
+				D64BF35A1B38C02000931D2F /* promptHelp.swift in Sources */,
 				D64BF36C1B38C04600931D2F /* msBuild.swift in Sources */,
 				D64BF3671B38C03200931D2F /* Setting.swift in Sources */,
 				D64BF3431B38BFDF00931D2F /* feedbackItem.swift in Sources */,
@@ -351,7 +351,7 @@
 				D64BF36D1B38C04600931D2F /* msBuildOption.swift in Sources */,
 				D64BF36F1B38C04600931D2F /* msBuildOptions.swift in Sources */,
 				D64BF3631B38C02000931D2F /* shellUtils.swift in Sources */,
-				D64BF3591B38C02000931D2F /* checkIfUserShouldBePromptedHelp.swift in Sources */,
+				D64BF3591B38C02000931D2F /* promptHelp.swift in Sources */,
 				D64BF34B1B38C00600931D2F /* String.swift in Sources */,
 				D64BF35B1B38C02000931D2F /* eachProcessArgument.swift in Sources */,
 				D64BF3731B38C05100931D2F /* vmConfig.swift in Sources */,

@@ -9,7 +9,7 @@
 import Darwin
 import Foundation
 
-public func checkIfUserShouldBePromptedHelp() {
+public func promptHelp() {
   let r = ASCIIColor.reset
   let bw = ASCIIColor.Bold.white
   let bbgb = r + ASCIIColor.Normal.white + ASCIIColor.Background.blue
@@ -45,10 +45,6 @@ public func checkIfUserShouldBePromptedHelp() {
     ""
   ]
   
-  eachProcessArgument() {
-    if $0 == "h" || $0 == "help" {
-      println("\n".join(helpMessage))
-      exit(0)
-    }
-  }
+  println("\n".join(helpMessage))
+  exit(0)
 }

@@ -18,8 +18,9 @@ public class App: CoreData {
   override init() {
     self.build = MSBuild(vmware: &self.vmware)
     super.init()
-    
-    checkIfClearCoreData()
+    if CLEAR_CORE_DATA {
+      clearCoreData()
+    }
   }
 }
 
@@ -203,34 +204,28 @@ private extension App {
     keychain.save(options.user.value, data: options.password.value)
   }
   
-  func checkIfClearCoreData() {
-    var clear = false
-    eachProcessArgument() {
-      if $0 == "c" || $0 == "clear" {
-        clear = true
+  func clearCoreData() {
+
+    var userInput: Bool? = ANSWER
+    
+    while userInput == nil {
+      var input = getUserInput("do you really want to clear Core Data?")
+      if input != "" {
+        userInput = input.bool
       }
     }
     
-    if clear {
-      var userInput: Bool? = nil
-      
-      while userInput == nil {
-        var input = getUserInput("do you really want to clear Core Data?")
-        if input != "" {
-          userInput = input.bool
-        }
-      }
-      
+    if userInput == true {
       var entities = getEntities()
-      
+    
       if let context = managedObjectContext {
         for entity: NSManagedObject in entities {
           context.deleteObject(entity)
         }
       }
-      
+    
       entities.removeAll(keepCapacity: false)
-      
+    
       saveContext(false)
     }
   }
