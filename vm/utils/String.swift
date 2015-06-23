@@ -30,6 +30,10 @@ extension String {
     return "\\".join(split(self.stringByReplacingOccurrencesOfString("\\\\", withString: "\\"), maxSplit: 1, allowEmptySlices: true){ $0 == "\\" })
   }
   
+  func substringFromIndex(index:Int) -> String {
+    return self.substringFromIndex(advance(self.startIndex, index))
+  }
+  
   var removeQuotations: String {
     var modifiedString = self
     if self.hasPrefix("\"") {
