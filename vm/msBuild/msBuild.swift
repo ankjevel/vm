@@ -171,7 +171,7 @@ private extension MSBuild {
       halt("script not present in guest")
     }
     
-    println("\(ASCIIColor.Bold.green)Running script\(ASCIIColor.reset)")
+    println("\(ASCIIColor.Bold.green)\nRunning build\(ASCIIColor.reset)")
     vmWareRequest([
       "runProgramInGuest",
       selected.id,
@@ -202,10 +202,10 @@ private extension MSBuild {
     if success {
       var index = file.rangeOfString("Build succeeded.")!.startIndex
       let part = file.substringFromIndex(index)
-      println(part)
+      println("\(ASCIIColor.Bold.green)\n\(part)\(ASCIIColor.reset)")
     } else {
       println(file)
-      println("build not successful")
+      println("\(ASCIIColor.Bold.red)\nbuild not successful\(ASCIIColor.reset)")
     }
   }
 }
