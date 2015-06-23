@@ -128,6 +128,12 @@ private extension App {
   }
   
   func getImage(fb: Feedback, options: MSBuildOptions) -> FeedbackItem {
+    
+    if fb.items.count == 1 {
+      fb.items.first!.options = options
+      return fb.items.first!
+    }
+    
     var index = -1
     let range = fb.items.startIndex ... fb.items.endIndex - 1
     var message = "select image (index):"; for item in enumerate(fb.items) {
