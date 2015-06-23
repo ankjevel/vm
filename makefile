@@ -2,14 +2,23 @@ OUT=build
 TARGET=vm
 SCHEME=vm
 CONFIGURATION=Release
+BIN=/usr/local/bin
+LIB=/usr/local/lib
 
-all: xcode
+.PHONY: clean build all install uninstall
 
-xcode:
-	xcodebuild -scheme $(SCHEME) -target $(TARGET) -configuration $(CONFIGURATION) SYMROOT=$(OUT) build
-	@echo "executable is located in ./$(OUT)/$(CONFIGURATION)/$(TARGET)"
+all: install
 
-.PHONY: clean
+build:
+	@xcodebuild -scheme $(SCHEME) -target $(TARGET) -configuration $(CONFIGURATION) SYMROOT=$(OUT) build
+
+install: build
+	@cp -r ./$(OUT)/$(CONFIGURATION)/ $(LIB)/$(TARGET)
+	@ln -s $(LIB)/$(TARGET)/$(TARGET) $(BIN)/$(TARGET)
 
 clean:
-	rm -rf $(OUT)/
+	@rm -rf $(OUT)/
+
+uninstall:
+	@rm -f $(BIN)/$(TARGET)
+	@rm -rf $(LIB)/$(TARGET)
