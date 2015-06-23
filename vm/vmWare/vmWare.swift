@@ -11,21 +11,19 @@ import AppKit
 
 public class VMWare {
   
-  private let VMWARE_INSTALL_PATH = "/Applications/VMware Fusion.app"
-  private let USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath
-  private let SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory"
-  private let VMRUN_PATH: String
+  private struct Paths {
+    static let VMWARE_INSTALL_PATH = "/Applications/VMware Fusion.app"
+    static let USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath
+    static let SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory"
+    static let VMRUN_PATH = "\(Paths.VMWARE_INSTALL_PATH)/Contents/Library/vmrun"
+  }
   
   init() {
-    var path = "\(VMWARE_INSTALL_PATH)/Contents/Library/vmrun"
-    
-    if NSFileManager().fileExistsAtPath(VMWARE_INSTALL_PATH) == false {
-      halt("Missing: \(VMWARE_INSTALL_PATH), exiting")
-    } else if NSFileManager().fileExistsAtPath(path) == false {
-      halt("Missing: \(path), exiting")
+    if NSFileManager().fileExistsAtPath(Paths.VMWARE_INSTALL_PATH) == false {
+      halt("Missing: \(Paths.VMWARE_INSTALL_PATH), exiting")
+    } else if NSFileManager().fileExistsAtPath(Paths.VMRUN_PATH) == false {
+      halt("Missing: \(Paths.VMRUN_PATH), exiting")
     }
-    
-    VMRUN_PATH = path
   }
 }
 
@@ -42,11 +40,11 @@ public extension VMWare {
   }
   
   func run(args: [String]) -> String {
-    return shell(VMRUN_PATH, args)
+    return shell(Paths.VMRUN_PATH, args)
   }
   
   func runAndPassError(args: [String]) -> (String, String) {
-    return shell(VMRUN_PATH, true, args)
+    return shell(Paths.VMRUN_PATH, true, args)
   }
 }
 
@@ -54,7 +52,7 @@ public extension VMWare {
 private extension VMWare {
 
   func updateStatus(inout inventory: [VMConfig]) {
-    var results = split(shell(VMRUN_PATH, ["list"])) {$0 == "\n"}
+    var results = split(shell(Paths.VMRUN_PATH, ["list"])) {$0 == "\n"}
     for line in results {
       line.strip
       if line.hasPrefix("Total running VMs") == false {
@@ -87,10 +85,10 @@ private extension VMWare {
     
     let fileManager = NSFileManager()
     
-    if fileManager.fileExistsAtPath(USER_INVENTORY_PATH) {
-      inventoryPath = USER_INVENTORY_PATH
-    } else if fileManager.fileExistsAtPath(SHARED_INVENTORY_PATH) {
-      inventoryPath = USER_INVENTORY_PATH
+    if fileManager.fileExistsAtPath(Paths.USER_INVENTORY_PATH) {
+      inventoryPath = Paths.USER_INVENTORY_PATH
+    } else if fileManager.fileExistsAtPath(Paths.SHARED_INVENTORY_PATH) {
+      inventoryPath = Paths.USER_INVENTORY_PATH
     } else {
       return []
     }
@@ -156,7 +154,7 @@ private extension VMWare {
   }
   
   func ipAddress(vmPath: String) -> String {
-    return shell(VMRUN_PATH, [
+    return shell(Paths.VMRUN_PATH, [
       "readVariable",
       vmPath,
       "guestVar",
