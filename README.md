@@ -44,6 +44,7 @@ VM is a command line tool for VMWare Fusion, where it allows the user to run <br
 **-h**
 * prints a help message
 
+## Build
 ### To run the build from the command-line
 ```bash
 make
