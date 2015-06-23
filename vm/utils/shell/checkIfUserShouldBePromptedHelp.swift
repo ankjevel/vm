@@ -37,6 +37,8 @@ public func checkIfUserShouldBePromptedHelp() {
     "                \(bw)C:\\Program Files (x86)\\MSBuild\\12.0\\bin\\MSBuild.exe\(r)",
     "\(bw)-y\(r)              answers \"YES\", when prompted",
     "",
+    "\(bw)-n\(r)              answers \"NO\", when prompted",
+    "",
     "\(bw)-c\(r) --clear      clears core-data storage",
     "",
     "\(bw)-h\(r) --help       prints this guide",

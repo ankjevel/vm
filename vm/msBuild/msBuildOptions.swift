@@ -34,7 +34,7 @@ public class MSBuildOptions: Printable {
     return value.hasSuffix(".exe")
   })
 
-  public var forceYes: Bool = false
+  public var answer: Bool?
 }
 
 // MARK: Private
@@ -53,7 +53,7 @@ public extension MSBuildOptions {
         "\"user\": \"\(user.value)\", " +
         "\"password\": \"\(password.value)\", " +
         "\"msbuild\": \"\(msbuild.value)\", " +
-        "\"forceYes\": \"\(forceYes)\", " +
+        "\"answer\": \"\(answer)\", " +
         "\"set values\": [" +
           "{\"taskSet\": \"\(task.set)\"}, " +
           "{\"propertySet\": \"\(property.set)\"}, " +
@@ -73,7 +73,8 @@ public extension MSBuildOptions {
     case "user", "u": self.user.value = value!
     case "password", "p": self.password.value = value!
     case "msbuild", "m": self.msbuild.value = value!
-    case "y": self.forceYes = value!.bool
+    case "n": self.answer = false
+    case "y": self.answer = true
     default: ""
     }
   }

@@ -91,8 +91,8 @@ private extension App {
   func promptLoad(setting: Setting, inout selected: FeedbackItem, inout loaded: Bool) {
     var loadProfile: Bool? = nil
     
-    if selected.options.forceYes {
-      loadProfile = true
+    if selected.options.answer != nil {
+      loadProfile = selected.options.answer!
     }
     
     while loadProfile == nil {
