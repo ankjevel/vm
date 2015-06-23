@@ -48,14 +48,14 @@ public extension App {
     var selected = getImage(fb, options: options)
     keychain.identifier = selected.id
     
-    let entity: [Setting] = getEntities().filter({
+    let entity: [Setting] = getEntities().filter() {
       $0.id as Any? != nil &&
       $0.property as Any? != nil &&
       $0.solution as Any? != nil &&
       $0.task as Any? != nil &&
       $0.user as Any? != nil &&
       $0.id == selected.id
-    })
+    }
     var loaded: Bool = false
     let entityExists = entity.count > 0
     
@@ -91,8 +91,8 @@ private extension App {
   func promptLoad(setting: Setting, inout selected: FeedbackItem, inout loaded: Bool) {
     var loadProfile: Bool? = nil
     
-    if selected.options.answer != nil {
-      loadProfile = selected.options.answer!
+    if ANSWER != nil {
+      loadProfile = ANSWER!
     }
     
     while loadProfile == nil {
@@ -205,11 +205,11 @@ private extension App {
   
   func checkIfClearCoreData() {
     var clear = false
-    eachProcessArgument({ argument in
-      if argument == "c" || argument == "clear" {
+    eachProcessArgument() {
+      if $0 == "c" || $0 == "clear" {
         clear = true
       }
-    })
+    }
     
     if clear {
       var userInput: Bool? = nil

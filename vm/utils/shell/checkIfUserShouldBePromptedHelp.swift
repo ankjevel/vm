@@ -45,10 +45,10 @@ public func checkIfUserShouldBePromptedHelp() {
     ""
   ]
   
-  eachProcessArgument({ argument in
-    if argument == "h" || argument == "help" {
+  eachProcessArgument() {
+    if $0 == "h" || $0 == "help" {
       println("\n".join(helpMessage))
       exit(0)
     }
-  })
+  }
 }

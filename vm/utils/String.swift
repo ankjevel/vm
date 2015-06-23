@@ -27,7 +27,9 @@ extension String {
   }
   
   var windowsEcaping: String {
-    return "\\".join(split(self.stringByReplacingOccurrencesOfString("\\\\", withString: "\\"), maxSplit: 1, allowEmptySlices: true){ $0 == "\\" })
+    return "\\".join(split(self.stringByReplacingOccurrencesOfString("\\\\", withString: "\\"), maxSplit: 1, allowEmptySlices: true) {
+      $0 == "\\"
+    })
   }
   
   func substringFromIndex(index: Int) -> String {

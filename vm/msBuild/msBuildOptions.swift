@@ -10,31 +10,29 @@ import Foundation
 
 public class MSBuildOptions: Printable {
 
-  public var user = MSBuildOption("", "user", { (value: String) -> Bool in
-    return value != ""
-  })
+  public var user = MSBuildOption("", "user") {
+    $0 != ""
+  }
   
-  public var password = MSBuildOption("", "password", { (value: String) -> Bool in
-    return value != ""
-  })
+  public var password = MSBuildOption("", "password") {
+    $0 != ""
+  }
   
-  public var solution = MSBuildOption("", "solution", { (value: String) -> Bool in
-    return value.hasSuffix(".sln") && value.instancesOf("\\\\") > 1
-  })
+  public var solution = MSBuildOption("", "solution") {
+    $0.hasSuffix(".sln") && $0.instancesOf("\\\\") > 1
+  }
   
-  public var property = MSBuildOption("", "property", { (value: String) -> Bool in
-    return value == "" || value.hasPrefix("/property:")
-  })
+  public var property = MSBuildOption("", "property") {
+    $0 == "" || $0.hasPrefix("/property:")
+  }
   
-  public var task = MSBuildOption("", "task", { (value: String) -> Bool in
-    return value == "" || value.hasPrefix("/t:")
-  })
+  public var task = MSBuildOption("", "task") {
+    $0 == "" || $0.hasPrefix("/t:")
+  }
   
-  public var msbuild = MSBuildOption("C:\\Program Files (x86)\\MSBuild\\12.0\\bin\\MSBuild.exe", "msbuild", { (value: String) -> Bool in
-    return value.hasSuffix(".exe")
-  })
-
-  public var answer: Bool?
+  public var msbuild = MSBuildOption("C:\\Program Files (x86)\\MSBuild\\12.0\\bin\\MSBuild.exe", "msbuild") {
+    $0.hasSuffix(".exe")
+  }
 }
 
 // MARK: Private
@@ -53,7 +51,6 @@ public extension MSBuildOptions {
         "\"user\": \"\(user.value)\", " +
         "\"password\": \"\(password.value)\", " +
         "\"msbuild\": \"\(msbuild.value)\", " +
-        "\"answer\": \"\(answer)\", " +
         "\"set values\": [" +
           "{\"taskSet\": \"\(task.set)\"}, " +
           "{\"propertySet\": \"\(property.set)\"}, " +
@@ -73,8 +70,6 @@ public extension MSBuildOptions {
     case "user", "u": self.user.value = value!
     case "password", "p": self.password.value = value!
     case "msbuild", "m": self.msbuild.value = value!
-    case "n": self.answer = false
-    case "y": self.answer = true
     default: ""
     }
   }

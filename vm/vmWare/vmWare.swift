@@ -57,18 +57,18 @@ private extension VMWare {
       line.strip
       if line.hasPrefix("Total running VMs") == false {
         inventory
-          .filter({
+          .filter() {
             $0.path == line
-          })
-          .map({
+          }
+          .map() {
             $0.status = "Running"
-          })
+          }
       }
     }
   }
   
   func addInfo(inout inventory: [VMConfig]) {
-    inventory.map({ vmconfig -> VMConfig in
+    inventory.map() { vmconfig -> VMConfig in
       if vmconfig.running {
         vmconfig.ipAddress = self.ipAddress(vmconfig.path)
       }
@@ -76,7 +76,7 @@ private extension VMWare {
         vmconfig.os = guestOS
       }
       return vmconfig
-    })
+    }
   }
   
   func inventoryList() -> [VMConfig] {
@@ -127,9 +127,9 @@ private extension VMWare {
       }
     }
     
-    return vmList.values.array.filter({
+    return vmList.values.array.filter() {
       $0.path != "" && count($0.path) > 0
-    })
+    }
   }
   
   func runtimeConfig(path: String, value: String) -> String? {

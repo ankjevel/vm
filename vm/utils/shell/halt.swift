@@ -18,7 +18,7 @@ public func halt(message: String) {
 }
 
 public func halt(dict: [String: AnyObject]) {
-  var error = NSError(domain: "VM", code: 9999, userInfo: dict)
+  var error = NSError(domain: "VM", code: 0, userInfo: dict)
   
   halt(error)
 }
