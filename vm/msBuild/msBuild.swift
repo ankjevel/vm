@@ -81,9 +81,9 @@ public class MSBuild {
 public extension MSBuild {
   
   func run() {
-//    checkIfExists(selected.options.solution.value.removeQuotations.windowsEcaping, .FileExists)
-//    checkIfExists(selected.options.msbuild.value.removeQuotations.windowsEcaping, .FileExists)
-//    checkIfExists(Paths.Windows.temp, .DirectoryExists)
+    checkIfExists(selected.options.solution.value.removeQuotations.windowsEcaping, .FileExists)
+    checkIfExists(selected.options.msbuild.value.removeQuotations.windowsEcaping, .FileExists)
+    checkIfExists(Paths.Windows.temp, .DirectoryExists)
     
     createBuildScript()
   }
