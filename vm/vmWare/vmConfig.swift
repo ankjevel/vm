@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 dennisp.se. All rights reserved.
 //
 
+import Foundation
+
 public class VMConfig: Printable {
   
   public var path = ""
@@ -26,14 +28,23 @@ public extension VMConfig {
   
   var description: String {
     get {
-      return "{" +
-        "\"path\": \"\(path)\", " +
-        "\"name\": \"\(name)\", " +
-        "\"status\": \"\(status)\", " +
-        "\"ipAddress\": \"\(ipAddress)\", " +
-        "\"os\": \"\(os)\", " +
-        "\"running\": \"\(running)\"" +
-      "}";
+      
+      var description: [String: AnyObject] = [
+        "path": path,
+        "name": name,
+        "status": status,
+        "ipAddress": ipAddress,
+        "os": os,
+        "running": running
+      ]
+      
+      if
+        let data = NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted, error: nil),
+        let json = NSString(data: data, encoding: NSUTF8StringEncoding) {
+          return json as String
+      } else {
+        return ""
+      }
     }
   }
 }

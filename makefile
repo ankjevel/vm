@@ -1,24 +1,21 @@
-OUT=build
 TARGET=vm
 SCHEME=vm
-CONFIGURATION=Release
+CONFIGURATION=Debug
 BIN=/usr/local/bin
 LIB=/usr/local/lib
 
-.PHONY: clean build all install uninstall
+.PHONY: all build clean install uninstall
 
 all: install
 
 build:
-	@xcodebuild -scheme $(SCHEME) -target $(TARGET) -configuration $(CONFIGURATION) SYMROOT=$(OUT) build
-
-install: build
-	@cp -r ./$(OUT)/$(CONFIGURATION)/ $(LIB)/$(TARGET)
-	@ln -s $(LIB)/$(TARGET)/$(TARGET) $(BIN)/$(TARGET)
+	@xcodebuild -scheme $(SCHEME) -target $(TARGET) -configuration $(CONFIGURATION) SYMROOT=$(LIB)/$(TARGET) build
 
 clean:
-	@rm -rf $(OUT)/
+	@rm -rf $(LIB)/$(TARGET)
+
+install: build
+	@ln -sf $(LIB)/$(TARGET)/$(CONFIGURATION)/$(TARGET) $(BIN)
 
 uninstall:
 	@rm -f $(BIN)/$(TARGET)
-	@rm -rf $(LIB)/$(TARGET)

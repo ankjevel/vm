@@ -27,9 +27,13 @@ extension String {
   }
   
   var windowsEcaping: String {
-    return "\\".join(split(self.stringByReplacingOccurrencesOfString("\\\\", withString: "\\"), maxSplit: 1, allowEmptySlices: true) {
+    var str = "\\".join(split(self.stringByReplacingOccurrencesOfString("\\\\", withString: "\\"), maxSplit: 1, allowEmptySlices: true) {
       $0 == "\\"
     })
+    if str.hasPrefix("\\") && str.hasPrefix("\\\\") == false {
+      str = "\\\(str)"
+    }
+    return str
   }
   
   func substringFromIndex(index: Int) -> String {

@@ -15,8 +15,8 @@
 		D64BF3411B38BFDF00931D2F /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33E1B38BFDF00931D2F /* feedback.swift */; };
 		D64BF3421B38BFDF00931D2F /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */; };
 		D64BF3431B38BFDF00931D2F /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */; };
-		D64BF3471B38C00600931D2F /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3441B38C00600931D2F /* CoreData.swift */; };
-		D64BF3481B38C00600931D2F /* CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3441B38C00600931D2F /* CoreData.swift */; };
+		D64BF3471B38C00600931D2F /* PersistentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3441B38C00600931D2F /* PersistentData.swift */; };
+		D64BF3481B38C00600931D2F /* PersistentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3441B38C00600931D2F /* PersistentData.swift */; };
 		D64BF3491B38C00600931D2F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3451B38C00600931D2F /* Keychain.swift */; };
 		D64BF34A1B38C00600931D2F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3451B38C00600931D2F /* Keychain.swift */; };
 		D64BF34B1B38C00600931D2F /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3461B38C00600931D2F /* String.swift */; };
@@ -49,20 +49,18 @@
 		D64BF3741B38C05100931D2F /* vmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3711B38C05100931D2F /* vmConfig.swift */; };
 		D64BF3751B38C05100931D2F /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3721B38C05100931D2F /* vmWare.swift */; };
 		D64BF3761B38C05100931D2F /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3721B38C05100931D2F /* vmWare.swift */; };
-		D64BF37C1B38C58900931D2F /* VMS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3771B38C58900931D2F /* VMS.xcdatamodeld */; };
-		D64BF37D1B38C58900931D2F /* VMS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3771B38C58900931D2F /* VMS.xcdatamodeld */; };
 		D6595DB81B2CD17800A82B81 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DB71B2CD17800A82B81 /* main.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		D6595DB21B2CD17800A82B81 /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			buildActionMask = 12;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -72,7 +70,7 @@
 		D6255A981B2F697A004AC403 /* app.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = app.swift; sourceTree = "<group>"; };
 		D64BF33E1B38BFDF00931D2F /* feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = feedback.swift; path = feedback/feedback.swift; sourceTree = "<group>"; };
 		D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = feedbackItem.swift; path = feedback/feedbackItem.swift; sourceTree = "<group>"; };
-		D64BF3441B38C00600931D2F /* CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreData.swift; path = utils/CoreData.swift; sourceTree = "<group>"; };
+		D64BF3441B38C00600931D2F /* PersistentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentData.swift; path = utils/PersistentData.swift; sourceTree = "<group>"; };
 		D64BF3451B38C00600931D2F /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = utils/Keychain.swift; sourceTree = "<group>"; };
 		D64BF3461B38C00600931D2F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = utils/String.swift; sourceTree = "<group>"; };
 		D64BF34D1B38C02000931D2F /* arguments.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = arguments.swift; path = utils/shell/arguments.swift; sourceTree = "<group>"; };
@@ -89,10 +87,6 @@
 		D64BF36A1B38C04600931D2F /* msBuildOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = msBuildOptions.swift; path = msBuild/msBuildOptions.swift; sourceTree = "<group>"; };
 		D64BF3711B38C05100931D2F /* vmConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vmConfig.swift; path = vmWare/vmConfig.swift; sourceTree = "<group>"; };
 		D64BF3721B38C05100931D2F /* vmWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vmWare.swift; path = vmWare/vmWare.swift; sourceTree = "<group>"; };
-		D64BF3781B38C58900931D2F /* VMS 0.1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VMS 0.1.xcdatamodel"; sourceTree = "<group>"; };
-		D64BF3791B38C58900931D2F /* VMS 0.2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VMS 0.2.xcdatamodel"; sourceTree = "<group>"; };
-		D64BF37A1B38C58900931D2F /* VMS 0.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "VMS 0.3.xcdatamodel"; sourceTree = "<group>"; };
-		D64BF37B1B38C58900931D2F /* VMS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VMS.xcdatamodel; sourceTree = "<group>"; };
 		D6595DB41B2CD17800A82B81 /* vm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vm; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6595DB71B2CD17800A82B81 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D6595DC61B2DB2AD00A82B81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -127,7 +121,7 @@
 		D6255AA01B2F8C64004AC403 /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				D64BF3441B38C00600931D2F /* CoreData.swift */,
+				D64BF3441B38C00600931D2F /* PersistentData.swift */,
 				D64BF3451B38C00600931D2F /* Keychain.swift */,
 				D64BF3461B38C00600931D2F /* String.swift */,
 				D64BF33A1B3891B800931D2F /* shell */,
@@ -167,7 +161,6 @@
 			isa = PBXGroup;
 			children = (
 				D64BF3651B38C03200931D2F /* Setting.swift */,
-				D64BF3771B38C58900931D2F /* VMS.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -309,7 +302,7 @@
 			files = (
 				D64BF3561B38C02000931D2F /* arguments.swift in Sources */,
 				D64BF3641B38C02000931D2F /* shellUtils.swift in Sources */,
-				D64BF3481B38C00600931D2F /* CoreData.swift in Sources */,
+				D64BF3481B38C00600931D2F /* PersistentData.swift in Sources */,
 				D64BF35A1B38C02000931D2F /* promptHelp.swift in Sources */,
 				D64BF36C1B38C04600931D2F /* msBuild.swift in Sources */,
 				D64BF3671B38C03200931D2F /* Setting.swift in Sources */,
@@ -321,7 +314,6 @@
 				D64BF3741B38C05100931D2F /* vmConfig.swift in Sources */,
 				D64BF35E1B38C02000931D2F /* getUserInput.swift in Sources */,
 				D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */,
-				D64BF37D1B38C58900931D2F /* VMS.xcdatamodeld in Sources */,
 				D64BF3601B38C02000931D2F /* halt.swift in Sources */,
 				D64BF34C1B38C00600931D2F /* String.swift in Sources */,
 				D6255A911B2F635D004AC403 /* main.swift in Sources */,
@@ -355,10 +347,9 @@
 				D64BF34B1B38C00600931D2F /* String.swift in Sources */,
 				D64BF35B1B38C02000931D2F /* eachProcessArgument.swift in Sources */,
 				D64BF3731B38C05100931D2F /* vmConfig.swift in Sources */,
-				D64BF37C1B38C58900931D2F /* VMS.xcdatamodeld in Sources */,
 				D6595DB81B2CD17800A82B81 /* main.swift in Sources */,
 				D64BF3611B38C02000931D2F /* shell.swift in Sources */,
-				D64BF3471B38C00600931D2F /* CoreData.swift in Sources */,
+				D64BF3471B38C00600931D2F /* PersistentData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -475,6 +466,7 @@
 		D6595DBC1B2CD17800A82B81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				OTHER_SWIFT_FLAGS = "-D Debug";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -483,6 +475,7 @@
 		D6595DBD1B2CD17800A82B81 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_USE_OPTIMIZATION_PROFILE = YES;
 				OTHER_SWIFT_FLAGS = "-D Release";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -519,23 +512,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		D64BF3771B38C58900931D2F /* VMS.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				D64BF3781B38C58900931D2F /* VMS 0.1.xcdatamodel */,
-				D64BF3791B38C58900931D2F /* VMS 0.2.xcdatamodel */,
-				D64BF37A1B38C58900931D2F /* VMS 0.3.xcdatamodel */,
-				D64BF37B1B38C58900931D2F /* VMS.xcdatamodel */,
-			);
-			currentVersion = D64BF37A1B38C58900931D2F /* VMS 0.3.xcdatamodel */;
-			name = VMS.xcdatamodeld;
-			path = Models/VMS.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = D6595DAC1B2CD17800A82B81 /* Project object */;
 }

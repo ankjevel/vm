@@ -55,7 +55,14 @@ public extension MSBuildOptions {
         "property set": property.set,
         "solution set": solution.set
       ]
-      return "\(description)";
+      
+      if
+        let data = NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted, error: nil),
+        let json = NSString(data: data, encoding: NSUTF8StringEncoding) {
+          return json as String
+      } else {
+        return ""
+      }
     }
   }
   

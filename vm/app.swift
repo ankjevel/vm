@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-public class App: CoreData {
+public class App: PersistentData {
 
   private var vmware = VMWare()
   private let keychain = Keychain()
@@ -18,6 +18,11 @@ public class App: CoreData {
   override init() {
     self.build = MSBuild(vmware: &self.vmware)
     super.init()
+    
+    
+    let setting = Setting(id: "foo", property: "prop", solution: "sol", task: "task", user: "ok")
+    self.persistentDataContext.update(setting)
+    self.persistentDataContext.save()
     if CLEAR_CORE_DATA {
       clearCoreData()
     }
@@ -58,18 +63,15 @@ public extension App {
     keychain.identifier = selected.id
     
     let entity: [Setting] = getEntities().filter() {
-      $0.id as Any? != nil &&
-      $0.property as Any? != nil &&
-      $0.solution as Any? != nil &&
-      $0.task as Any? != nil &&
-      $0.user as Any? != nil &&
       $0.id == selected.id
     }
+    
     var loaded: Bool = false
     let entityExists = entity.count > 0
     
-    if entityExists, let last = entity.last {
-      promptLoad(last, selected: &selected, loaded: &loaded)
+    if entityExists,
+      let last = entity.last {
+        promptLoad(last, selected: &selected, loaded: &loaded)
     }
 
     setUser(&selected, loaded: &loaded)
@@ -79,7 +81,7 @@ public extension App {
     setTaskProperty(&selected, loaded: &loaded)
     
     if loaded == false {
-      saveEntity(selected, update: entityExists)
+      saveEntity(selected)
     }
     
     build.selected = selected
@@ -124,13 +126,13 @@ private extension App {
         setUserAndPassword(unwrapped, selected: &selected)
       }
       if selected.options.solution.set == false {
-        selected.options.solution.value = setting.solution!
+        selected.options.solution.value = setting.solution
       }
       if selected.options.task.set == false {
-        selected.options.task.value = setting.task!
+        selected.options.task.value = setting.task
       }
       if selected.options.property.set == false {
-        selected.options.property.value = setting.property!
+        selected.options.property.value = setting.property
       }
       loaded = true
     }
@@ -228,7 +230,7 @@ private extension App {
   
   func setPassword(inout selected: FeedbackItem, inout loaded: Bool) {
     while selected.options.password.set == false {
-      var input = getUserInput("password for \(selected.options.user):", noEcho: true)
+      var input = getUserInput("password for \(selected.options.user.value):", noEcho: true)
       selected.options.password.value = input
       loaded = false
     }
@@ -251,17 +253,10 @@ private extension App {
     }
     
     if userInput == true {
-      var entities = getEntities()
+      let context = persistentDataContext
+      context.file.removeAll(keepCapacity: false)
     
-      if let context = managedObjectContext {
-        for entity: NSManagedObject in entities {
-          context.deleteObject(entity)
-        }
-      }
-    
-      entities.removeAll(keepCapacity: false)
-    
-      saveContext(false)
+      saveContext()
     }
   }
   
