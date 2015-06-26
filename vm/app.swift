@@ -18,10 +18,6 @@ public class App: PersistentData {
     self.build = MSBuild(vmware: &self.vmware)
     super.init()
     
-    
-    let setting = Setting(id: "foo", property: "prop", solution: "sol", task: "task", user: "ok")
-    self.persistentDataContext.update(setting)
-    self.persistentDataContext.save()
     if CLEAR_SAVE_DATA {
       clearSaveData()
     }
