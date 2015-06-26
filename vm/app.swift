@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import CoreData
 
 public class App: PersistentData {
 
@@ -23,8 +22,8 @@ public class App: PersistentData {
     let setting = Setting(id: "foo", property: "prop", solution: "sol", task: "task", user: "ok")
     self.persistentDataContext.update(setting)
     self.persistentDataContext.save()
-    if CLEAR_CORE_DATA {
-      clearCoreData()
+    if CLEAR_SAVE_DATA {
+      clearSaveData()
     }
   }
 }
@@ -241,12 +240,12 @@ private extension App {
     keychain.save(options.user.value, data: options.password.value)
   }
   
-  func clearCoreData() {
+  func clearSaveData() {
 
     var userInput: Bool? = ANSWER
     
     while userInput == nil {
-      var input = getUserInput("do you really want to clear Core Data?")
+      var input = getUserInput("do you really want to previous Saved data?")
       if input != "" {
         userInput = input.bool
       }

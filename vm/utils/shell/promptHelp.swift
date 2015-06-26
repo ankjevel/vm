@@ -37,13 +37,11 @@ public func promptHelp() {
     "",
     "\(bw)-i\(r) --image      selects a specific image (if name CONTAINS this string)",
     "",
-    "\(bw)-c\(r) --clear      clears core-data storage",
-    "",
     "\(bw)-y\(r)              answers \"YES\", when prompted",
     "",
     "\(bw)-n\(r)              answers \"NO\", when prompted",
     "",
-    "\(bw)-c\(r) --clear      clears core-data storage",
+    "\(bw)-c\(r) --clear      clears previously saved data",
     "",
     "\(bw)-h\(r) --help       prints this guide"
   ]

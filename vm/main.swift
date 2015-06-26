@@ -10,7 +10,7 @@ public let WIDTH: Int
 public var ANSWER: Bool?
 public var VM_IMAGE: String?
 public var DISPLAY_HELP: Bool = false
-public var CLEAR_CORE_DATA: Bool = false
+public var CLEAR_SAVE_DATA: Bool = false
 
 if let cols = shell("/usr/bin/tput", ["cols"]).stripWhiteSpaceAndNewLine.toInt() {
   WIDTH = cols
@@ -32,7 +32,7 @@ eachProcessArgument() {
     DISPLAY_HELP = true
   }
   if $0 == "c" || $0 == "clear" {
-    CLEAR_CORE_DATA = true
+    CLEAR_SAVE_DATA = true
   }
 }
 

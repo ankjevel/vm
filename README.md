@@ -41,7 +41,7 @@ This is useful when having a shared folder between your host and guest, so that<
 * always enter `no` when prompted
 
 **-c** *--clear*
-* clear Core Data saves
+* clear previously saved data
 
 **-h**
 * prints a help message
