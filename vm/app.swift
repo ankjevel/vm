@@ -241,7 +241,7 @@ private extension App {
     var userInput: Bool? = ANSWER
     
     while userInput == nil {
-      var input = getUserInput("do you really want to previous Saved data?")
+      var input = getUserInput("do you really want to clear previosly saved data?")
       if input != "" {
         userInput = input.bool
       }

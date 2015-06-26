@@ -41,7 +41,7 @@ public func promptHelp() {
     "",
     "\(bw)-n\(r)              answers \"NO\", when prompted",
     "",
-    "\(bw)-c\(r) --clear      clears previously saved data",
+    "\(bw)-c\(r) --clear      clear previously saved data",
     "",
     "\(bw)-h\(r) --help       prints this guide"
   ]
