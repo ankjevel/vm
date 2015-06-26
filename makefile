@@ -1,6 +1,6 @@
 TARGET=vm
 SCHEME=vm
-CONFIGURATION=Debug
+CONFIGURATION=Release
 BIN=/usr/local/bin
 LIB=/usr/local/lib
 
