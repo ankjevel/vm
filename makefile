@@ -1,3 +1,4 @@
+OUT=build
 TARGET=vm
 SCHEME=vm
 CONFIGURATION=Release
@@ -9,13 +10,19 @@ LIB=/usr/local/lib
 all: install
 
 build:
-	@xcodebuild -scheme $(SCHEME) -target $(TARGET) -configuration $(CONFIGURATION) SYMROOT=$(LIB)/$(TARGET) build
+	@xcodebuild -scheme $(SCHEME) -target $(TARGET) -configuration $(CONFIGURATION) SYMROOT=$(OUT) build
 
 clean:
-	@rm -rf $(LIB)/$(TARGET)
+	@rm -rf $(OUT)
+	@echo "removed $(OUT)"
 
 install: build
-	@ln -sf $(LIB)/$(TARGET)/$(CONFIGURATION)/$(TARGET) $(BIN)
+	@mkdir -p $(LIB)/$(TARGET)
+	@cp -f $(OUT)/$(CONFIGURATION)/$(TARGET) $(LIB)/$(TARGET)/$(TARGET)
+	@ln -sf $(LIB)/$(TARGET)/$(TARGET) $(BIN)
+	@echo "created symlink $(LIB)/$(TARGET)/$(TARGET) <-> $(BIN)/$(TARGET)"
 
 uninstall:
 	@rm -f $(BIN)/$(TARGET)
+	@rm -rf $(LIB)/$(TARGET)
+	@echo "removed $(BIN)/$(TARGET) and $(LIB)/$(TARGET)/"
