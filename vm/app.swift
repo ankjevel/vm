@@ -87,6 +87,12 @@ public extension App {
 // MARK: Private
 private extension App {
   
+  func emp(string: String) -> String {
+    let b = ASCIIColor.Bold.white
+    let r = ASCIIColor.reset
+    return "\(b)\(string)\(r)"
+  }
+  
   func setUserAndPassword(user: String, inout selected: FeedbackItem) {
     if var password = keychain.load(user) as String? {
       selected.options.password.value = password
@@ -102,7 +108,8 @@ private extension App {
     }
     
     while loadProfile == nil {
-      var input = getUserInput("load user profile (yes|no)?")
+      var help = emp("yes|no")
+      var input = getUserInput("load user profile (\(help))?")
       if input != "" {
         loadProfile = input.bool
       }
@@ -171,7 +178,8 @@ private extension App {
     if item!.running == false {
       var userInput: Bool? = ANSWER
       while userInput == nil {
-        var input = getUserInput("vm is stopped, would you like to start it (yes|no)?")
+        var help = emp("yes|no")
+        var input = getUserInput("vm is stopped, would you like to start it (\(help))?")
         if input != "" { userInput = input.bool }
       }
       if userInput == true {
@@ -188,7 +196,8 @@ private extension App {
   
   func setUser(inout selected: FeedbackItem, inout loaded: Bool) {
     while selected.options.user.set == false {
-      var input = getUserInput("select user:")
+      var help = emp("ex: COMPANY\\user")
+      var input = getUserInput("select user (\(help)):")
       selected.options.user.value = input
       loaded = false
     }
@@ -196,7 +205,8 @@ private extension App {
   
   func setSolution(inout selected: FeedbackItem, inout loaded: Bool) {
 
-    let message = "path to solution file (file\(ASCIIColor.Bold.white).sln\(ASCIIColor.reset)):"
+    var help = emp("ex: C:\\dev\\Project\\Project.sln")
+    let message = "path to solution file (\(help)):"
     while selected.options.solution.set == false {
       var input = getUserInput(message)
       if input.hasPrefix("~") {
@@ -209,7 +219,8 @@ private extension App {
   
   func setTask(inout selected: FeedbackItem, inout loaded: Bool) {
     while selected.options.task.set == false {
-      var input = getUserInput("select msbuild task:")
+      var help = emp("ex: /t:build")
+      var input = getUserInput("select msbuild task (\(help)):")
       selected.options.task.value = input
       loaded = false
     }
@@ -217,7 +228,8 @@ private extension App {
   
   func setTaskProperty(inout selected: FeedbackItem, inout loaded: Bool) {
     while selected.options.property.set == false {
-      var input = getUserInput("select msbuild task propert(y|ies):")
+      var help = emp("ex: /property:Configuration=Debug")
+      var input = getUserInput("select msbuild task propert(y|ies) (\(help)):")
       selected.options.property.value = input
       loaded = false
     }
@@ -241,7 +253,8 @@ private extension App {
     var userInput: Bool? = ANSWER
     
     while userInput == nil {
-      var input = getUserInput("do you really want to clear previosly saved data?")
+      var help = emp("yes|no")
+      var input = getUserInput("do you really want to clear previosly saved data (\(help))?")
       if input != "" {
         userInput = input.bool
       }
