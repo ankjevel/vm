@@ -22,11 +22,11 @@ public class MSBuildOptions: Printable {
     $0.hasSuffix(".sln") && $0.instancesOf("\\") > 1
   }
   
-  public var property = MSBuildOption("", "property") {
+  public var property = MSBuildOption("/property:Configuration=Debug", "property") {
     $0 == "" || $0.hasPrefix("/property:")
   }
   
-  public var task = MSBuildOption("", "task") {
+  public var task = MSBuildOption("/t:build", "task") {
     $0 == "" || $0.hasPrefix("/t:")
   }
   
