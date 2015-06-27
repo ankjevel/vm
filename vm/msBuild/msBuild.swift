@@ -37,7 +37,7 @@ internal enum Response: String {
   case DirectoryExists = "Directory exists"
   case DirectoryDoesNotExist = "Directory does not exist"
   case Credentials = "Username/Password incorrect"
-  case Unknown = "Something went wrong"
+  case Unknown = "Something went wrong. It could be wrong username. Did you forget your domain? ex: `COMPANY\\user`"
   
   init(_ response: String, _ error: String) {
     if response.contains("file exists") {
