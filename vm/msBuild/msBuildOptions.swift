@@ -19,7 +19,7 @@ public class MSBuildOptions: Printable {
   }
   
   public var solution = MSBuildOption("", "solution") {
-    $0.hasSuffix(".sln") && $0.instancesOf("\\\\") > 1
+    $0.hasSuffix(".sln") && $0.instancesOf("\\") > 1
   }
   
   public var property = MSBuildOption("", "property") {
