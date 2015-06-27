@@ -1,6 +1,5 @@
 OUT=build
 TARGET=vm
-SCHEME=vm
 CONFIGURATION=Release
 BIN=/usr/local/bin
 LIB=/usr/local/lib
@@ -10,7 +9,7 @@ LIB=/usr/local/lib
 all: install
 
 build:
-	@xcodebuild -scheme $(SCHEME) -target $(TARGET) -configuration $(CONFIGURATION) SYMROOT=$(OUT) build
+	@xcodebuild -target $(TARGET) -configuration $(CONFIGURATION) SYMROOT=$(OUT) build
 
 clean:
 	@rm -rf $(OUT)

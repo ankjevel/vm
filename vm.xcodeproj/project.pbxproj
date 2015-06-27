@@ -50,6 +50,7 @@
 		D64BF3751B38C05100931D2F /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3721B38C05100931D2F /* vmWare.swift */; };
 		D64BF3761B38C05100931D2F /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3721B38C05100931D2F /* vmWare.swift */; };
 		D6595DB81B2CD17800A82B81 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DB71B2CD17800A82B81 /* main.swift */; };
+		D6F1F47F1B3E84D10063F0B4 /* makefile in Sources */ = {isa = PBXBuildFile; fileRef = D6F1F47E1B3E84D10063F0B4 /* makefile */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -90,6 +91,7 @@
 		D6595DB41B2CD17800A82B81 /* vm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vm; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6595DB71B2CD17800A82B81 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D6595DC61B2DB2AD00A82B81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D6F1F47E1B3E84D10063F0B4 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 		D6595DAB1B2CD17800A82B81 = {
 			isa = PBXGroup;
 			children = (
+				D6F1F47E1B3E84D10063F0B4 /* makefile */,
 				D6595DC61B2DB2AD00A82B81 /* README.md */,
 				D6595DB61B2CD17800A82B81 /* vm */,
 				D6255A871B2EE77F004AC403 /* vmTests */,
@@ -341,6 +344,7 @@
 				D64BF36B1B38C04600931D2F /* msBuild.swift in Sources */,
 				D64BF35D1B38C02000931D2F /* getUserInput.swift in Sources */,
 				D64BF36D1B38C04600931D2F /* msBuildOption.swift in Sources */,
+				D6F1F47F1B3E84D10063F0B4 /* makefile in Sources */,
 				D64BF36F1B38C04600931D2F /* msBuildOptions.swift in Sources */,
 				D64BF3631B38C02000931D2F /* shellUtils.swift in Sources */,
 				D64BF3591B38C02000931D2F /* promptHelp.swift in Sources */,
