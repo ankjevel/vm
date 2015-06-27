@@ -20,6 +20,11 @@ internal class JSON {
   private let fm = NSFileManager()
   
   lazy var file: [String: Setting] = {
+    
+    if self.fm.fileExistsAtPath(Paths.folder) == false {
+      self.fm.createDirectoryAtPath(Paths.folder, withIntermediateDirectories: true, attributes: nil, error: nil)
+    }
+    
     let path = Paths.file
     var parsed = [String: Setting]()
     
