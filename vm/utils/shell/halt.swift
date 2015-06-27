@@ -10,15 +10,15 @@
 import Foundation
 import Darwin
 
-public func halt(message: String) {
+public func halt(message: String, _ code: Int = 0) {
   var dict = [String: AnyObject]()
   dict[NSLocalizedDescriptionKey] = message
   
-  halt(dict)
+  halt(dict, code)
 }
 
-public func halt(dict: [String: AnyObject]) {
-  var error = NSError(domain: "VM", code: 0, userInfo: dict)
+public func halt(dict: [String: AnyObject], _ code: Int = 0) {
+  var error = NSError(domain: "VM", code: code, userInfo: dict)
   
   halt(error)
 }

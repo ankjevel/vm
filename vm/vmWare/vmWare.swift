@@ -20,9 +20,9 @@ public class VMWare {
   
   init() {
     if NSFileManager().fileExistsAtPath(Paths.VMWARE_INSTALL_PATH) == false {
-      halt("Missing: \(Paths.VMWARE_INSTALL_PATH), exiting")
+      halt("Missing: \(Paths.VMWARE_INSTALL_PATH), exiting", 300)
     } else if NSFileManager().fileExistsAtPath(Paths.VMRUN_PATH) == false {
-      halt("Missing: \(Paths.VMRUN_PATH), exiting")
+      halt("Missing: \(Paths.VMRUN_PATH), exiting", 301)
     }
   }
 }

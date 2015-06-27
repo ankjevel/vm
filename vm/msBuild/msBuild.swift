@@ -105,7 +105,7 @@ private extension MSBuild {
     return vmware.runAndPassError(auth + args)
   }
   
-  func vmWareRequest(args: [String], _ checkAgainst: Response) -> (Bool, Response) {
+  func vmWareRequest(args: [String], _ checkAgainst: Response) -> (ok: Bool, status: Response) {
     let (response, error) = vmWareRequest(args)
     let status = Response(response, error)
     
@@ -121,7 +121,7 @@ private extension MSBuild {
     ], res)
     
     if haltOnError && ok == false {
-      halt(status.rawValue)
+      halt(status.rawValue, res == .FileExists ? 200 : 201)
     }
     
     return ok
@@ -145,7 +145,7 @@ private extension MSBuild {
       fm.createDirectoryAtPath(Paths.OSX.temp, withIntermediateDirectories: true, attributes: nil, error: &error)
     }
     if error != nil {
-      halt("could not create temp folder")
+      halt("could not create temp folder", 202)
     }
 
     if checkIfExists(Paths.Windows.script, .FileExists, haltOnError: false) == true {
@@ -158,7 +158,7 @@ private extension MSBuild {
     
     let data = (file as NSString).dataUsingEncoding(NSUTF8StringEncoding)
     if fm.createFileAtPath(Paths.OSX.script, contents: data, attributes: nil) == false {
-      halt("could not create script file")
+      halt("could not create script file", 203)
     }
     
     sendBuildScript()
@@ -168,7 +168,7 @@ private extension MSBuild {
     vmWareRequest(["CopyFileFromHostToGuest", selected.id, Paths.OSX.script, Paths.Windows.script])
     
     if checkIfExists(Paths.Windows.script, .FileExists, haltOnError: false) == false {
-      halt("script not present in guest")
+      halt("script not present in guest", 204)
     }
     
     println("\(ASCIIColor.Bold.green)\nRunning build\(ASCIIColor.reset)")
@@ -184,7 +184,7 @@ private extension MSBuild {
   
   func readLogs() {
     if checkIfExists(Paths.Windows.log, .FileExists, haltOnError: false) == false {
-      halt("logs where not created!")
+      halt("logs where not created!", 205)
     }
     vmWareRequest(["CopyFileFromGuestToHost", self.selected.id, Paths.Windows.log, Paths.OSX.log])
     let success: Bool

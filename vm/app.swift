@@ -50,7 +50,7 @@ public extension App {
     }
     
     if fb.items.count == 0 {
-      halt("no vms available")
+      halt("no vms available", 100)
     }
     
     //  if fb.items.count > 1 {
@@ -179,7 +179,7 @@ private extension App {
       }
       
       if item!.running == false {
-        halt("vm is stopped")
+        halt("vm is stopped", 101)
       }
     }
     
