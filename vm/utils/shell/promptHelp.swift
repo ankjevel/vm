@@ -24,7 +24,7 @@ public func promptHelp() {
     "",
     "\(bw)-s\(r) --solution   solution file to build",
     "",
-    "\(bw)-u\(r) --user       guest user in vm",
+    "\(bw)-u\(r) --user       guest user in vm (don't forget your domain (`COMPANY\\user`))",
     "",
     "\(bw)-p\(r) --password   password for guest user",
     "",

@@ -10,7 +10,7 @@ This is useful when having a shared folder between your host and guest, so that<
 * set default msbuild task
 * default: `/t:build`
 
-**-p** *--property*
+**-o** *--property*
 * msbuild properties for task
 * default: `/property:Configuration=Debug`
 
@@ -20,6 +20,7 @@ This is useful when having a shared folder between your host and guest, so that<
 
 **-u** *--user*
 * user in guest vm
+* Don't forget to add your domain, if one exists, ex: `COMPANY\user`
 
 **-p** *--password*
 * password for user
