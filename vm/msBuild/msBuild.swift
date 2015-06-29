@@ -83,9 +83,7 @@ public class MSBuild {
 public extension MSBuild {
   
   func run() {
-    var message: String
     // MARK: Prerequisits
-    
     var stage = 0
     loading("Checking prerequisits") {
       return stage == 0
