@@ -10,9 +10,12 @@
 import Foundation
 import Darwin
 
-public func halt(message: String, _ code: Int = 0) {
+public func halt(message: String, _ code: Int = 0, _ vm: String = "") {
   var dict = [String: AnyObject]()
   dict[NSLocalizedDescriptionKey] = message
+  if vm != "" {
+    dict[NSLocaleIdentifier] = vm
+  }
   
   halt(dict, code)
 }

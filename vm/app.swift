@@ -187,7 +187,7 @@ private extension App {
       }
       
       if item!.running == false {
-        halt("vm is stopped", 101)
+        halt("vm is stopped", 101, item!.title)
       }
     }
     
