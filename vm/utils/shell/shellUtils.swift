@@ -33,3 +33,25 @@ public func header(str: String) -> [String] {
     "\(bbgb)" + repeat(" ", WIDTH) + "\(r)"
   ]
 }
+
+
+private func rpad(string: String) -> String {
+  let whitespace = repeat(" ", WIDTH - count(string))
+  return "\(string)\(whitespace)"
+}
+
+public func loading(text: String, run: () -> Bool) {
+  setbuf(__stdoutp, nil)
+  println("\n")
+  dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
+    var i = -1
+    while run() {
+      let clear = repeat("\u{8}", WIDTH)
+      i = ++i % 3
+      let dots = repeat(".", i + 1)
+      let message = rpad("\(text) \(ASCIIColor.Bold.blue)\(dots)\(ASCIIColor.reset)")
+      print("\(clear)\(message)")
+      sleep(1)
+    }
+  })
+}

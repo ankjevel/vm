@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Dispatch
+import Darwin
 
 internal struct Paths {
   
@@ -81,6 +83,38 @@ public class MSBuild {
 public extension MSBuild {
   
   func run() {
+    var message: String
+    // MARK: Prerequisits
+    
+    var stage = 0
+    loading("Checking prerequisits") {
+      return stage == 0
+    }
+    prerequisits()
+    
+    // MARK: Create scripts
+    ++stage
+    loading("Creating build script") {
+      return stage == 1
+    }
+    createBuildScript()
+
+    // MARK: Build
+    ++stage
+    loading("Building solution") {
+      return stage == 2
+    }
+    sendBuildScript()
+    
+    // MARK: Done
+    ++stage
+  }
+}
+
+// MARK: Private
+private extension MSBuild {
+  
+  func prerequisits() {
     checkIfExists(selected.options.solution.value.removeQuotations.windowsEcaping, .FileExists)
     checkIfExists(selected.options.msbuild.value.removeQuotations.windowsEcaping, .FileExists)
     if checkIfExists(Paths.Windows.temp, .DirectoryExists, haltOnError: false) == false {
@@ -88,16 +122,10 @@ public extension MSBuild {
         "createDirectoryInGuest",
         selected.id,
         Paths.Windows.temp
-      ])
+        ])
     }
-    checkIfExists(Paths.Windows.temp, .DirectoryExists) 
-    
-    createBuildScript()
+    checkIfExists(Paths.Windows.temp, .DirectoryExists)
   }
-}
-
-// MARK: Private
-private extension MSBuild {
   
   var auth: [String] {
     get {
@@ -167,8 +195,6 @@ private extension MSBuild {
     if fm.createFileAtPath(Paths.OSX.script, contents: data, attributes: nil) == false {
       halt("could not create script file", 203, selected.title)
     }
-    
-    sendBuildScript()
   }
   
   func sendBuildScript() {
@@ -178,7 +204,6 @@ private extension MSBuild {
       halt("script not present in guest", 204, selected.title)
     }
     
-    println("\(ASCIIColor.Bold.green)\nRunning build\(ASCIIColor.reset)")
     vmWareRequest([
       "runProgramInGuest",
       selected.id,
@@ -205,6 +230,8 @@ private extension MSBuild {
       file = ""
       success = false
     }
+    
+    print("\n")
     
     if success {
       var index = file.rangeOfString("Build succeeded.")!.startIndex
