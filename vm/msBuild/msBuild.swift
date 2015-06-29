@@ -83,7 +83,14 @@ public extension MSBuild {
   func run() {
     checkIfExists(selected.options.solution.value.removeQuotations.windowsEcaping, .FileExists)
     checkIfExists(selected.options.msbuild.value.removeQuotations.windowsEcaping, .FileExists)
-    checkIfExists(Paths.Windows.temp, .DirectoryExists)
+    if checkIfExists(Paths.Windows.temp, .DirectoryExists, haltOnError: false) == false {
+      vmWareRequest([
+        "createDirectoryInGuest",
+        selected.id,
+        Paths.Windows.temp
+      ])
+    }
+    checkIfExists(Paths.Windows.temp, .DirectoryExists) 
     
     createBuildScript()
   }
