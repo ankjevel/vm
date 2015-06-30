@@ -9,6 +9,9 @@
 import Foundation
 
 public func repeat(value: String, repeateCount: Int) -> String {
+  if repeateCount <= 0 {
+    return ""
+  }
   return "".join(Array(count: repeateCount, repeatedValue: value))
 }
 
@@ -35,8 +38,8 @@ public func header(str: String) -> [String] {
 }
 
 
-private func rpad(string: String) -> String {
-  let whitespace = repeat(" ", WIDTH - count(string))
+private func rpad(string: String, _ width: Int = WIDTH) -> String {
+  let whitespace = repeat(" ", width - count(string))
   return "\(string)\(whitespace)"
 }
 
@@ -45,13 +48,17 @@ public func loading(text: String, run: () -> Bool) {
   println("\n")
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
     var i = -1
+    let maxDots = 3
     while run() {
-      let clear = repeat("\u{8}", WIDTH)
-      i = ++i % 3
-      let dots = repeat(".", i + 1)
-      let message = rpad("\(text) \(ASCIIColor.Bold.blue)\(dots)\(ASCIIColor.reset)")
-      print("\(clear)\(message)")
-      sleep(1)
+      let maxLength = (count(text) + maxDots) * 2
+      let clear = repeat("\u{8}", maxLength)
+      i = ++i % (maxDots + 1)
+      let dots = repeat(".", i) + repeat(" ", maxDots - i)
+      let message = rpad(" \(text) [\(ASCIIColor.Bold.blue)\(dots)\(ASCIIColor.reset)]", maxLength)
+      
+      print("\(clear)\(message)\(clear)")
+      
+      usleep(200000)
     }
   })
 }
