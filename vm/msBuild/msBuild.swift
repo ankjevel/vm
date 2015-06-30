@@ -83,47 +83,30 @@ public class MSBuild {
 public extension MSBuild {
   
   func run() {
-    // MARK: Prerequisits
     var stage = 0
+    
+    // MARK: Prerequisits
     loading("Checking prerequisits") {
       return stage == 0
     }
-    prerequisits()
+    prerequisits(&stage)
     
     // MARK: Create scripts
-    ++stage
     loading("Creating build script") {
       return stage == 1
     }
-    createBuildScript()
+    createBuildScript(&stage)
 
     // MARK: Build
-    ++stage
     loading("Building solution") {
       return stage == 2
     }
-    sendBuildScript()
-    
-    // MARK: Done
-    ++stage
+    sendBuildScript(&stage)
   }
 }
 
 // MARK: Private
 private extension MSBuild {
-  
-  func prerequisits() {
-    checkIfExists(selected.options.solution.value.removeQuotations.windowsEcaping, .FileExists)
-    checkIfExists(selected.options.msbuild.value.removeQuotations.windowsEcaping, .FileExists)
-    if checkIfExists(Paths.Windows.temp, .DirectoryExists, haltOnError: false) == false {
-      vmWareRequest([
-        "createDirectoryInGuest",
-        selected.id,
-        Paths.Windows.temp
-        ])
-    }
-    checkIfExists(Paths.Windows.temp, .DirectoryExists)
-  }
   
   var auth: [String] {
     get {
@@ -144,6 +127,20 @@ private extension MSBuild {
     
     return (status == checkAgainst, status)
   }
+  
+  func prerequisits(inout stage: Int) {
+    checkIfExists(selected.options.solution.value.removeQuotations.windowsEcaping, .FileExists)
+    checkIfExists(selected.options.msbuild.value.removeQuotations.windowsEcaping, .FileExists)
+    if checkIfExists(Paths.Windows.temp, .DirectoryExists, haltOnError: false) == false {
+      vmWareRequest([
+        "createDirectoryInGuest",
+        selected.id,
+        Paths.Windows.temp
+        ])
+    }
+    checkIfExists(Paths.Windows.temp, .DirectoryExists)
+    ++stage
+  }
 
   func checkIfExists(path: String, _ res: Response, haltOnError: Bool = true) -> Bool {
     var type = res == .FileExists ? "file" : "directory"
@@ -160,7 +157,7 @@ private extension MSBuild {
     return ok
   }
   
-  func createBuildScript() {
+  func createBuildScript(inout stage: Int) {
     var file: String = "\r\n".join([
       "c:\\",
       "CALL " +
@@ -193,9 +190,11 @@ private extension MSBuild {
     if fm.createFileAtPath(Paths.OSX.script, contents: data, attributes: nil) == false {
       halt("could not create script file", 203, selected.title)
     }
+    
+    ++stage
   }
   
-  func sendBuildScript() {
+  func sendBuildScript(inout stage: Int) {
     vmWareRequest(["CopyFileFromHostToGuest", selected.id, Paths.OSX.script, Paths.Windows.script])
     
     if checkIfExists(Paths.Windows.script, .FileExists, haltOnError: false) == false {
@@ -209,10 +208,10 @@ private extension MSBuild {
       "/c \"\(Paths.Windows.script)\""
     ])
     
-    readLogs()
+    readLogs(&stage)
   }
   
-  func readLogs() {
+  func readLogs(inout stage: Int) {
     if checkIfExists(Paths.Windows.log, .FileExists, haltOnError: false) == false {
       halt("logs where not created!", 205, selected.title)
     }
@@ -228,6 +227,8 @@ private extension MSBuild {
       file = ""
       success = false
     }
+    
+    ++stage
     
     print("\n")
     
