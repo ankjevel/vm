@@ -45,20 +45,19 @@ private func rpad(string: String, _ width: Int = WIDTH) -> String {
 
 public func loading(text: String, run: () -> Bool) {
   setbuf(__stdoutp, nil)
-  println("\n")
+//  println("\n")
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
     var i = -1
     let maxDots = 3
     while run() {
-      let maxLength = (count(text) + maxDots) * 2
-      let clear = repeat("\u{8}", maxLength)
+      let clear = "\r"
       i = ++i % (maxDots + 1)
       let dots = repeat(".", i) + repeat(" ", maxDots - i)
-      let message = rpad(" \(text) [\(ASCIIColor.Bold.blue)\(dots)\(ASCIIColor.reset)]", maxLength)
+      let message = "\(text) [\(ASCIIColor.Bold.blue)\(dots)\(ASCIIColor.reset)]  "
       
-      print("\(clear)\(message)\(clear)")
+      print("\(clear)\(message)")
       
-      usleep(200000)
+      usleep(TIMEOUT_ON_UPDATE)
     }
   })
 }

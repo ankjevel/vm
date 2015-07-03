@@ -6,12 +6,15 @@
 //  Copyright (c) 2015 dennisp.se. All rights reserved.
 //
 
+import Darwin
+
 public let WIDTH: Int
 public var ANSWER: Bool?
 public var VM_IMAGE: String?
 public var DISPLAY_HELP: Bool = false
 public var CLEAR_SAVE_DATA: Bool = false
 public var SHOW_LOADING = false
+public let TIMEOUT_ON_UPDATE: useconds_t = 200000
 
 if let cols = shell("/usr/bin/tput", ["cols"]).stripWhiteSpaceAndNewLine.toInt() {
   WIDTH = cols
@@ -41,7 +44,4 @@ if DISPLAY_HELP {
   promptHelp()
 }
 
-let app = App()
-
-
-app.msBuild(arguments())
+App().msBuild(arguments())

@@ -82,7 +82,9 @@ public class MSBuild {
 // MARK: Public
 public extension MSBuild {
   
+
   func run() {
+    
     var stage = 0
     
     // MARK: Prerequisits
@@ -90,6 +92,7 @@ public extension MSBuild {
       return stage == 0
     }
     prerequisits(&stage)
+    
     
     // MARK: Create scripts
     loading("Creating build script") {
@@ -117,6 +120,19 @@ private extension MSBuild {
     }
   }
   
+  func ok(string: String) {
+    ok(count(string))
+  }
+  func ok(_ repeats: Int = 7) {
+    if repeats > 0 {
+      let moveLeft = repeat("\u{8}", repeats)
+      let spaces = repeat(" ", repeats)
+      print("\(moveLeft)\(spaces)\(moveLeft)")
+    }
+
+    println("\(ASCIIColor.Bold.green)√\(ASCIIColor.reset)")
+  }
+  
   func vmWareRequest(args: [String]) -> (response: String, error: String) {
     return vmware.runAndPassError(auth + args)
   }
@@ -139,7 +155,8 @@ private extension MSBuild {
         ])
     }
     checkIfExists(Paths.Windows.temp, .DirectoryExists)
-    ++stage
+
+    ++stage; ok("[...]  ")
   }
 
   func checkIfExists(path: String, _ res: Response, haltOnError: Bool = true) -> Bool {
@@ -191,7 +208,7 @@ private extension MSBuild {
       halt("could not create script file", 203, selected.title)
     }
     
-    ++stage
+    ++stage; ok("[...]  ")
   }
   
   func sendBuildScript(inout stage: Int) {
@@ -228,9 +245,7 @@ private extension MSBuild {
       success = false
     }
     
-    ++stage
-    
-    print("\n")
+    ++stage; ok("[...]  ")
     
     if success {
       var index = file.rangeOfString("Build succeeded.")!.startIndex
