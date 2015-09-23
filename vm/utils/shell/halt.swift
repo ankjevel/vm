@@ -21,13 +21,13 @@ public func halt(message: String, _ code: Int = 0, _ vm: String = "") {
 }
 
 public func halt(dict: [String: AnyObject], _ code: Int = 0) {
-  var error = NSError(domain: "VM", code: code, userInfo: dict)
+  let error = NSError(domain: "VM", code: code, userInfo: dict)
   
   halt(error)
 }
 
 public func halt(error: NSError) {
-  NSLog("Unresolved error \(error), \(error.userInfo!)")
+  NSLog("Unresolved error \(error), \(error.userInfo)")
   
   abort()
 }

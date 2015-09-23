@@ -8,19 +8,19 @@
 
 import Foundation
 
-public func repeat(value: String, repeateCount: Int) -> String {
-  if repeateCount <= 0 {
+public func `repeat`(value: String, repeatCount: Int) -> String {
+  if repeatCount <= 0 {
     return ""
   }
-  return "".join(Array(count: repeateCount, repeatedValue: value))
+  return Array(count: repeatCount, repeatedValue: value).joinWithSeparator("")
 }
 
 public func center(str: String) -> String {
-  let odd = (WIDTH - count(str)) % 2 == 1
-  let padding = Int(floor(Double(((WIDTH - count(str)) / 2))))
+  let odd = (WIDTH - str.characters.count) % 2 == 1
+  let padding = Int(floor(Double(((WIDTH - str.characters.count) / 2))))
   
-  func print(_ last: Bool = false) -> String {
-    return repeat(" ", last && odd ? padding + 1 : padding)
+  func print(last: Bool = false) -> String {
+    return `repeat`(" ", repeatCount: last && odd ? padding + 1 : padding)
   }
   
   return print() + str + print(true)
@@ -31,15 +31,15 @@ public func header(str: String) -> [String] {
   let bbgb = r + ASCIIColor.Normal.white + ASCIIColor.Background.blue
   
   return [
-    "\(bbgb)" + repeat(" ", WIDTH) + "\(r)\n" +
+    "\(bbgb)" + `repeat`(" ", repeatCount: WIDTH) + "\(r)\n" +
     "\(bbgb)" + center("\(str)") + "\(r)\n" +
-    "\(bbgb)" + repeat(" ", WIDTH) + "\(r)"
+    "\(bbgb)" + `repeat`(" ", repeatCount: WIDTH) + "\(r)"
   ]
 }
 
 
 private func rpad(string: String, _ width: Int = WIDTH) -> String {
-  let whitespace = repeat(" ", width - count(string))
+  let whitespace = `repeat`(" ", repeatCount: width - string.characters.count)
   return "\(string)\(whitespace)"
 }
 
@@ -52,10 +52,10 @@ public func loading(text: String, run: () -> Bool) {
     while run() {
       let clear = "\r"
       i = ++i % (maxDots + 1)
-      let dots = repeat(".", i) + repeat(" ", maxDots - i)
+      let dots = `repeat`(".", repeatCount: i) + `repeat`(" ", repeatCount: maxDots - i)
       let message = "\(text) [\(ASCIIColor.Bold.blue)\(dots)\(ASCIIColor.reset)]  "
       
-      print("\(clear)\(message)")
+      print("\(clear)\(message)", terminator: "")
       
       usleep(TIMEOUT_ON_UPDATE)
     }

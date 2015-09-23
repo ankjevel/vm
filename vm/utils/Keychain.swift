@@ -48,13 +48,14 @@ public extension Keychain {
       kSecMatchLimit as String: kSecMatchLimitOne
     ]
     
-    var dataTypeRef: Unmanaged<AnyObject>?
+    var result: AnyObject?
     
-    let status: OSStatus = SecItemCopyMatching(query, &dataTypeRef)
+    let status = withUnsafeMutablePointer(&result) {
+      SecItemCopyMatching(query, UnsafeMutablePointer($0))
+    }
     
     if status == noErr,
-      let nsData = (dataTypeRef!.takeRetainedValue() as? NSData),
-      let data = NSString(data: nsData, encoding: NSUTF8StringEncoding) {
+      let data = NSString(data: result as! NSData, encoding: NSUTF8StringEncoding) {
       return data as String
     } else {
       return nil

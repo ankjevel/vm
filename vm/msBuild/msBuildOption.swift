@@ -23,7 +23,7 @@ public struct MSBuildOption {
         _value = newValue
         set = true
       } else {
-        println(println("\(ASCIIColor.Bold.red)invalid value for \(_identifier): \(newValue)\(ASCIIColor.reset)"))
+        print("\(ASCIIColor.Bold.red)invalid value for \(_identifier): \(newValue)\(ASCIIColor.reset)")
       }
       
     }

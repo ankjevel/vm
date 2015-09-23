@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class VMConfig: Printable {
+public class VMConfig: CustomStringConvertible {
   
   public var path = ""
   public var name = ""
@@ -29,7 +29,7 @@ public extension VMConfig {
   var description: String {
     get {
       
-      var description: [String: AnyObject] = [
+      let description: [String: AnyObject] = [
         "path": path,
         "name": name,
         "status": status,
@@ -39,7 +39,7 @@ public extension VMConfig {
       ]
       
       if
-        let data = NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted, error: nil),
+        let data = try? NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted),
         let json = NSString(data: data, encoding: NSUTF8StringEncoding) {
           return json as String
       } else {

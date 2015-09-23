@@ -11,8 +11,8 @@ import Foundation
 internal class JSON {
   
   internal struct Paths {
-    static let folder = "~/Library/Application Support/vm/".stringByExpandingTildeInPath
-    static let file = folder.stringByAppendingPathComponent("vm.storedata")
+    static let folder: String = NSString(string: "~/Library/Application Support/vm/").stringByExpandingTildeInPath
+    static let file = NSURL(fileURLWithPath: folder).URLByAppendingPathComponent("vm.storedata").absoluteString
   }
   
   var hasChanges = false
@@ -22,7 +22,10 @@ internal class JSON {
   lazy var file: [String: Setting] = {
     
     if self.fm.fileExistsAtPath(Paths.folder) == false {
-      self.fm.createDirectoryAtPath(Paths.folder, withIntermediateDirectories: true, attributes: nil, error: nil)
+      do {
+        try self.fm.createDirectoryAtPath(Paths.folder, withIntermediateDirectories: true, attributes: nil)
+      } catch _ {
+      }
     }
     
     let path = Paths.file
@@ -30,9 +33,9 @@ internal class JSON {
     
     if
       let data = NSData(contentsOfFile: path),
-      let json = NSJSONSerialization.JSONObjectWithData(data, options: nil, error: nil) as? NSDictionary {
+      let json = (try? NSJSONSerialization.JSONObjectWithData(data, options: [])) as? NSDictionary {
         
-        for top in enumerate(json) {
+        for top in json.enumerate() {
           if
             let key = top.element.key as? String,
             let value = top.element.value as? Dictionary<String, AnyObject> {
@@ -67,13 +70,13 @@ internal class JSON {
   func save() {
     var description = [String: [String: AnyObject]]()
     
-    for f in enumerate(self.file) {
-      let key = f.element.0
+    for f in self.file.enumerate() {
+      let _ = f.element.0
       let val = f.element.1
       description[f.element.0] = val.describe()
     }
     
-    if let data = NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted, error: nil) {
+    if let data = try? NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted) {
       data.writeToFile(Paths.file, atomically: false)
     }
   }
@@ -90,8 +93,8 @@ private extension JSON {
     
   func doesntExist(setting: Setting) -> Bool {
     var changes = true
-    for dict in enumerate(self.file) {
-      var s = dict.element.1
+    for dict in self.file.enumerate() {
+      let s = dict.element.1
       if s.id == setting.id {
         if s.property != setting.property ||
           s.solution != setting.solution ||
@@ -117,8 +120,8 @@ public class PersistentData {
   
     let context = persistentDataContext.file
     
-    if count(context) > 0 {
-      results = context.values.array
+    if context.count > 0 {
+      results = Array(context.values)
     } else {
       results = []
     }
@@ -127,7 +130,7 @@ public class PersistentData {
   
   func saveEntity(fb: FeedbackItem) {
     
-    var setting = Setting(
+    let setting = Setting(
       id: fb.id,
       property: fb.options.property.value,
       solution: fb.options.solution.value,
@@ -141,7 +144,7 @@ public class PersistentData {
   }
   
   func saveContext() {
-    var pdc = self.persistentDataContext
+    let pdc = self.persistentDataContext
     if pdc.hasChanges {
       pdc.save()
     }

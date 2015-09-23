@@ -64,6 +64,6 @@ public func promptHelp() {
   ]
   let helpMessage: [String] = header("BUILD OPTIONS") + buildOptions + header("GLOBAL OPTIONS") + globalOptions
   
-  println("\n".join(helpMessage))
+  print(helpMessage.joinWithSeparator("\n"))
   exit(0)
 }

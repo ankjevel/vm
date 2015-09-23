@@ -16,7 +16,7 @@ public var CLEAR_SAVE_DATA: Bool = false
 public var SHOW_LOADING = false
 public let TIMEOUT_ON_UPDATE: useconds_t = 200000
 
-if let cols = shell("/usr/bin/tput", ["cols"]).stripWhiteSpaceAndNewLine.toInt() {
+if let cols = Int(shell("/usr/bin/tput", args: ["cols"]).stripWhiteSpaceAndNewLine) {
   WIDTH = cols
 } else {
   WIDTH = 80

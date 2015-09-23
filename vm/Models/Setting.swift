@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class Setting: Printable {
+public class Setting: CustomStringConvertible {
   
   var id: String
   var property: String
@@ -29,7 +29,7 @@ public class Setting: Printable {
 public extension Setting {
   
   func describe() -> [String: AnyObject] {
-    var description: [String: AnyObject] = [
+    let description: [String: AnyObject] = [
       "id": id,
       "property": property,
       "solution": solution,
@@ -41,7 +41,7 @@ public extension Setting {
   var description: String {
     get {
       if
-        let data = NSJSONSerialization.dataWithJSONObject(describe(), options: .PrettyPrinted, error: nil),
+        let data = try? NSJSONSerialization.dataWithJSONObject(describe(), options: .PrettyPrinted),
         let json = NSString(data: data, encoding: NSUTF8StringEncoding) {
           return json as String
       } else {

@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class MSBuildOptions: Printable {
+public class MSBuildOptions: CustomStringConvertible {
 
   public var user = MSBuildOption("", "user") {
     $0 != ""
@@ -44,7 +44,7 @@ public extension MSBuildOptions {
   
   var description: String {
     get {
-      var description: [String: AnyObject] = [
+      let description: [String: AnyObject] = [
         "task": task.value,
         "property": property.value,
         "solution": solution.value,
@@ -57,7 +57,7 @@ public extension MSBuildOptions {
       ]
       
       if
-        let data = NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted, error: nil),
+        let data = try? NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted),
         let json = NSString(data: data, encoding: NSUTF8StringEncoding) {
           return json as String
       } else {

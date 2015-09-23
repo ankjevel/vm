@@ -8,14 +8,14 @@
 
 import Foundation
 
-public func getUserInput(_ message: String = "", noEcho: Bool = false, strip: Bool = true, stripNewLine: Bool = true, stripQuotes: Bool = true) -> String {
+public func getUserInput(message: String = "", noEcho: Bool = false, strip: Bool = true, stripNewLine: Bool = true, stripQuotes: Bool = true) -> String {
   
   var inputString: String
   
   if noEcho {
     inputString = String.fromCString(UnsafePointer<CChar>(getpass("\(message)\n")))!
   } else {
-    println("\(message)")
+    print("\(message)")
     inputString = NSString(data: NSFileHandle.fileHandleWithStandardInput().availableData, encoding: NSUTF8StringEncoding) as! String
   }
   

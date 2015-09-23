@@ -9,7 +9,7 @@
 import Foundation
 
 public func eachProcessArgument(each: (String) -> Void) {
-  var argArray = [String](Process.arguments)
+  let argArray = [String](Process.arguments)
   for arg in argArray {
     let argument = arg.strip.stripDashes.lowercaseString
     each(argument)

@@ -12,13 +12,13 @@ public func arguments() -> MSBuildOptions {
   var argArray = [String](Process.arguments)
   argArray.removeAtIndex(0)
   
-  var options = MSBuildOptions()
+  let options = MSBuildOptions()
   
   if argArray.count > 0 {
-    for argument in enumerate(argArray) {
+    for argument in argArray.enumerate() {
       if argument.element.hasPrefix("-") {
         let indexInRange = argArray.count - 1 >= argument.index + 1
-        var key = argument.element.stripDashes
+        let key = argument.element.stripDashes
         if indexInRange, let value = argArray[argument.index + 1] as String? {
           if value.hasPrefix("=") == false {
             options.update(key, value: value)

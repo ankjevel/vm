@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class FeedbackItem: Printable {
+public class FeedbackItem: CustomStringConvertible {
   
   public let title: String
   public let id: String
@@ -33,7 +33,7 @@ public extension FeedbackItem {
   var description: String {
     get {
       
-      var description: [String: AnyObject] = [
+      let description: [String: AnyObject] = [
         "title": title,
         "id": id,
         "running": running,
@@ -41,7 +41,7 @@ public extension FeedbackItem {
       ]
     
       if
-        let data = NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted, error: nil),
+        let data = try? NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted),
         let json = NSString(data: data, encoding: NSUTF8StringEncoding) {
           return json as String
       } else {

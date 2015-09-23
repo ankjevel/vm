@@ -14,7 +14,7 @@ internal func createTask(cmd: String, arguments: [String]) -> (String, String) {
   let errorPipe = NSPipe()
 
 #if Debug
-  println((cmd, arguments))
+  print(cmd, arguments)
 #endif
   
   task.launchPath = cmd
@@ -24,12 +24,12 @@ internal func createTask(cmd: String, arguments: [String]) -> (String, String) {
   task.launch()
   task.waitUntilExit()
   
-  var dataAsString = NSString(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as? String
-  var errorAsString = NSString(data: errorPipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as? String
+  let dataAsString = NSString(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as? String
+  let errorAsString = NSString(data: errorPipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as? String
   
   if
-    var data = dataAsString as String?,
-    var error = errorAsString as String? {
+    let data = dataAsString as String?,
+    let error = errorAsString as String? {
   
       let hasError = data.hasPrefix("Error:")
       return (
@@ -38,10 +38,10 @@ internal func createTask(cmd: String, arguments: [String]) -> (String, String) {
       )
   
   } else if
-    var data = dataAsString as String? {
+    let data = dataAsString as String? {
       return (data, "")
   } else if
-    var error = errorAsString as String? {
+    let error = errorAsString as String? {
       return ("", error)
   } else {
     return ("", "")
@@ -49,16 +49,16 @@ internal func createTask(cmd: String, arguments: [String]) -> (String, String) {
 }
 
 public func shell(cmd: String, args: [String]) -> String {
-  var (response, _) = createTask(cmd, args)
+  let (response, _) = createTask(cmd, arguments: args)
   
   return response
 }
 
 public func shell(cmd: String, printError: Bool, args: [String]) -> (String, String) {
-  var (response, errorResponse) = createTask(cmd, args)
+  let (response, errorResponse) = createTask(cmd, arguments: args)
 
 #if Debug
-  println("response: \(response)\nerrorResponse: \(errorResponse)")
+  print("response: \(response)\nerrorResponse: \(errorResponse)")
 #endif
 
   return (response, errorResponse)

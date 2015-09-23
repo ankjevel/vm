@@ -13,7 +13,7 @@ public class VMWare {
   
   private struct Paths {
     static let VMWARE_INSTALL_PATH = "/Applications/VMware Fusion.app"
-    static let USER_INVENTORY_PATH = "~/Library/Application Support/VMware Fusion/vmInventory".stringByExpandingTildeInPath
+    static let USER_INVENTORY_PATH = NSString(string: "~/Library/Application Support/VMware Fusion/vmInventory").stringByExpandingTildeInPath
     static let SHARED_INVENTORY_PATH = "/Library/Application Support/VMware/VMware Fusion/Shared/vmInventory"
     static let VMRUN_PATH = "\(Paths.VMWARE_INSTALL_PATH)/Contents/Library/vmrun"
   }
@@ -40,7 +40,7 @@ public extension VMWare {
   }
   
   func start(inout selected: FeedbackItem) {
-    println("\(ASCIIColor.Bold.green)Starting \(selected.title)\(ASCIIColor.reset)")
+    print("\(ASCIIColor.Bold.green)Starting \(selected.title)\(ASCIIColor.reset)")
     let (_, error) = runAndPassError([
       "start",
       selected.id,
@@ -48,19 +48,19 @@ public extension VMWare {
     ])
     
     if error == "" {
-      println("\(ASCIIColor.Bold.green)Started\(ASCIIColor.reset)")
+      print("\(ASCIIColor.Bold.green)Started\(ASCIIColor.reset)")
       selected.running = true
     } else {
-      println("\(ASCIIColor.Bold.red)Could not start\(ASCIIColor.reset)")
+      print("\(ASCIIColor.Bold.red)Could not start\(ASCIIColor.reset)")
     }
   }
   
   func run(args: [String]) -> String {
-    return shell(Paths.VMRUN_PATH, args)
+    return shell(Paths.VMRUN_PATH, args: args)
   }
   
   func runAndPassError(args: [String]) -> (String, String) {
-    return shell(Paths.VMRUN_PATH, true, args)
+    return shell(Paths.VMRUN_PATH, printError: true, args: args)
   }
 }
 
@@ -68,15 +68,15 @@ public extension VMWare {
 private extension VMWare {
 
   func updateStatus(inout inventory: [VMConfig]) {
-    var results = split(shell(Paths.VMRUN_PATH, ["list"])) {$0 == "\n"}
+    let results = shell(Paths.VMRUN_PATH, args: ["list"]).characters.split {$0 == "\n"}.map { String($0) }
     for line in results {
       line.strip
+      
       if line.hasPrefix("Total running VMs") == false {
-        inventory
-          .filter() {
+        let _ = inventory
+          .filter {
             $0.path == line
-          }
-          .map() {
+          }.map {
             $0.status = "Running"
           }
       }
@@ -84,7 +84,7 @@ private extension VMWare {
   }
   
   func addInfo(inout inventory: [VMConfig]) {
-    inventory.map() { vmconfig -> VMConfig in
+    let _ = inventory.map { vmconfig -> VMConfig in
       if vmconfig.running {
         vmconfig.ipAddress = self.ipAddress(vmconfig.path)
       }
@@ -117,16 +117,16 @@ private extension VMWare {
     
     var vmList = [String: VMConfig]()
     
-    let lines = split(inventory!) {$0 == "\n"}
+    let lines = (inventory!).characters.split {$0 == "\n"}.map { String($0) }
     for line in lines {
-      var parts = split(line) {$0 == "="}
+      var parts = line.characters.split {$0 == "="}.map { String($0) }
       if parts.count == 2 {
-        var lhs: String = parts[0].strip
-        var rhs: String = parts[1].strip
-        var tokens = split(lhs) {$0 == "."}
-        if tokens.count == 2 && count(tokens[0]) > 0 {
-          var id = tokens[0].strip
-          var param = tokens[1].strip
+        let lhs: String = parts[0].strip
+        let rhs: String = parts[1].strip
+        var tokens = lhs.characters.split {$0 == "."}.map { String($0) }
+        if tokens.count == 2 && tokens[0].characters.count > 0 {
+          let id = tokens[0].strip
+          let param = tokens[1].strip
           var vm: VMConfig
           if vmList[id] != nil {
             vm = vmList[id]!
@@ -143,8 +143,8 @@ private extension VMWare {
       }
     }
     
-    return vmList.values.array.filter() {
-      $0.path != "" && count($0.path) > 0
+    return vmList.values.elements.filter {
+      $0.path != "" && $0.path.characters.count > 0
     }
   }
   
@@ -154,12 +154,12 @@ private extension VMWare {
     if fileManager.fileExistsAtPath(path),
       let data = NSString(data: fileManager.contentsAtPath(path)!, encoding: NSUTF8StringEncoding) as? String {
       
-        var lines = split(data) {$0 == "\n"}
+        let lines = data.characters.split {$0 == "\n"}.map { String($0) }
         for line in lines {
-          var parts = split(line) {$0 == "="}
+          var parts = line.characters.split {$0 == "="}.map { String($0) }
           if parts.count == 2 {
-            var lhs = parts[0].strip
-            var rhs = parts[1].strip
+            let lhs = parts[0].strip
+            let rhs = parts[1].strip
             if lhs == value {
               return rhs.removeQuotations
             }
@@ -170,7 +170,7 @@ private extension VMWare {
   }
   
   func ipAddress(vmPath: String) -> String {
-    return shell(Paths.VMRUN_PATH, [
+    return shell(Paths.VMRUN_PATH, args: [
       "readVariable",
       vmPath,
       "guestVar",

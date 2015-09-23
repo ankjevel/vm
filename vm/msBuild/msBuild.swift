@@ -25,7 +25,7 @@ internal struct Paths {
   }
   
   struct OSX {
-    static let temp = "~/temp".stringByExpandingTildeInPath
+    static let temp = NSString(string: "~/temp").stringByExpandingTildeInPath
     static let log = "\(temp)/\(Paths.File.log)"
     static let script = "\(temp)/\(Paths.File.script)"
   }
@@ -121,16 +121,16 @@ private extension MSBuild {
   }
   
   func ok(string: String) {
-    ok(count(string))
+    ok(string.characters.count)
   }
-  func ok(_ repeats: Int = 7) {
+  func ok(repeats: Int = 7) {
     if repeats > 0 {
-      let moveLeft = repeat("\u{8}", repeats)
-      let spaces = repeat(" ", repeats)
-      print("\(moveLeft)\(spaces)\(moveLeft)")
+      let moveLeft = `repeat`("\u{8}", repeatCount: repeats)
+      let spaces = `repeat`(" ", repeatCount: repeats)
+      print("\(moveLeft)\(spaces)\(moveLeft)", terminator: "")
     }
 
-    println("\(ASCIIColor.Bold.green)√\(ASCIIColor.reset)")
+    print("\(ASCIIColor.Bold.green)√\(ASCIIColor.reset)")
   }
   
   func vmWareRequest(args: [String]) -> (response: String, error: String) {
@@ -160,7 +160,7 @@ private extension MSBuild {
   }
 
   func checkIfExists(path: String, _ res: Response, haltOnError: Bool = true) -> Bool {
-    var type = res == .FileExists ? "file" : "directory"
+    let type = res == .FileExists ? "file" : "directory"
     let (ok, status) = vmWareRequest([
       "\(type)ExistsInGuest",
       selected.id,
@@ -175,7 +175,7 @@ private extension MSBuild {
   }
   
   func createBuildScript(inout stage: Int) {
-    var file: String = "\r\n".join([
+    let file: String = [
       "c:\\",
       "CALL " +
         "\"\(selected.options.msbuild.value.removeQuotations.windowsEcaping)\" " +
@@ -185,11 +185,15 @@ private extension MSBuild {
         " >> " +
         "\"\(Paths.Windows.log)\"" +
       ""
-    ])
+    ].joinWithSeparator("\r\n")
     
     var error: NSError?
     if fm.fileExistsAtPath(Paths.OSX.temp) == false {
-      fm.createDirectoryAtPath(Paths.OSX.temp, withIntermediateDirectories: true, attributes: nil, error: &error)
+      do {
+        try fm.createDirectoryAtPath(Paths.OSX.temp, withIntermediateDirectories: true, attributes: nil)
+      } catch let error1 as NSError {
+        error = error1
+      }
     }
     if error != nil {
       halt("could not create temp folder", 202, selected.title)
@@ -248,12 +252,12 @@ private extension MSBuild {
     ++stage; ok("[...]  ")
     
     if success {
-      var index = file.rangeOfString("Build succeeded.")!.startIndex
+      let index = file.rangeOfString("Build succeeded.")!.startIndex
       let part = file.substringFromIndex(index)
-      println("\(ASCIIColor.Bold.green)\n\(part)\(ASCIIColor.reset)")
+      print("\(ASCIIColor.Bold.green)\n\(part)\(ASCIIColor.reset)")
     } else {
-      println(file)
-      println("\(ASCIIColor.Bold.red)\nbuild not successful\(ASCIIColor.reset)")
+      print(file)
+      print("\(ASCIIColor.Bold.red)\nbuild not successful\(ASCIIColor.reset)")
     }
   }
 }
