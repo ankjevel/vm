@@ -35,10 +35,13 @@ extension String {
         }.map {
           String($0)
         }.joinWithSeparator("\\")
-
- 
-    if str.hasPrefix("\\") && str.hasPrefix("\\\\") == false {
-      str = "\\\(str)"
+    
+    if str.hasPrefix("\\\\") == false {
+      if str.hasPrefix("\\") {
+        str = "\\\(str)"
+      } else if Array(str.characters)[1] != ":" {
+        str = "\\\\\(str)"
+      }
     }
     
     return str

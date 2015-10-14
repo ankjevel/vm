@@ -24,8 +24,12 @@ internal func createTask(cmd: String, arguments: [String]) -> (String, String) {
   task.launch()
   task.waitUntilExit()
   
-  let dataAsString = NSString(data: pipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as? String
-  let errorAsString = NSString(data: errorPipe.fileHandleForReading.readDataToEndOfFile(), encoding: NSUTF8StringEncoding) as? String
+  let dataAsString = NSString(
+    data: pipe.fileHandleForReading.readDataToEndOfFile(),
+    encoding: NSUTF8StringEncoding) as? String
+  let errorAsString = NSString(
+    data: errorPipe.fileHandleForReading.readDataToEndOfFile(),
+    encoding: NSUTF8StringEncoding) as? String
   
   if
     let data = dataAsString as String?,

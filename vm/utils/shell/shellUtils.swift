@@ -45,7 +45,6 @@ private func rpad(string: String, _ width: Int = WIDTH) -> String {
 
 public func loading(text: String, run: () -> Bool) {
   setbuf(__stdoutp, nil)
-//  println("\n")
   dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), {
     var i = -1
     let maxDots = 3

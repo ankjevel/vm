@@ -25,7 +25,6 @@ public class Setting: CustomStringConvertible {
   }
 }
 
-
 public extension Setting {
   
   func describe() -> [String: AnyObject] {
@@ -38,6 +37,7 @@ public extension Setting {
     ]
     return description
   }
+  
   var description: String {
     get {
       if

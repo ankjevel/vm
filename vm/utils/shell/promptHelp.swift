@@ -12,7 +12,6 @@ import Foundation
 public func promptHelp() {
   let r = ASCIIColor.reset
   let bw = ASCIIColor.Bold.white
-  let bbgb = r + ASCIIColor.Normal.white + ASCIIColor.Background.blue
   
   let buildOptions: [String] = [
     "",

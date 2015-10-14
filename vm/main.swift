@@ -45,3 +45,5 @@ if DISPLAY_HELP {
 }
 
 App().msBuild(arguments())
+
+exit(0)

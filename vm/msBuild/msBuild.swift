@@ -82,7 +82,6 @@ public class MSBuild {
 // MARK: Public
 public extension MSBuild {
   
-
   func run() {
     
     var stage = 0
@@ -233,9 +232,11 @@ private extension MSBuild {
   }
   
   func readLogs(inout stage: Int) {
+    
     if checkIfExists(Paths.Windows.log, .FileExists, haltOnError: false) == false {
       halt("logs where not created!", 205, selected.title)
     }
+    
     vmWareRequest(["CopyFileFromGuestToHost", self.selected.id, Paths.Windows.log, Paths.OSX.log])
     let success: Bool
     let file: String
