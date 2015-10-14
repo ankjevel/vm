@@ -257,7 +257,6 @@ private extension MSBuild {
       let part = file.substringFromIndex(index)
       print("\(ASCIIColor.Bold.green)\n\(part)\(ASCIIColor.reset)")
     } else {
-      print(file)
       print("\(ASCIIColor.Bold.red)\nbuild not successful\(ASCIIColor.reset)")
     }
   }

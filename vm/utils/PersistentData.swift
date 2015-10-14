@@ -12,7 +12,7 @@ internal class JSON {
   
   internal struct Paths {
     static let folder: String = NSString(string: "~/Library/Application Support/vm/").stringByExpandingTildeInPath
-    static let file = NSURL(fileURLWithPath: folder).URLByAppendingPathComponent("vm.storedata").absoluteString
+    static let file = NSURL(fileURLWithPath: folder).URLByAppendingPathComponent("vm.storedata")
   }
   
   var hasChanges = false
@@ -20,7 +20,6 @@ internal class JSON {
   private let fm = NSFileManager()
   
   lazy var file: [String: Setting] = {
-    
     if self.fm.fileExistsAtPath(Paths.folder) == false {
       do {
         try self.fm.createDirectoryAtPath(Paths.folder, withIntermediateDirectories: true, attributes: nil)
@@ -30,11 +29,9 @@ internal class JSON {
     
     let path = Paths.file
     var parsed = [String: Setting]()
-    
     if
-      let data = NSData(contentsOfFile: path),
+      let data = NSData(contentsOfURL: path),
       let json = (try? NSJSONSerialization.JSONObjectWithData(data, options: [])) as? NSDictionary {
-        
         for top in json.enumerate() {
           if
             let key = top.element.key as? String,
@@ -77,7 +74,7 @@ internal class JSON {
     }
     
     if let data = try? NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted) {
-      data.writeToFile(Paths.file, atomically: false)
+      data.writeToFile(Paths.file.absoluteString, atomically: false)
     }
   }
   
@@ -129,7 +126,6 @@ public class PersistentData {
   }
   
   func saveEntity(fb: FeedbackItem) {
-    
     let setting = Setting(
       id: fb.id,
       property: fb.options.property.value,
