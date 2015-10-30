@@ -9,16 +9,16 @@
 import Foundation
 
 internal class JSON {
-  
+
   internal struct Paths {
     static let folder: String = NSString(string: "~/Library/Application Support/vm/").stringByExpandingTildeInPath
     static let file = NSURL(fileURLWithPath: folder).URLByAppendingPathComponent("vm.storedata")
   }
-  
+
   var hasChanges = false
-  
+
   private let fm = NSFileManager()
-  
+
   lazy var file: [String: Setting] = {
     if self.fm.fileExistsAtPath(Paths.folder) == false {
       do {
@@ -26,7 +26,7 @@ internal class JSON {
       } catch _ {
       }
     }
-    
+
     let path = Paths.file
     var parsed = [String: Setting]()
     if
@@ -51,7 +51,7 @@ internal class JSON {
                     user: user
                   )
               }
-              
+
               if setting != nil {
                 parsed[key] = setting
               }
@@ -61,33 +61,34 @@ internal class JSON {
     } else {
       return [String: Setting]()
     }
-    
+
     }()
-  
+
   func save() {
     var description = [String: [String: AnyObject]]()
-    
+
     for f in self.file.enumerate() {
       let _ = f.element.0
       let val = f.element.1
       description[f.element.0] = val.describe()
     }
-    
+
     if let data = try? NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted) {
       data.writeToFile(Paths.file.absoluteString, atomically: false)
     }
   }
-  
+
   func update(setting: Setting) {
     if doesntExist(setting) {
       hasChanges = true
       self.file[setting.id] = setting
     }
   }
+
 }
 
 private extension JSON {
-    
+
   func doesntExist(setting: Setting) -> Bool {
     var changes = true
     for dict in self.file.enumerate() {
@@ -104,19 +105,19 @@ private extension JSON {
       }
     }
     return changes
-    
   }
+
 }
 
 public class PersistentData {
-  
+
   let persistentDataContext = JSON()
-  
+
   func getEntities() -> [Setting] {
     let results: [Setting]
-  
+
     let context = persistentDataContext.file
-    
+
     if context.count > 0 {
       results = Array(context.values)
     } else {
@@ -124,7 +125,7 @@ public class PersistentData {
     }
     return results
   }
-  
+
   func saveEntity(fb: FeedbackItem) {
     let setting = Setting(
       id: fb.id,
@@ -133,18 +134,19 @@ public class PersistentData {
       task: fb.options.task.value,
       user: fb.options.user.value
     )
-    
+
     persistentDataContext.update(setting)
-    
+
     saveContext()
   }
-  
+
   func saveContext() {
     let pdc = self.persistentDataContext
     if pdc.hasChanges {
       pdc.save()
     }
   }
+
 }
 
 private extension PersistentData {

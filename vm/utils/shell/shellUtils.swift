@@ -8,7 +8,7 @@
 
 import Foundation
 
-public func `repeat`(value: String, repeatCount: Int) -> String {
+public func repeatString(value: String, repeatCount: Int) -> String {
   if repeatCount <= 0 {
     return ""
   }
@@ -16,30 +16,30 @@ public func `repeat`(value: String, repeatCount: Int) -> String {
 }
 
 public func center(str: String) -> String {
-  let odd = (WIDTH - str.characters.count) % 2 == 1
-  let padding = Int(floor(Double(((WIDTH - str.characters.count) / 2))))
-  
+  let odd = (main.Width - str.characters.count) % 2 == 1
+  let padding = Int(floor(Double(((main.Width - str.characters.count) / 2))))
+
   func print(last: Bool = false) -> String {
-    return `repeat`(" ", repeatCount: last && odd ? padding + 1 : padding)
+    return repeatString(" ", repeatCount: last && odd ? padding + 1 : padding)
   }
-  
+
   return print() + str + print(true)
 }
 
 public func header(str: String) -> [String] {
   let r = ASCIIColor.reset
   let bbgb = r + ASCIIColor.Normal.white + ASCIIColor.Background.blue
-  
+
   return [
-    "\(bbgb)" + `repeat`(" ", repeatCount: WIDTH) + "\(r)\n" +
+    "\(bbgb)" + repeatString(" ", repeatCount: main.Width) + "\(r)\n" +
     "\(bbgb)" + center("\(str)") + "\(r)\n" +
-    "\(bbgb)" + `repeat`(" ", repeatCount: WIDTH) + "\(r)"
+    "\(bbgb)" + repeatString(" ", repeatCount: main.Width) + "\(r)"
   ]
 }
 
 
-private func rpad(string: String, _ width: Int = WIDTH) -> String {
-  let whitespace = `repeat`(" ", repeatCount: width - string.characters.count)
+private func rpad(string: String, _ width: Int = main.Width) -> String {
+  let whitespace = repeatString(" ", repeatCount: width - string.characters.count)
   return "\(string)\(whitespace)"
 }
 
@@ -51,12 +51,12 @@ public func loading(text: String, run: () -> Bool) {
     while run() {
       let clear = "\r"
       i = ++i % (maxDots + 1)
-      let dots = `repeat`(".", repeatCount: i) + `repeat`(" ", repeatCount: maxDots - i)
+      let dots = repeatString(".", repeatCount: i) + repeatString(" ", repeatCount: maxDots - i)
       let message = "\(text) [\(ASCIIColor.Bold.blue)\(dots)\(ASCIIColor.reset)]  "
-      
+
       print("\(clear)\(message)", terminator: "")
-      
-      usleep(TIMEOUT_ON_UPDATE)
+
+      usleep(main.TimeoutOnUpdate)
     }
   })
 }

@@ -11,9 +11,9 @@ import Foundation
 public func arguments() -> MSBuildOptions {
   var argArray = [String](Process.arguments)
   argArray.removeAtIndex(0)
-  
+
   let options = MSBuildOptions()
-  
+
   if argArray.count > 0 {
     for argument in argArray.enumerate() {
       if argument.element.hasPrefix("-") {
@@ -29,6 +29,6 @@ public func arguments() -> MSBuildOptions {
       }
     }
   }
-  
+
   return options
 }

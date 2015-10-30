@@ -13,23 +13,23 @@ public class MSBuildOptions: CustomStringConvertible {
   public var user = MSBuildOption("", "user") {
     $0 != ""
   }
-  
+
   public var password = MSBuildOption("", "password") {
     $0 != ""
   }
-  
+
   public var solution = MSBuildOption("", "solution") {
     $0.hasSuffix(".sln") && $0.instancesOf("\\") > 1
   }
-  
+
   public var property = MSBuildOption("/property:Configuration=Debug", "property") {
     $0 == "" || $0.hasPrefix("/property:")
   }
-  
+
   public var task = MSBuildOption("/t:build", "task") {
     $0 == "" || $0.hasPrefix("/t:")
   }
-  
+
   public var msbuild = MSBuildOption("C:\\Program Files (x86)\\MSBuild\\12.0\\bin\\MSBuild.exe", "msbuild") {
     $0.hasSuffix(".exe")
   }
@@ -41,7 +41,7 @@ private extension MSBuildOptions {
 
 // MARK: Public
 public extension MSBuildOptions {
-  
+
   var description: String {
     get {
       let description: [String: AnyObject] = [
@@ -55,7 +55,7 @@ public extension MSBuildOptions {
         "property set": property.set,
         "solution set": solution.set
       ]
-      
+
       if
         let data = try? NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted),
         let json = NSString(data: data, encoding: NSUTF8StringEncoding) {
@@ -65,9 +65,11 @@ public extension MSBuildOptions {
       }
     }
   }
-  
+
   func update(key: String, value: String? = nil) {
-    if value == nil || value == "" {return}
+    if value == nil || value == "" {
+      return
+    }
 
     switch key.lowercaseString {
     case "task", "t": self.task.value = value!
@@ -79,4 +81,5 @@ public extension MSBuildOptions {
     default: ""
     }
   }
+
 }

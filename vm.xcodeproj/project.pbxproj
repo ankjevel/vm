@@ -13,8 +13,6 @@
 		D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6255A981B2F697A004AC403 /* app.swift */; };
 		D64BF3401B38BFDF00931D2F /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33E1B38BFDF00931D2F /* feedback.swift */; };
 		D64BF3411B38BFDF00931D2F /* feedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33E1B38BFDF00931D2F /* feedback.swift */; };
-		D64BF3421B38BFDF00931D2F /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */; };
-		D64BF3431B38BFDF00931D2F /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */; };
 		D64BF3471B38C00600931D2F /* PersistentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3441B38C00600931D2F /* PersistentData.swift */; };
 		D64BF3481B38C00600931D2F /* PersistentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3441B38C00600931D2F /* PersistentData.swift */; };
 		D64BF3491B38C00600931D2F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3451B38C00600931D2F /* Keychain.swift */; };
@@ -43,13 +41,15 @@
 		D64BF36C1B38C04600931D2F /* msBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3681B38C04600931D2F /* msBuild.swift */; };
 		D64BF36D1B38C04600931D2F /* msBuildOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3691B38C04600931D2F /* msBuildOption.swift */; };
 		D64BF36E1B38C04600931D2F /* msBuildOption.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3691B38C04600931D2F /* msBuildOption.swift */; };
-		D64BF36F1B38C04600931D2F /* msBuildOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF36A1B38C04600931D2F /* msBuildOptions.swift */; };
-		D64BF3701B38C04600931D2F /* msBuildOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF36A1B38C04600931D2F /* msBuildOptions.swift */; };
-		D64BF3731B38C05100931D2F /* vmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3711B38C05100931D2F /* vmConfig.swift */; };
-		D64BF3741B38C05100931D2F /* vmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3711B38C05100931D2F /* vmConfig.swift */; };
 		D64BF3751B38C05100931D2F /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3721B38C05100931D2F /* vmWare.swift */; };
 		D64BF3761B38C05100931D2F /* vmWare.swift in Sources */ = {isa = PBXBuildFile; fileRef = D64BF3721B38C05100931D2F /* vmWare.swift */; };
 		D6595DB81B2CD17800A82B81 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6595DB71B2CD17800A82B81 /* main.swift */; };
+		D6CD8D561BE4187A00CCE5BC /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD8D551BE4187A00CCE5BC /* Response.swift */; };
+		D6CD8D581BE418AE00CCE5BC /* Paths.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD8D571BE418AE00CCE5BC /* Paths.swift */; };
+		D6CD8D5A1BE4192600CCE5BC /* createTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD8D591BE4192600CCE5BC /* createTask.swift */; };
+		D6CD8D5E1BE41A6B00CCE5BC /* feedbackItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD8D5B1BE41A6B00CCE5BC /* feedbackItem.swift */; };
+		D6CD8D5F1BE41A6B00CCE5BC /* msBuildOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD8D5C1BE41A6B00CCE5BC /* msBuildOptions.swift */; };
+		D6CD8D601BE41A6B00CCE5BC /* vmConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CD8D5D1BE41A6B00CCE5BC /* vmConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,7 +69,6 @@
 		D6255A8F1B2EE815004AC403 /* StringsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringsTests.swift; sourceTree = "<group>"; };
 		D6255A981B2F697A004AC403 /* app.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = app.swift; sourceTree = "<group>"; };
 		D64BF33E1B38BFDF00931D2F /* feedback.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = feedback.swift; path = feedback/feedback.swift; sourceTree = "<group>"; };
-		D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = feedbackItem.swift; path = feedback/feedbackItem.swift; sourceTree = "<group>"; };
 		D64BF3441B38C00600931D2F /* PersistentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PersistentData.swift; path = utils/PersistentData.swift; sourceTree = "<group>"; };
 		D64BF3451B38C00600931D2F /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Keychain.swift; path = utils/Keychain.swift; sourceTree = "<group>"; };
 		D64BF3461B38C00600931D2F /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = String.swift; path = utils/String.swift; sourceTree = "<group>"; };
@@ -84,12 +83,16 @@
 		D64BF3651B38C03200931D2F /* Setting.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Setting.swift; path = Models/Setting.swift; sourceTree = "<group>"; };
 		D64BF3681B38C04600931D2F /* msBuild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = msBuild.swift; path = msBuild/msBuild.swift; sourceTree = "<group>"; };
 		D64BF3691B38C04600931D2F /* msBuildOption.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = msBuildOption.swift; path = msBuild/msBuildOption.swift; sourceTree = "<group>"; };
-		D64BF36A1B38C04600931D2F /* msBuildOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = msBuildOptions.swift; path = msBuild/msBuildOptions.swift; sourceTree = "<group>"; };
-		D64BF3711B38C05100931D2F /* vmConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vmConfig.swift; path = vmWare/vmConfig.swift; sourceTree = "<group>"; };
 		D64BF3721B38C05100931D2F /* vmWare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vmWare.swift; path = vmWare/vmWare.swift; sourceTree = "<group>"; };
 		D6595DB41B2CD17800A82B81 /* vm */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = vm; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6595DB71B2CD17800A82B81 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		D6595DC61B2DB2AD00A82B81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		D6CD8D551BE4187A00CCE5BC /* Response.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Response.swift; path = msBuild/Response.swift; sourceTree = "<group>"; };
+		D6CD8D571BE418AE00CCE5BC /* Paths.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Paths.swift; path = msBuild/Paths.swift; sourceTree = "<group>"; };
+		D6CD8D591BE4192600CCE5BC /* createTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = createTask.swift; path = utils/shell/createTask.swift; sourceTree = "<group>"; };
+		D6CD8D5B1BE41A6B00CCE5BC /* feedbackItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = feedbackItem.swift; path = Models/feedbackItem.swift; sourceTree = "<group>"; };
+		D6CD8D5C1BE41A6B00CCE5BC /* msBuildOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = msBuildOptions.swift; path = Models/msBuildOptions.swift; sourceTree = "<group>"; };
+		D6CD8D5D1BE41A6B00CCE5BC /* vmConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = vmConfig.swift; path = Models/vmConfig.swift; sourceTree = "<group>"; };
 		D6F1F47E1B3E84D10063F0B4 /* makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = makefile; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -134,7 +137,6 @@
 			isa = PBXGroup;
 			children = (
 				D64BF3721B38C05100931D2F /* vmWare.swift */,
-				D64BF3711B38C05100931D2F /* vmConfig.swift */,
 			);
 			name = vmWare;
 			sourceTree = "<group>";
@@ -143,7 +145,6 @@
 			isa = PBXGroup;
 			children = (
 				D64BF33E1B38BFDF00931D2F /* feedback.swift */,
-				D64BF33F1B38BFDF00931D2F /* feedbackItem.swift */,
 			);
 			name = feedback;
 			sourceTree = "<group>";
@@ -153,7 +154,8 @@
 			children = (
 				D64BF3681B38C04600931D2F /* msBuild.swift */,
 				D64BF3691B38C04600931D2F /* msBuildOption.swift */,
-				D64BF36A1B38C04600931D2F /* msBuildOptions.swift */,
+				D6CD8D551BE4187A00CCE5BC /* Response.swift */,
+				D6CD8D571BE418AE00CCE5BC /* Paths.swift */,
 			);
 			name = msBuild;
 			sourceTree = "<group>";
@@ -161,6 +163,9 @@
 		D64BF3391B38917300931D2F /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				D6CD8D5B1BE41A6B00CCE5BC /* feedbackItem.swift */,
+				D6CD8D5C1BE41A6B00CCE5BC /* msBuildOptions.swift */,
+				D6CD8D5D1BE41A6B00CCE5BC /* vmConfig.swift */,
 				D64BF3651B38C03200931D2F /* Setting.swift */,
 			);
 			name = Models;
@@ -177,6 +182,7 @@
 				D64BF3521B38C02000931D2F /* halt.swift */,
 				D64BF3531B38C02000931D2F /* shell.swift */,
 				D64BF3541B38C02000931D2F /* shellUtils.swift */,
+				D6CD8D591BE4192600CCE5BC /* createTask.swift */,
 			);
 			name = shell;
 			sourceTree = "<group>";
@@ -310,19 +316,16 @@
 				D64BF35A1B38C02000931D2F /* promptHelp.swift in Sources */,
 				D64BF36C1B38C04600931D2F /* msBuild.swift in Sources */,
 				D64BF3671B38C03200931D2F /* Setting.swift in Sources */,
-				D64BF3431B38BFDF00931D2F /* feedbackItem.swift in Sources */,
 				D64BF3761B38C05100931D2F /* vmWare.swift in Sources */,
 				D64BF36E1B38C04600931D2F /* msBuildOption.swift in Sources */,
 				D64BF3581B38C02000931D2F /* ASCIIColor.swift in Sources */,
 				D64BF35C1B38C02000931D2F /* eachProcessArgument.swift in Sources */,
-				D64BF3741B38C05100931D2F /* vmConfig.swift in Sources */,
 				D64BF35E1B38C02000931D2F /* getUserInput.swift in Sources */,
 				D6255A9E1B2F6AAB004AC403 /* app.swift in Sources */,
 				D64BF3601B38C02000931D2F /* halt.swift in Sources */,
 				D64BF34C1B38C00600931D2F /* String.swift in Sources */,
 				D6255A911B2F635D004AC403 /* main.swift in Sources */,
 				D64BF34A1B38C00600931D2F /* Keychain.swift in Sources */,
-				D64BF3701B38C04600931D2F /* msBuildOptions.swift in Sources */,
 				D64BF3621B38C02000931D2F /* shell.swift in Sources */,
 				D64BF3411B38BFDF00931D2F /* feedback.swift in Sources */,
 				D6255A901B2EE815004AC403 /* StringsTests.swift in Sources */,
@@ -334,23 +337,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				D64BF3491B38C00600931D2F /* Keychain.swift in Sources */,
+				D6CD8D581BE418AE00CCE5BC /* Paths.swift in Sources */,
+				D6CD8D5A1BE4192600CCE5BC /* createTask.swift in Sources */,
 				D64BF3751B38C05100931D2F /* vmWare.swift in Sources */,
+				D6CD8D5E1BE41A6B00CCE5BC /* feedbackItem.swift in Sources */,
 				D64BF35F1B38C02000931D2F /* halt.swift in Sources */,
 				D64BF3571B38C02000931D2F /* ASCIIColor.swift in Sources */,
 				D64BF3551B38C02000931D2F /* arguments.swift in Sources */,
 				D64BF3661B38C03200931D2F /* Setting.swift in Sources */,
 				D6255A991B2F697A004AC403 /* app.swift in Sources */,
-				D64BF3421B38BFDF00931D2F /* feedbackItem.swift in Sources */,
+				D6CD8D601BE41A6B00CCE5BC /* vmConfig.swift in Sources */,
 				D64BF3401B38BFDF00931D2F /* feedback.swift in Sources */,
 				D64BF36B1B38C04600931D2F /* msBuild.swift in Sources */,
 				D64BF35D1B38C02000931D2F /* getUserInput.swift in Sources */,
 				D64BF36D1B38C04600931D2F /* msBuildOption.swift in Sources */,
-				D64BF36F1B38C04600931D2F /* msBuildOptions.swift in Sources */,
 				D64BF3631B38C02000931D2F /* shellUtils.swift in Sources */,
+				D6CD8D5F1BE41A6B00CCE5BC /* msBuildOptions.swift in Sources */,
 				D64BF3591B38C02000931D2F /* promptHelp.swift in Sources */,
 				D64BF34B1B38C00600931D2F /* String.swift in Sources */,
 				D64BF35B1B38C02000931D2F /* eachProcessArgument.swift in Sources */,
-				D64BF3731B38C05100931D2F /* vmConfig.swift in Sources */,
+				D6CD8D561BE4187A00CCE5BC /* Response.swift in Sources */,
 				D6595DB81B2CD17800A82B81 /* main.swift in Sources */,
 				D64BF3611B38C02000931D2F /* shell.swift in Sources */,
 				D64BF3471B38C00600931D2F /* PersistentData.swift in Sources */,

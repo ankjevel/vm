@@ -9,7 +9,7 @@
 import Foundation
 
 public class VMConfig: CustomStringConvertible {
-  
+
   public var path = ""
   public var name = ""
   public var status = "Stopped"
@@ -25,10 +25,10 @@ public extension VMConfig {
       return self.status != "Stopped"
     }
   }
-  
+
   var description: String {
     get {
-      
+
       let description: [String: AnyObject] = [
         "path": path,
         "name": name,
@@ -37,7 +37,7 @@ public extension VMConfig {
         "os": os,
         "running": running
       ]
-      
+
       if
         let data = try? NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted),
         let json = NSString(data: data, encoding: NSUTF8StringEncoding) {

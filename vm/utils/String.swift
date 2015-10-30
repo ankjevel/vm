@@ -9,23 +9,23 @@
 import Foundation
 
 extension String {
-  
+
   var strip: String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
   }
-  
+
   var stripNewLine: String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.newlineCharacterSet())
   }
-  
+
   var stripWhiteSpaceAndNewLine: String {
     return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
   }
-  
+
   var stripDashes: String {
     return self.stringByReplacingOccurrencesOfString("-", withString: "")
   }
-  
+
   var windowsEcaping: String {
     var str = self
         .stringByReplacingOccurrencesOfString("\\\\", withString: "\\")
@@ -35,7 +35,7 @@ extension String {
         }.map {
           String($0)
         }.joinWithSeparator("\\")
-    
+
     if str.hasPrefix("\\\\") == false {
       if str.hasPrefix("\\") {
         str = "\\\(str)"
@@ -43,14 +43,14 @@ extension String {
         str = "\\\\\(str)"
       }
     }
-    
+
     return str
   }
-  
+
   func substringFromIndex(index: Int) -> String {
     return self.substringFromIndex(self.startIndex.advancedBy(index))
   }
-  
+
   var removeQuotations: String {
     var modifiedString = self
     if self.hasPrefix("\"") {
@@ -61,13 +61,13 @@ extension String {
     }
     return modifiedString
   }
-  
+
   func instancesOf(value: String) -> Int {
     return self.componentsSeparatedByString(value).count
   }
-  
+
   var bool: Bool {
-    if let unwrapped = NSString(string: self).boolValue as Bool?  {
+    if let unwrapped = NSString(string: self).boolValue as Bool? {
       return unwrapped
     } else if let int = Int(self), let unwrapped = Bool(int) as Bool? {
       return unwrapped
@@ -79,7 +79,7 @@ extension String {
       return false
     }
   }
-  
+
   func contains(value: String, caseInsensitive: Bool = true) -> Bool {
     if caseInsensitive {
       return self.lowercaseString.rangeOfString(value.lowercaseString) != nil
@@ -87,4 +87,5 @@ extension String {
       return self.rangeOfString(value) != nil
     }
   }
+
 }

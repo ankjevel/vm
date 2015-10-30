@@ -7,11 +7,11 @@
 //
 
 public struct ASCIIColor {
-  
+
   private static let u = "\u{001B}["
-  
+
   static let reset = "\(u)0m"
-  
+
   public struct Normal {
     static let black  = "\(u)0;30m"
     static let red    = "\(u)0;31m"
@@ -22,7 +22,7 @@ public struct ASCIIColor {
     static let cyan   = "\(u)0;36m"
     static let white  = "\(u)0;37m"
   }
-  
+
   public struct Bold {
     static let black  = "\(u)1;30m"
     static let red    = "\(u)1;31m"
@@ -33,7 +33,7 @@ public struct ASCIIColor {
     static let cyan   = "\(u)1;36m"
     static let white  = "\(u)1;37m"
   }
-  
+
   public struct Underline {
     static let black  = "\(u)4;30m"
     static let red    = "\(u)4;31m"
@@ -44,7 +44,7 @@ public struct ASCIIColor {
     static let cyan   = "\(u)4;36m"
     static let white  = "\(u)4;37m"
   }
-  
+
   public struct Background {
     static let black  = "\(u)40m"
     static let red    = "\(u)41m"
@@ -55,7 +55,7 @@ public struct ASCIIColor {
     static let cyan   = "\(u)46m"
     static let white  = "\(u)47m"
   }
-  
+
   public struct HighIntensity {
     static let black  = "\(u)0;90m"
     static let red    = "\(u)0;91m"
@@ -66,7 +66,7 @@ public struct ASCIIColor {
     static let cyan   = "\(u)0;96m"
     static let white  = "\(u)0;97m"
   }
-  
+
   public struct BoldHighIntensity {
     static let black  = "\(u)1;90m"
     static let red    = "\(u)1;91m"
@@ -77,7 +77,7 @@ public struct ASCIIColor {
     static let cyan   = "\(u)1;96m"
     static let white  = "\(u)1;97m"
   }
-  
+
   public struct HighIntensityBackground {
     static let black  = "\(u)0;100m"
     static let red    = "\(u)0;101m"

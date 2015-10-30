@@ -7,17 +7,18 @@
 //
 
 public class Feedback {
-  
+
   public var items: [FeedbackItem] = []
-  
+
   init() {}
 }
 
 // MARK: Public
 public extension Feedback {
-  
+
   func addItem(item: FeedbackItem) -> FeedbackItem {
     items.append(item)
     return item
   }
+
 }

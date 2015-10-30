@@ -12,7 +12,7 @@ import Foundation
 public func promptHelp() {
   let r = ASCIIColor.reset
   let bw = ASCIIColor.Bold.white
-  
+
   let buildOptions: [String] = [
     "",
     "\(bw)-t\(r), --task:",
@@ -42,7 +42,7 @@ public func promptHelp() {
     "    ex: \(bw)-m \"C:\\Program Files (x86)\\MSBuild\\12.0\\bin\\MSBuild.exe\"\(r)",
     ""
   ]
-  
+
   let globalOptions: [String] = [
     "",
     "\(bw)-i\(r), --image:",
@@ -62,7 +62,7 @@ public func promptHelp() {
     "    prints this guide"
   ]
   let helpMessage: [String] = header("BUILD OPTIONS") + buildOptions + header("GLOBAL OPTIONS") + globalOptions
-  
+
   print(helpMessage.joinWithSeparator("\n"))
   exit(0)
 }

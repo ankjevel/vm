@@ -9,32 +9,32 @@
 import Foundation
 
 public struct MSBuildOption {
-  
-  private var _value: String
-  private var _validate: (value: String) -> Bool
-  private let _identifier: String
-  
+
+  private var pValue: String
+  private var pValidate: (value: String) -> Bool
+  private let pIdentifier: String
+
   var value: String {
     get {
-      return _value
+      return pValue
     }
     set (newValue) {
-      if _validate(value: newValue) {
-        _value = newValue
+      if pValidate(value: newValue) {
+        pValue = newValue
         set = true
       } else {
-        print("\(ASCIIColor.Bold.red)invalid value for \(_identifier): \(newValue)\(ASCIIColor.reset)")
+        print("\(ASCIIColor.Bold.red)invalid value for \(pIdentifier): \(newValue)\(ASCIIColor.reset)")
       }
-      
+
     }
   }
-  
+
   var set: Bool
-  
+
   init(_ value: String, _ identifier: String, _ validation: (value: String) -> Bool) {
-    self._identifier = identifier
-    self._value = value
-    self._validate = validation
+    self.pIdentifier = identifier
+    self.pValue = value
+    self.pValidate = validation
     self.set = value != ""
   }
 }

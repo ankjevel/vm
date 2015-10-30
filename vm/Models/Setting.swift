@@ -1,6 +1,6 @@
 //
 //  Setting.swift
-//  
+//
 //
 //  Created by Dennis Pettersson on 2015-06-21.
 //
@@ -9,13 +9,13 @@
 import Foundation
 
 public class Setting: CustomStringConvertible {
-  
+
   var id: String
   var property: String
   var solution: String
   var task: String
   var user: String
-  
+
   init(id: String, property: String, solution: String, task: String, user: String) {
     self.id = id
     self.property = property
@@ -26,7 +26,7 @@ public class Setting: CustomStringConvertible {
 }
 
 public extension Setting {
-  
+
   func describe() -> [String: AnyObject] {
     let description: [String: AnyObject] = [
       "id": id,
@@ -37,7 +37,7 @@ public extension Setting {
     ]
     return description
   }
-  
+
   var description: String {
     get {
       if
@@ -49,5 +49,5 @@ public extension Setting {
       }
     }
   }
-  
+
 }

@@ -8,39 +8,55 @@
 
 import Darwin
 
-public let WIDTH: Int
-public var ANSWER: Bool?
-public var VM_IMAGE: String?
-public var DISPLAY_HELP: Bool = false
-public var CLEAR_SAVE_DATA: Bool = false
-public var SHOW_LOADING = false
-public let TIMEOUT_ON_UPDATE: useconds_t = 200000
+public class Main {
+  public let Width: Int
+  public let Answer: Bool?
+  public let VMImage: String?
+  public let DisplayHelp: Bool
+  public let ClearSaveData: Bool
+  public let TimeoutOnUpdate: useconds_t = 200000
 
-if let cols = Int(shell("/usr/bin/tput", args: ["cols"]).stripWhiteSpaceAndNewLine) {
-  WIDTH = cols
-} else {
-  WIDTH = 80
+  init () {
+    if let cols = Int(shell("/usr/bin/tput", args: ["cols"]).stripWhiteSpaceAndNewLine) {
+      self.Width = cols
+    } else {
+      self.Width = 80
+    }
+
+    var answer: Bool?
+    var vmImage: String?
+    var displayHelp: Bool = false
+    var clearSaveData: Bool = false
+
+    eachProcessArgument() {
+      if $0 == "y" {
+        answer = true
+      }
+      if $0 == "n" {
+        answer = false
+      }
+      if $0 == "i" || $0 == "image" {
+        vmImage = $0.stripWhiteSpaceAndNewLine
+      }
+      if $0 == "h" || $0 == "help" {
+        displayHelp = true
+      }
+      if $0 == "c" || $0 == "clear" {
+        clearSaveData = true
+      }
+    }
+
+    self.Answer = answer
+    self.VMImage = vmImage
+    self.DisplayHelp = displayHelp
+    self.ClearSaveData = clearSaveData
+  }
 }
 
-eachProcessArgument() {
-  if $0 == "y" {
-    ANSWER = true
-  }
-  if $0 == "n" {
-    ANSWER = false
-  }
-  if $0 == "i" || $0 == "image" {
-    VM_IMAGE = $0.stripWhiteSpaceAndNewLine
-  }
-  if $0 == "h" || $0 == "help" {
-    DISPLAY_HELP = true
-  }
-  if $0 == "c" || $0 == "clear" {
-    CLEAR_SAVE_DATA = true
-  }
-}
+public var main = Main()
 
-if DISPLAY_HELP {
+
+if main.DisplayHelp {
   promptHelp()
 }
 
