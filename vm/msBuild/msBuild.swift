@@ -32,7 +32,7 @@ public class MSBuild {
 // MARK: Public
 public extension MSBuild {
 
-  func run() {
+  func run(done: () -> Void) {
 
     var stage = 0
 
@@ -53,7 +53,10 @@ public extension MSBuild {
     loading("Building solution") {
       return stage == 2
     }
-    sendBuildScript(&stage)
+    
+    sendBuildScript(&stage) {
+      done()
+    }
   }
 }
 
@@ -164,7 +167,7 @@ private extension MSBuild {
     ++stage; ok("[...]  ")
   }
 
-  func sendBuildScript(inout stage: Int) {
+  func sendBuildScript(inout stage: Int, done: () -> Void) {
     vmWareRequest(["CopyFileFromHostToGuest", selected.id, Paths.OSX.script, Paths.Windows.script])
 
     if checkIfExists(Paths.Windows.script, .FileExists, haltOnError: false) == false {
@@ -178,10 +181,12 @@ private extension MSBuild {
       "/c \"\(Paths.Windows.script)\""
     ])
 
-    readLogs(&stage)
+    readLogs(&stage) {
+      done()
+    }
   }
 
-  func readLogs(inout stage: Int) {
+  func readLogs(inout stage: Int, done: () -> Void) {
 
     if checkIfExists(Paths.Windows.log, .FileExists, haltOnError: false) == false {
       halt("logs where not created!", 205, selected.title)
@@ -205,6 +210,8 @@ private extension MSBuild {
     if success {
       let index = file.rangeOfString("Build succeeded.")!.startIndex
       let part = file.substringFromIndex(index)
+      done()
+      
       print("\(ASCIIColor.Bold.green)\n\(part)\(ASCIIColor.reset)")
     } else {
       print("\(ASCIIColor.Bold.red)\nbuild not successful\(ASCIIColor.reset)")

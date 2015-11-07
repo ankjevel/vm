@@ -23,8 +23,7 @@ internal class JSON {
     if self.fm.fileExistsAtPath(Paths.folder) == false {
       do {
         try self.fm.createDirectoryAtPath(Paths.folder, withIntermediateDirectories: true, attributes: nil)
-      } catch _ {
-      }
+      } catch _ {}
     }
 
     let path = Paths.file
@@ -74,7 +73,7 @@ internal class JSON {
     }
 
     if let data = try? NSJSONSerialization.dataWithJSONObject(description, options: .PrettyPrinted) {
-      data.writeToFile(Paths.file.absoluteString, atomically: false)
+      data.writeToURL(Paths.file, atomically: false)
     }
   }
 

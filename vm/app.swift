@@ -75,12 +75,10 @@ public extension App {
     setTask(&selected, loaded: &loaded)
     setTaskProperty(&selected, loaded: &loaded)
 
-    if loaded == false {
-      saveEntity(selected)
-    }
-
     build.selected = selected
-    build.run()
+    build.run() {
+      self.saveEntity(selected)
+    }
   }
 
 }
@@ -211,6 +209,7 @@ private extension App {
 
     let help = emp("ex: C:\\dev\\Project\\Project.sln")
     let message = "path to solution file (\(help)):"
+
     while selected.options.solution.set == false {
       var input = getUserInput(message)
       if input.hasPrefix("~") {

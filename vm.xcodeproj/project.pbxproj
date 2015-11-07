@@ -170,8 +170,8 @@
 		D64BF33A1B3891B800931D2F /* shell */ = {
 			isa = PBXGroup;
 			children = (
+				D6CD8D731BE41E9500CCE5BC /* ASCIIColor */,
 				D64BF34D1B38C02000931D2F /* arguments.swift */,
-				D64BF34E1B38C02000931D2F /* ASCIIColor.swift */,
 				D64BF34F1B38C02000931D2F /* promptHelp.swift */,
 				D64BF3501B38C02000931D2F /* eachProcessArgument.swift */,
 				D64BF3511B38C02000931D2F /* getUserInput.swift */,
@@ -215,6 +215,14 @@
 				D64BF3391B38917300931D2F /* Models */,
 			);
 			path = vm;
+			sourceTree = "<group>";
+		};
+		D6CD8D731BE41E9500CCE5BC /* ASCIIColor */ = {
+			isa = PBXGroup;
+			children = (
+				D64BF34E1B38C02000931D2F /* ASCIIColor.swift */,
+			);
+			name = ASCIIColor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
